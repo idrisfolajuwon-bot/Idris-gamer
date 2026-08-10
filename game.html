@@ -4,60 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Idris Gamer: Battle Arena</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;background:#10131a;color:white;font-family:Arial;overflow:hidden}
-#hud{height:55px;background:#202632;display:flex;justify-content:space-around;align-items:center}
-#arena{position:relative;height:calc(100vh - 55px);background:#34452f;overflow:hidden}
-#player{position:absolute;width:46px;height:58px;background:#2678d9;border:3px solid white;border-radius:15px;left:50%;top:45%;transform:translate(-50%,-50%)}
-#player:after{content:"";position:absolute;width:12px;height:28px;background:#18202b;right:-10px;top:15px;border-radius:5px}
-#joy{position:fixed;bottom:25px;left:25px;width:120px;height:120px;border-radius:50%;background:#ffffff33;border:2px solid #ffffff77}
-#stick{position:absolute;width:52px;height:52px;border-radius:50%;background:#ffffff99;left:34px;top:34px}
-#fire{position:fixed;right:28px;bottom:40px;width:85px;height:85px;border-radius:50%;border:3px solid white;background:#d93636;color:white;font-weight:bold;font-size:16px}
-</style>
+<link rel="stylesheet" href="css/game.css">
 </head>
+
 <body>
 
-<div id="hud">
-<span>❤️ 100</span>
-<span>🏆 0</span>
-<span>Idris Gamer</span>
+<div id="game">
+  <div id="player"></div>
 </div>
 
-<div id="arena">
-<div id="player"></div>
-</div>
-
-<div id="joy"><div id="stick"></div></div>
-<button id="fire">FIRE</button>
-
-<script>
-const player=document.getElementById("player");
-let x=innerWidth/2;
-let y=(innerHeight-55)/2;
-
-function move(dx,dy){
- x+=dx;
- y+=dy;
- x=Math.max(25,Math.min(innerWidth-25,x));
- y=Math.max(30,Math.min(innerHeight-80,y));
- player.style.left=x+"px";
- player.style.top=y+"px";
-}
-
-document.getElementById("joy").addEventListener("touchmove",e=>{
- const t=e.touches[0];
- const r=e.currentTarget.getBoundingClientRect();
- const dx=t.clientX-(r.left+r.width/2);
- const dy=t.clientY-(r.top+r.height/2);
- move(dx*.08,dy*.08);
- e.preventDefault();
-});
-
-document.getElementById("fire").onclick=()=>{
- alert("Fire system coming next!");
-};
-</script>
+<script src="js/player.js"></script>
+<script src="js/enemies.js"></script>
+<script src="js/controls.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
