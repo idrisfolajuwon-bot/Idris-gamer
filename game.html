@@ -1,197 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Idris Gamer - Target Challenge</title>
-  <style>
-    * { box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Idris Gamer - Battle Arena</title>
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #080810;
-      color: white;
-      text-align: center;
-      overflow: hidden;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  touch-action: none;
+}
 
-    header {
-      padding: 18px;
-      background: #151522;
-    }
+body {
+  margin: 0;
+  background: #080810;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
 
-    h1 {
-      margin: 0 0 8px;
-    }
+#hud {
+  height: 60px;
+  background: #151522;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold;
+}
 
-    #score {
-      font-size: 20px;
-      font-weight: bold;
-    }
+#arena {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 60px);
+  background: #171725;
+  overflow: hidden;
+}
 
-    #game {
-      position: relative;
-      height: calc(100vh - 130px);
-      min-height: 400px;
-      overflow: hidden;
-      background: #10101b;
-    }
+.player,
+.enemy {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
 
-    #target {
-      position: absolute;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      background: #ff3b30;
-      border: 6px solid white;
-      cursor: pointer;
-      display: none;
-      box-shadow: 0 0 20px rgba(255, 59, 48, 0.6);
-    }
+.player {
+  background: #35a7ff;
+  border: 4px solid white;
+}
 
-    #start {
-      margin-top: 25px;
-      padding: 14px 25px;
-      border: 0;
-      border-radius: 12px;
-      background: #ff3b30;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-    }
+.enemy {
+  background: #ff3b30;
+  border: 4px solid #ffb3b3;
+}
 
-    #message {
-      padding: 20px;
-      color: #c9c9d4;
-    }
-  </style>
+.bullet {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: white;
+  border-radius: 50%;
+}
+
+#start {
+  position: absolute;
+  z-index: 20;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 16px 28px;
+  border: none;
+  border-radius: 12px;
+  background: #ff3b30;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#controls {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 30;
+}
+
+.control {
+  width: 55px;
+  height: 55px;
+  margin: 3px;
+  border: none;
+  border-radius: 12px;
+  background: #333344;
+  color: white;
+  font-size: 22px;
+}
+
+#shoot {
+  position: fixed;
+  right: 25px;
+  bottom: 35px;
+  z-index: 30;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 3px solid white;
+  background: #ff3b30;
+  color: white;
+  font-weight: bold;
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <h1>🎯 Target Challenge</h1>
-  <div id="score">Score: 0 | Time: 30</div>
-</header>
-
-<button id="start">START GAME</button>
-
-<div id="message">
-  Tap the targets as quickly as you can!
-</div>
-
-<div id="game">
-  <div id="target"></div>
-</div>
-
-<script>
-  const target = document.getElementById("target");
-  const scoreText = document.getElementById("score");
-  const startButton = document.getElementById("start");
-  const message = document.getElementById("message");
-  const game = document.getElementById("game");
-
-  let score = 0;
-  let time = 30;
-  let timer = null;
-
-  function moveTarget() {
-    const x = Math.random() * (game.clientWidth - 70);
-    const y = Math.random() * (game.clientHeight - 70);
-
-    target.style.left = x + "px";
-    target.style.top = y + "px";
-  }
-
-  function updateDisplay() {
-    scoreText.textContent = "Score: " + score + " | Time: " + time;
-  }
-
-  startButton.onclick = function () {
-    score = 0;
-    time = 30;
-
-    startButton.style.display = "none";
-    message.textContent = "🎯 GO! Tap the targets!";
-    target.style.display = "block";
-
-    updateDisplay();
-    moveTarget();
-
-    if (timer) clearInterval(timer);
-
-    timer = setInterval(function () {
-      time--;
-      updateDisplay();
-
-      if (time <= 0) {
-        clearInterval(timer);
-        target.style.display = "none";
-        startButton.style.display = "inline-block";
-        startButton.textContent = "PLAY AGAIN";
-        message.textContent = "🏆 Game Over! Score: " + score;
-      }
-    }, 1000);
-  };
-
-  target.onclick = function () {
-    score++;
-    updateDisplay();
-    moveTarget();
-  };
-</script>
-  const target = document.getElementById("target");
-  const scoreText = document.getElementById("score");
-  const startButton = document.getElementById("start");
-  const message = document.getElementById("message");
-  const game = document.getElementById("game");
-
-  let score = 0;
-  let time = 30;
-  let timer;
-  let playing = false;
-
-  function moveTarget() {
-    const maxX = game.clientWidth - target.offsetWidth;
-    const maxY = game.clientHeight - target.offsetHeight;
-
-    target.style.left = Math.random() * maxX + "px";
-    target.style.top = Math.random() * maxY + "px";
-  }
-
-  function updateScore() {
-    scoreText.textContent = `Score: ${score} | Time: ${time}`;
-  }
-
-  target.addEventListener("click", () => {
-    if (!playing) return;
-
-    score++;
-    updateScore();
-    moveTarget();
-  });
-
-  startButton.addEventListener("click", () => {
-    score = 0;
-    time = 30;
-    playing = true;
-
-    startButton.style.display = "none";
-    message.textContent = "🎯 GO! Tap the targets!";
-    target.style.display = "block";
-
-    moveTarget();
-    updateScore();
-
-    timer = setInterval(() => {
-      time--;
-      updateScore();
-
-      if (time <= 0) {
-        clearInterval(timer);
-        playing = false;
-        target.style.display = "none";
-        startButton.style.display = "inline-block";
-        startButton.textContent = "PLAY AGAIN";
-        message.textContent = `🏆 Game Over! Your score:
+<div id="hud">
+  <
