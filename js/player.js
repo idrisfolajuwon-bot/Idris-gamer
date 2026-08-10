@@ -6,5 +6,8 @@ const player = {
 };
 
 function updatePlayer() {
-  console.log("Player ready:", player);
+  const element = document.getElementById("player");
+
+  element.style.left = player.x + "px";
+  element.style.top = player.y + "px";
 }
