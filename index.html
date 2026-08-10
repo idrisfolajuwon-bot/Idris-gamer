@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <meta name="theme-color" content="#0b0b12">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
   <title>Idris Gamer - Free Fire Sensitivity</title>
 
@@ -13,115 +17,170 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      background: #0b0b12;
+      background: #080810;
       color: white;
       min-height: 100vh;
+      padding-bottom: 75px;
     }
 
     header {
       text-align: center;
-      padding: 35px 15px;
-      background: linear-gradient(135deg, #17172b, #10101b);
+      padding: 28px 15px 22px;
+      background: linear-gradient(135deg, #17172b, #0d0d17);
+      border-bottom: 1px solid #29293a;
+      position: relative;
     }
 
     header h1 {
-      font-size: 38px;
-      margin-bottom: 10px;
+      font-size: 30px;
+      margin-bottom: 7px;
     }
 
     header p {
-      color: #bdbdd0;
-      font-size: 16px;
+      color: #aaaabd;
+      font-size: 14px;
+    }
+
+    .app-badge {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: #20202d;
+      color: #ff554c;
+      font-size: 12px;
+      font-weight: bold;
     }
 
     .hero {
       text-align: center;
-      padding: 35px 15px;
+      padding: 30px 18px;
     }
 
     .hero h2 {
-      font-size: 27px;
+      font-size: 25px;
       margin-bottom: 12px;
     }
 
     .hero p {
-      color: #c9c9d4;
+      color: #bcbccc;
+      line-height: 1.6;
       max-width: 600px;
       margin: auto;
-      line-height: 1.6;
     }
 
     .button {
       display: inline-block;
-      margin-top: 22px;
+      margin-top: 20px;
       padding: 15px 25px;
       background: #ff3b30;
       color: white;
       text-decoration: none;
       border-radius: 12px;
       font-weight: bold;
-      cursor: pointer;
       border: none;
-      font-size: 16px;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 59, 48, 0.18);
     }
 
-    .button:hover {
-      opacity: 0.85;
+    .button:active {
+      transform: scale(0.97);
+    }
+
+    .install-btn {
+      background: #20202d;
+      color: white;
+      margin-left: 5px;
+      box-shadow: none;
     }
 
     #sensitivity {
-      padding: 30px 15px;
-      max-width: 900px;
+      padding: 20px 15px;
+      max-width: 950px;
       margin: auto;
     }
 
     #sensitivity h2 {
       text-align: center;
-      margin-bottom: 25px;
-      font-size: 28px;
+      margin-bottom: 20px;
+      font-size: 25px;
+    }
+
+    .search-box {
+      margin-bottom: 18px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid #30303e;
+      background: #15151f;
+      color: white;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .search-box input:focus {
+      border-color: #ff3b30;
     }
 
     .phone-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-      gap: 12px;
-      margin-bottom: 30px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 25px;
     }
 
     .phone-button {
-      padding: 14px 10px;
-      border: none;
-      border-radius: 10px;
-      background: #20202d;
+      padding: 15px 9px;
+      border: 1px solid #292936;
+      border-radius: 12px;
+      background: #171722;
       color: white;
       cursor: pointer;
       font-weight: bold;
+      min-height: 55px;
+      transition: 0.2s;
     }
 
-    .phone-button:hover {
-      background: #303044;
+    .phone-button:active {
+      transform: scale(0.96);
+    }
+
+    .phone-button.active {
+      background: #ff3b30;
+      border-color: #ff3b30;
     }
 
     .settings {
-      background: #171722;
-      border-radius: 15px;
-      padding: 25px;
+      background: linear-gradient(145deg, #171722, #11111a);
+      border: 1px solid #292936;
+      border-radius: 17px;
+      padding: 20px;
       margin-top: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
     .settings h3 {
-      font-size: 24px;
-      margin-bottom: 18px;
+      font-size: 23px;
+      margin-bottom: 20px;
       text-align: center;
     }
 
     .setting-row {
       display: flex;
       justify-content: space-between;
-      padding: 12px 5px;
-      border-bottom: 1px solid #30303d;
+      align-items: center;
+      padding: 13px 5px;
+      border-bottom: 1px solid #292936;
     }
 
     .setting-row:last-child {
@@ -130,6 +189,9 @@
 
     .value {
       font-weight: bold;
+      background: #ff3b30;
+      padding: 5px 10px;
+      border-radius: 8px;
     }
 
     .weapons {
@@ -138,27 +200,106 @@
 
     .weapons h4 {
       margin-bottom: 12px;
-      font-size: 20px;
+      font-size: 19px;
     }
 
-    .weapons p {
-      padding: 8px 0;
-      color: #d1d1dc;
+    .weapon {
+      background: #20202d;
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      color: #d8d8e3;
+      font-size: 14px;
+    }
+
+    .copy-btn {
+      width: 100%;
+      margin-top: 18px;
+      padding: 14px;
+      border: none;
+      border-radius: 11px;
+      background: #2a2a3a;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .copy-btn:active {
+      transform: scale(0.98);
+    }
+
+    .favorite-btn {
+      width: 100%;
+      margin-top: 9px;
+      padding: 14px;
+      border: none;
+      border-radius: 11px;
+      background: #2a2a3a;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .note {
+      text-align: center;
+      color: #888898;
+      font-size: 12px;
+      margin-top: 18px;
+      line-height: 1.5;
     }
 
     footer {
       text-align: center;
       padding: 30px 15px;
-      color: #9999a8;
-      margin-top: 30px;
+      color: #777787;
+      font-size: 13px;
     }
 
-    .note {
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 62px;
+      background: #11111a;
+      border-top: 1px solid #292936;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      color: #9999aa;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav-btn.active {
+      color: #ff3b30;
+    }
+
+    .empty {
       text-align: center;
-      color: #9999a8;
-      font-size: 13px;
-      margin-top: 20px;
-      line-height: 1.5;
+      padding: 25px;
+      color: #9999aa;
+      display: none;
+    }
+
+    @media (min-width: 650px) {
+      .phone-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      header h1 {
+        font-size: 38px;
+      }
     }
   </style>
 </head>
@@ -168,65 +309,89 @@
   <header>
     <h1>🎮 IDRIS GAMER</h1>
     <p>Free Fire Sensitivity Center</p>
+    <span class="app-badge">APP VERSION 1.0</span>
   </header>
 
   <section class="hero">
-    <h2>🔥 Get Your Free Fire Sensitivity</h2>
+
+    <h2>🔥 Get Your Best Sensitivity</h2>
+
     <p>
-      Choose your phone below and get recommended sensitivity
-      settings for smoother aim and headshot practice.
+      Choose your phone and get recommended Free Fire
+      sensitivity settings for headshot practice.
     </p>
 
     <a class="button" href="#sensitivity">
-      GET SENSITIVITY
+      🎯 GET SENSITIVITY
     </a>
+
+    <button class="button install-btn" id="installButton" onclick="installApp()" style="display:none;">
+      📲 INSTALL APP
+    </button>
+
   </section>
 
   <section id="sensitivity">
 
-    <h2>🎯 Choose Your Phone</h2>
+    <h2>📱 Choose Your Phone</h2>
 
-    <div class="phone-grid">
+    <div class="search-box">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="🔎 Search your phone..."
+        oninput="searchPhones()"
+      >
+    </div>
 
-      <button class="phone-button" onclick="showSettings('pop10c')">
+    <div class="phone-grid" id="phoneGrid">
+
+      <button class="phone-button" data-name="Tecno Pop 10C" onclick="showSettings('pop10c', this)">
         Tecno Pop 10C
       </button>
 
-      <button class="phone-button" onclick="showSettings('spark')">
+      <button class="phone-button" data-name="Tecno Spark" onclick="showSettings('spark', this)">
         Tecno Spark
       </button>
 
-      <button class="phone-button" onclick="showSettings('hot')">
+      <button class="phone-button" data-name="Infinix Hot" onclick="showSettings('hot', this)">
         Infinix Hot
       </button>
 
-      <button class="phone-button" onclick="showSettings('note')">
+      <button class="phone-button" data-name="Infinix Note" onclick="showSettings('note', this)">
         Infinix Note
       </button>
 
-      <button class="phone-button" onclick="showSettings('samsung')">
+      <button class="phone-button" data-name="Samsung Galaxy" onclick="showSettings('samsung', this)">
         Samsung Galaxy
       </button>
 
-      <button class="phone-button" onclick="showSettings('iphone11')">
+      <button class="phone-button" data-name="iPhone 11" onclick="showSettings('iphone11', this)">
         iPhone 11
       </button>
 
-      <button class="phone-button" onclick="showSettings('iphone12')">
+      <button class="phone-button" data-name="iPhone 12" onclick="showSettings('iphone12', this)">
         iPhone 12
       </button>
 
-      <button class="phone-button" onclick="showSettings('iphone13')">
+      <button class="phone-button" data-name="iPhone 13" onclick="showSettings('iphone13', this)">
         iPhone 13
       </button>
 
     </div>
 
+    <div id="emptySearch" class="empty">
+      ❌ No phone found.
+    </div>
+
     <div id="settingsBox" class="settings">
+
       <h3>📱 Select a phone above</h3>
+
       <p class="note">
         Tap a phone to see its recommended Free Fire sensitivity.
       </p>
+
     </div>
 
   </section>
@@ -234,6 +399,22 @@
   <footer>
     © 2026 Idris Gamer • Free Fire Sensitivity
   </footer>
+
+  <nav class="bottom-nav">
+
+    <button class="nav-btn active" onclick="goHome()">
+      🏠<br>Home
+    </button>
+
+    <button class="nav-btn" onclick="goSensitivity()">
+      🎯<br>Sensitivity
+    </button>
+
+    <button class="nav-btn" onclick="showFavorites()">
+      ⭐<br>Favorites
+    </button>
+
+  </nav>
 
   <script>
 
@@ -322,9 +503,27 @@
     };
 
 
-    function showSettings(phone) {
+    let selectedPhone = null;
+
+
+    function showSettings(phone, button) {
 
       const s = sensitivity[phone];
+
+      selectedPhone = phone;
+
+      document.querySelectorAll(".phone-button").forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      if (button) {
+        button.classList.add("active");
+      }
+
+      const favorite =
+        JSON.parse(localStorage.getItem("favoritePhones") || "[]");
+
+      const isFavorite = favorite.includes(phone);
 
       const box = document.getElementById("settingsBox");
 
@@ -366,12 +565,31 @@
 
           <h4>🔫 Weapon Focus</h4>
 
-          <p>🔥 MP40 — close-range headshot practice</p>
-          <p>💥 M1014 — close-range drag/headshot practice</p>
-          <p>🎯 Desert Eagle — one-tap practice</p>
-          <p>⚡ General aim — use short controlled movements</p>
+          <div class="weapon">
+            🔥 MP40 — close-range headshot practice
+          </div>
+
+          <div class="weapon">
+            💥 M1014 — close-range drag/headshot practice
+          </div>
+
+          <div class="weapon">
+            🎯 Desert Eagle — one-tap practice
+          </div>
+
+          <div class="weapon">
+            ⚡ General aim — use short controlled movements
+          </div>
 
         </div>
+
+        <button class="copy-btn" onclick="copySettings()">
+          📋 COPY SENSITIVITY
+        </button>
+
+        <button class="favorite-btn" onclick="toggleFavorite()">
+          ${isFavorite ? "⭐ REMOVE FROM FAVORITES" : "☆ ADD TO FAVORITES"}
+        </button>
 
         <p class="note">
           These are recommended starting settings.
@@ -384,6 +602,180 @@
         behavior: "smooth",
         block: "start"
       });
+
+    }
+
+
+    function copySettings() {
+
+      if (!selectedPhone) return;
+
+      const s = sensitivity[selectedPhone];
+
+      const text =
+`🎮 IDRIS GAMER
+
+📱 ${s.name}
+
+🎯 General: ${s.general}
+🔴 Red Dot: ${s.redDot}
+🔭 2× Scope: ${s.scope2x}
+🔭 4× Scope: ${s.scope4x}
+🎯 Sniper Scope: ${s.sniper}
+👀 Free Look: ${s.freeLook}`;
+
+      navigator.clipboard.writeText(text).then(() => {
+
+        alert("✅ Sensitivity copied!");
+
+      }).catch(() => {
+
+        alert("Please copy the settings manually.");
+
+      });
+
+    }
+
+
+    function toggleFavorite() {
+
+      if (!selectedPhone) return;
+
+      let favorites =
+        JSON.parse(localStorage.getItem("favoritePhones") || "[]");
+
+      if (favorites.includes(selectedPhone)) {
+
+        favorites = favorites.filter(x => x !== selectedPhone);
+
+      } else {
+
+        favorites.push(selectedPhone);
+
+      }
+
+      localStorage.setItem(
+        "favoritePhones",
+        JSON.stringify(favorites)
+      );
+
+      showSettings(selectedPhone);
+
+    }
+
+
+    function showFavorites() {
+
+      const favorites =
+        JSON.parse(localStorage.getItem("favoritePhones") || "[]");
+
+      if (favorites.length === 0) {
+
+        alert("⭐ You have no favorite phones yet.");
+
+        return;
+
+      }
+
+      const names = favorites
+        .map(phone => sensitivity[phone].name)
+        .join("\n");
+
+      alert("⭐ Your Favorite Phones:\n\n" + names);
+
+    }
+
+
+    function searchPhones() {
+
+      const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+      const buttons =
+        document.querySelectorAll(".phone-button");
+
+      let found = false;
+
+      buttons.forEach(button => {
+
+        const name =
+          button.dataset.name.toLowerCase();
+
+        if (name.includes(search)) {
+
+          button.style.display = "block";
+          found = true;
+
+        } else {
+
+          button.style.display = "none";
+
+        }
+
+      });
+
+      document.getElementById("emptySearch").style.display =
+        found ? "none" : "block";
+
+    }
+
+
+    function goHome() {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    function goSensitivity() {
+
+      document.getElementById("sensitivity")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    }
+
+
+    let deferredPrompt;
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+
+      event.preventDefault();
+
+      deferredPrompt = event;
+
+      document.getElementById("installButton").style.display =
+        "inline-block";
+
+    });
+
+
+    async function installApp() {
+
+      if (!deferredPrompt) {
+
+        alert(
+          "Your browser may already support installing this website from its menu."
+        );
+
+        return;
+
+      }
+
+      deferredPrompt.prompt();
+
+      await deferredPrompt.userChoice;
+
+      deferredPrompt = null;
+
+      document.getElementById("installButton").style.display =
+        "none";
 
     }
 
