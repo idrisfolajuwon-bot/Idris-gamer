@@ -94,6 +94,61 @@
 
   let score = 0;
   let time = 30;
+  let timer = null;
+
+  function moveTarget() {
+    const x = Math.random() * (game.clientWidth - 70);
+    const y = Math.random() * (game.clientHeight - 70);
+
+    target.style.left = x + "px";
+    target.style.top = y + "px";
+  }
+
+  function updateDisplay() {
+    scoreText.textContent = "Score: " + score + " | Time: " + time;
+  }
+
+  startButton.onclick = function () {
+    score = 0;
+    time = 30;
+
+    startButton.style.display = "none";
+    message.textContent = "🎯 GO! Tap the targets!";
+    target.style.display = "block";
+
+    updateDisplay();
+    moveTarget();
+
+    if (timer) clearInterval(timer);
+
+    timer = setInterval(function () {
+      time--;
+      updateDisplay();
+
+      if (time <= 0) {
+        clearInterval(timer);
+        target.style.display = "none";
+        startButton.style.display = "inline-block";
+        startButton.textContent = "PLAY AGAIN";
+        message.textContent = "🏆 Game Over! Score: " + score;
+      }
+    }, 1000);
+  };
+
+  target.onclick = function () {
+    score++;
+    updateDisplay();
+    moveTarget();
+  };
+</script>
+  const target = document.getElementById("target");
+  const scoreText = document.getElementById("score");
+  const startButton = document.getElementById("start");
+  const message = document.getElementById("message");
+  const game = document.getElementById("game");
+
+  let score = 0;
+  let time = 30;
   let timer;
   let playing = false;
 
