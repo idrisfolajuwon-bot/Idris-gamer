@@ -1,86 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Idris Gamer Battle</title>
 <style>
 body{margin:0;background:#111;color:white;font-family:Arial;text-align:center}
-#game{height:100vh;position:relative;overflow:hidden;background:#182018}
-#player{position:absolute;width:45px;height:45px;background:#2196f3;border-radius:50%;left:50%;top:60%;transform:translate(-50%,-50%)}
-.enemy{position:absolute;width:40px;height:40px;background:#e53935;border-radius:50%}
-#start{margin:20px;padding:15px 25px;font-size:18px}
-.controls{position:fixed;bottom:20px;left:20px}
-button{padding:15px;margin:3px;font-size:20px}
-#fire{position:fixed;right:25px;bottom:30px;border-radius:50%;background:#e53935;color:white}
+#top{padding:12px;background:#222}
+#game{position:relative;height:70vh;background:#183018;overflow:hidden}
+#p,.e{position:absolute;width:42px;height:42px;border-radius:50%}
+#p{background:#2196f3}
+.e{background:#f44336}
+.b{position:absolute;width:8px;height:8px;background:white;border-radius:50%}
+button{padding:14px;margin:4px;border:0;border-radius:10px;font-weight:bold}
+#fire{background:#f44336;color:white}
 </style>
 </head>
-
 <body>
-<button id="start">START BATTLE</button>
+
+<div id="top">❤️ <span id="hp">100</span> | 🏆 <span id="score">0</span></div>
 
 <div id="game">
-<div id="player"></div>
+<div id="p"></div>
 </div>
 
-<div class="controls">
-<button onclick="move(0,-20)">▲</button><br>
-<button onclick="move(-20,0)">◀</button>
-<button onclick="move(0,20)">▼</button>
-<button onclick="move(20,0)">▶</button>
-</div>
-
-<button id="fire" onclick="shoot()">FIRE</button>
+<button onclick="move(0,-25)">▲</button><br>
+<button onclick="move(-25,0)">◀</button>
+<button onclick="move(0,25)">▼</button>
+<button onclick="move(25,0)">▶</button>
+<br>
+<button id="fire" onclick="fire()">FIRE</button>
 
 <script>
-let player=document.getElementById("player");
-let game=document.getElementById("game");
-let started=false;
-let enemies=[];
+let p=document.getElementById("p"),g=document.getElementById("game");
+let hp=100,score=0,x=150,y=150;
 
-function move(x,y){
-if(!started)return;
-let l=player.offsetLeft+x;
-let t=player.offsetTop+y;
-l=Math.max(0,Math.min(game.clientWidth-45,l));
-t=Math.max(0,Math.min(game.clientHeight-45,t));
-player.style.left=l+"px";
-player.style.top=t+"px";
+function pos(){
+p.style.left=x+"px";
+p.style.top=y+"px";
 }
 
-function addEnemy(){
+function move(a,b){
+x=Math.max(0,Math.min(g.clientWidth-42,x+a));
+y=Math.max(0,Math.min(g.clientHeight-42,y+b));
+pos();
+}
+
+function enemy(){
 let e=document.createElement("div");
-e.className="enemy";
-e.style.left=Math.random()*(game.clientWidth-40)+"px";
-e.style.top=Math.random()*(game.clientHeight-150)+80+"px";
-game.appendChild(e);
-enemies.push(e);
+e.className="e";
+e.style.left=Math.random()*(g.clientWidth-42)+"px";
+e.style.top=Math.random()*(g.clientHeight-42)+"px";
+g.appendChild(e);
 }
 
-function shoot(){
-if(!started)return;
-let p=player.getBoundingClientRect();
+function fire(){
+let b=document.createElement("div");
+b.className="b";
+b.style.left=(x+17)+"px";
+b.style.top=(y-10)+"px";
+g.appendChild(b);
 
-enemies.forEach((e,i)=>{
-let r=e.getBoundingClientRect();
-let dx=p.left-r.left;
-let dy=p.top-r.top;
-let d=Math.sqrt(dx*dx+dy*dy);
+let t=setInterval(()=>{
+b.style.top=(b.offsetTop-8)+"px";
 
-if(d<180){
+document.querySelectorAll(".e").forEach(e=>{
+let dx=b.offsetLeft-e.offsetLeft;
+let dy=b.offsetTop-e.offsetTop;
+
+if(Math.hypot(dx,dy)<35){
 e.remove();
-enemies.splice(i,1);
-addEnemy();
+b.remove();
+score+=10;
+document.getElementById("score").textContent=score;
+clearInterval(t);
+enemy();
 }
 });
+
+if(b.offsetTop<0){
+b.remove();
+clearInterval(t);
+}
+},30);
 }
 
-document.getElementById("start").onclick=function(){
-started=true;
-this.style.display="none";
-addEnemy();
-addEnemy();
-addEnemy();
-};
+pos();
+enemy();
+enemy();
+enemy();
 </script>
+
 </body>
 </html>
