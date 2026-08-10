@@ -1,52 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Idris Gamer</title>
+
+  <title>Idris Gamer - Free Fire Sensitivity</title>
+
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: Arial, sans-serif;
       background: #0b0b12;
       color: white;
-      text-align: center;
+      min-height: 100vh;
     }
 
     header {
-      padding: 60px 20px;
-      background: linear-gradient(135deg, #16162b, #25254d);
+      text-align: center;
+      padding: 35px 15px;
+      background: linear-gradient(135deg, #17172b, #10101b);
     }
 
-    h1 {
-      font-size: 45px;
-      margin: 0;
+    header h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
     }
 
-    h2 {
-      color: #ffd000;
+    header p {
+      color: #bdbdd0;
+      font-size: 16px;
     }
 
-    .card {
-      margin: 25px auto;
-      padding: 25px;
-      max-width: 500px;
-      background: #171722;
-      border-radius: 18px;
+    .hero {
+      text-align: center;
+      padding: 35px 15px;
+    }
+
+    .hero h2 {
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #c9c9d4;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.6;
     }
 
     .button {
       display: inline-block;
+      margin-top: 22px;
       padding: 15px 25px;
-      background: #ffd000;
-      color: #111;
+      background: #ff3b30;
+      color: white;
       text-decoration: none;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+    }
+
+    .button:hover {
+      opacity: 0.85;
+    }
+
+    #sensitivity {
+      padding: 30px 15px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    #sensitivity h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+
+    .phone-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .phone-button {
+      padding: 14px 10px;
+      border: none;
       border-radius: 10px;
+      background: #20202d;
+      color: white;
+      cursor: pointer;
       font-weight: bold;
     }
 
+    .phone-button:hover {
+      background: #303044;
+    }
+
+    .settings {
+      background: #171722;
+      border-radius: 15px;
+      padding: 25px;
+      margin-top: 15px;
+    }
+
+    .settings h3 {
+      font-size: 24px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .setting-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 5px;
+      border-bottom: 1px solid #30303d;
+    }
+
+    .setting-row:last-child {
+      border-bottom: none;
+    }
+
+    .value {
+      font-weight: bold;
+    }
+
+    .weapons {
+      margin-top: 25px;
+    }
+
+    .weapons h4 {
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .weapons p {
+      padding: 8px 0;
+      color: #d1d1dc;
+    }
+
     footer {
-      padding: 30px;
-      color: #999;
+      text-align: center;
+      padding: 30px 15px;
+      color: #9999a8;
+      margin-top: 30px;
+    }
+
+    .note {
+      text-align: center;
+      color: #9999a8;
+      font-size: 13px;
+      margin-top: 20px;
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -54,38 +166,228 @@
 <body>
 
   <header>
-    <h1>IDRIS GAMER 🎮</h1>
-    <h2>FREE FIRE</h2>
-    <p>Welcome to my Free Fire gaming page!</p>
+    <h1>🎮 IDRIS GAMER</h1>
+    <p>Free Fire Sensitivity Center</p>
   </header>
 
-  <div class="card">
-    <h2>🔥 Free Sensitivity</h2>
+  <section class="hero">
+    <h2>🔥 Get Your Free Fire Sensitivity</h2>
     <p>
-      We share free sensitivity settings for different phones
-      to help players improve their gameplay and get more
-      experience with the game.
+      Choose your phone below and get recommended sensitivity
+      settings for smoother aim and headshot practice.
     </p>
 
-<a class="button" href="#sensitivity" onclick="document.getElementById('sensitivity').scrollIntoView({behavior:'smooth'}); return false;">GET SENSITIVITY</a>
-  <div id="sensitivity">
-  <h2>🎯 Tecno Pop 10C Sensitivity</h2>
-  <p>General: 190</p>
-  <p>Red Dot: 185</p>
-  <p>2× Scope: 175</p>
-  <p>4× Scope: 165</p>
-  <p>Sniper Scope: 100</p>
-  <p>Free Look: 180</p>
-  </div>
+    <a class="button" href="#sensitivity">
+      GET SENSITIVITY
+    </a>
+  </section>
 
-  <div class="card">
-    <h2>🎮 Gaming Hub</h2>
-    <p>Tips • Settings • Gameplay • Free Fire</p>
-  </div>
+  <section id="sensitivity">
+
+    <h2>🎯 Choose Your Phone</h2>
+
+    <div class="phone-grid">
+
+      <button class="phone-button" onclick="showSettings('pop10c')">
+        Tecno Pop 10C
+      </button>
+
+      <button class="phone-button" onclick="showSettings('spark')">
+        Tecno Spark
+      </button>
+
+      <button class="phone-button" onclick="showSettings('hot')">
+        Infinix Hot
+      </button>
+
+      <button class="phone-button" onclick="showSettings('note')">
+        Infinix Note
+      </button>
+
+      <button class="phone-button" onclick="showSettings('samsung')">
+        Samsung Galaxy
+      </button>
+
+      <button class="phone-button" onclick="showSettings('iphone11')">
+        iPhone 11
+      </button>
+
+      <button class="phone-button" onclick="showSettings('iphone12')">
+        iPhone 12
+      </button>
+
+      <button class="phone-button" onclick="showSettings('iphone13')">
+        iPhone 13
+      </button>
+
+    </div>
+
+    <div id="settingsBox" class="settings">
+      <h3>📱 Select a phone above</h3>
+      <p class="note">
+        Tap a phone to see its recommended Free Fire sensitivity.
+      </p>
+    </div>
+
+  </section>
 
   <footer>
-    © 2026 Idris Gamer
+    © 2026 Idris Gamer • Free Fire Sensitivity
   </footer>
+
+  <script>
+
+    const sensitivity = {
+
+      pop10c: {
+        name: "Tecno Pop 10C",
+        general: 190,
+        redDot: 185,
+        scope2x: 175,
+        scope4x: 165,
+        sniper: 100,
+        freeLook: 180
+      },
+
+      spark: {
+        name: "Tecno Spark",
+        general: 185,
+        redDot: 180,
+        scope2x: 170,
+        scope4x: 160,
+        sniper: 100,
+        freeLook: 175
+      },
+
+      hot: {
+        name: "Infinix Hot",
+        general: 190,
+        redDot: 185,
+        scope2x: 175,
+        scope4x: 165,
+        sniper: 100,
+        freeLook: 180
+      },
+
+      note: {
+        name: "Infinix Note",
+        general: 185,
+        redDot: 180,
+        scope2x: 170,
+        scope4x: 160,
+        sniper: 100,
+        freeLook: 175
+      },
+
+      samsung: {
+        name: "Samsung Galaxy",
+        general: 180,
+        redDot: 175,
+        scope2x: 165,
+        scope4x: 155,
+        sniper: 95,
+        freeLook: 170
+      },
+
+      iphone11: {
+        name: "iPhone 11",
+        general: 175,
+        redDot: 170,
+        scope2x: 160,
+        scope4x: 150,
+        sniper: 95,
+        freeLook: 165
+      },
+
+      iphone12: {
+        name: "iPhone 12",
+        general: 175,
+        redDot: 170,
+        scope2x: 160,
+        scope4x: 150,
+        sniper: 95,
+        freeLook: 165
+      },
+
+      iphone13: {
+        name: "iPhone 13",
+        general: 170,
+        redDot: 165,
+        scope2x: 155,
+        scope4x: 145,
+        sniper: 90,
+        freeLook: 160
+      }
+
+    };
+
+
+    function showSettings(phone) {
+
+      const s = sensitivity[phone];
+
+      const box = document.getElementById("settingsBox");
+
+      box.innerHTML = `
+
+        <h3>🎯 ${s.name}</h3>
+
+        <div class="setting-row">
+          <span>General</span>
+          <span class="value">${s.general}</span>
+        </div>
+
+        <div class="setting-row">
+          <span>Red Dot</span>
+          <span class="value">${s.redDot}</span>
+        </div>
+
+        <div class="setting-row">
+          <span>2× Scope</span>
+          <span class="value">${s.scope2x}</span>
+        </div>
+
+        <div class="setting-row">
+          <span>4× Scope</span>
+          <span class="value">${s.scope4x}</span>
+        </div>
+
+        <div class="setting-row">
+          <span>Sniper Scope</span>
+          <span class="value">${s.sniper}</span>
+        </div>
+
+        <div class="setting-row">
+          <span>Free Look</span>
+          <span class="value">${s.freeLook}</span>
+        </div>
+
+        <div class="weapons">
+
+          <h4>🔫 Weapon Focus</h4>
+
+          <p>🔥 MP40 — close-range headshot practice</p>
+          <p>💥 M1014 — close-range drag/headshot practice</p>
+          <p>🎯 Desert Eagle — one-tap practice</p>
+          <p>⚡ General aim — use short controlled movements</p>
+
+        </div>
+
+        <p class="note">
+          These are recommended starting settings.
+          Adjust them slightly to match your controls and play style.
+        </p>
+
+      `;
+
+      box.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    }
+
+  </script>
 
 </body>
 </html>
