@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idris Gamer - Target Challenge</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #080810;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header {
+      padding: 18px;
+      background: #151522;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+    }
+
+    #score {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    #game {
+      position: relative;
+      height: calc(100vh - 130px);
+      min-height: 400px;
+      overflow: hidden;
+      background: #10101b;
+    }
+
+    #target {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #ff3b30;
+      border: 6px solid white;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 0 20px rgba(255, 59, 48, 0.6);
+    }
+
+    #start {
+      margin-top: 25px;
+      padding: 14px 25px;
+      border: 0;
+      border-radius: 12px;
+      background: #ff3b30;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    #message {
+      padding: 20px;
+      color: #c9c9d4;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🎯 Target Challenge</h1>
+  <div id="score">Score: 0 | Time: 30</div>
+</header>
+
+<button id="start">START GAME</button>
+
+<div id="message">
+  Tap the targets as quickly as you can!
+</div>
+
+<div id="game">
+  <div id="target"></div>
+</div>
+
+<script>
+  const target = document.getElementById("target");
+  const scoreText = document.getElementById("score");
+  const startButton = document.getElementById("start");
+  const message = document.getElementById("message");
+  const game = document.getElementById("game");
+
+  let score = 0;
+  let time = 30;
+  let timer;
+  let playing = false;
+
+  function moveTarget() {
+    const maxX = game.clientWidth - target.offsetWidth;
+    const maxY = game.clientHeight - target.offsetHeight;
+
+    target.style.left = Math.random() * maxX + "px";
+    target.style.top = Math.random() * maxY + "px";
+  }
+
+  function updateScore() {
+    scoreText.textContent = `Score: ${score} | Time: ${time}`;
+  }
+
+  target.addEventListener("click", () => {
+    if (!playing) return;
+
+    score++;
+    updateScore();
+    moveTarget();
+  });
+
+  startButton.addEventListener("click", () => {
+    score = 0;
+    time = 30;
+    playing = true;
+
+    startButton.style.display = "none";
+    message.textContent = "🎯 GO! Tap the targets!";
+    target.style.display = "block";
+
+    moveTarget();
+    updateScore();
+
+    timer = setInterval(() => {
+      time--;
+      updateScore();
+
+      if (time <= 0) {
+        clearInterval(timer);
+        playing = false;
+        target.style.display = "none";
+        startButton.style.display = "inline-block";
+        startButton.textContent = "PLAY AGAIN";
+        message.textContent = `🏆 Game Over! Your score:
