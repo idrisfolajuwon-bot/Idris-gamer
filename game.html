@@ -3,92 +3,60 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Idris Gamer Battle</title>
+<title>Idris Gamer: Battle Arena</title>
 <style>
-body{margin:0;background:#111;color:white;font-family:Arial;text-align:center}
-#top{padding:12px;background:#222}
-#game{position:relative;height:70vh;background:#183018;overflow:hidden}
-#p,.e{position:absolute;width:42px;height:42px;border-radius:50%}
-#p{background:#2196f3}
-.e{background:#f44336}
-.b{position:absolute;width:8px;height:8px;background:white;border-radius:50%}
-button{padding:14px;margin:4px;border:0;border-radius:10px;font-weight:bold}
-#fire{background:#f44336;color:white}
+*{box-sizing:border-box}
+body{margin:0;background:#10131a;color:white;font-family:Arial;overflow:hidden}
+#hud{height:55px;background:#202632;display:flex;justify-content:space-around;align-items:center}
+#arena{position:relative;height:calc(100vh - 55px);background:#34452f;overflow:hidden}
+#player{position:absolute;width:46px;height:58px;background:#2678d9;border:3px solid white;border-radius:15px;left:50%;top:45%;transform:translate(-50%,-50%)}
+#player:after{content:"";position:absolute;width:12px;height:28px;background:#18202b;right:-10px;top:15px;border-radius:5px}
+#joy{position:fixed;bottom:25px;left:25px;width:120px;height:120px;border-radius:50%;background:#ffffff33;border:2px solid #ffffff77}
+#stick{position:absolute;width:52px;height:52px;border-radius:50%;background:#ffffff99;left:34px;top:34px}
+#fire{position:fixed;right:28px;bottom:40px;width:85px;height:85px;border-radius:50%;border:3px solid white;background:#d93636;color:white;font-weight:bold;font-size:16px}
 </style>
 </head>
 <body>
 
-<div id="top">❤️ <span id="hp">100</span> | 🏆 <span id="score">0</span></div>
-
-<div id="game">
-<div id="p"></div>
+<div id="hud">
+<span>❤️ 100</span>
+<span>🏆 0</span>
+<span>Idris Gamer</span>
 </div>
 
-<button onclick="move(0,-25)">▲</button><br>
-<button onclick="move(-25,0)">◀</button>
-<button onclick="move(0,25)">▼</button>
-<button onclick="move(25,0)">▶</button>
-<br>
-<button id="fire" onclick="fire()">FIRE</button>
+<div id="arena">
+<div id="player"></div>
+</div>
+
+<div id="joy"><div id="stick"></div></div>
+<button id="fire">FIRE</button>
 
 <script>
-let p=document.getElementById("p"),g=document.getElementById("game");
-let hp=100,score=0,x=150,y=150;
+const player=document.getElementById("player");
+let x=innerWidth/2;
+let y=(innerHeight-55)/2;
 
-function pos(){
-p.style.left=x+"px";
-p.style.top=y+"px";
+function move(dx,dy){
+ x+=dx;
+ y+=dy;
+ x=Math.max(25,Math.min(innerWidth-25,x));
+ y=Math.max(30,Math.min(innerHeight-80,y));
+ player.style.left=x+"px";
+ player.style.top=y+"px";
 }
 
-function move(a,b){
-x=Math.max(0,Math.min(g.clientWidth-42,x+a));
-y=Math.max(0,Math.min(g.clientHeight-42,y+b));
-pos();
-}
-
-function enemy(){
-let e=document.createElement("div");
-e.className="e";
-e.style.left=Math.random()*(g.clientWidth-42)+"px";
-e.style.top=Math.random()*(g.clientHeight-42)+"px";
-g.appendChild(e);
-}
-
-function fire(){
-let b=document.createElement("div");
-b.className="b";
-b.style.left=(x+17)+"px";
-b.style.top=(y-10)+"px";
-g.appendChild(b);
-
-let t=setInterval(()=>{
-b.style.top=(b.offsetTop-8)+"px";
-
-document.querySelectorAll(".e").forEach(e=>{
-let dx=b.offsetLeft-e.offsetLeft;
-let dy=b.offsetTop-e.offsetTop;
-
-if(Math.hypot(dx,dy)<35){
-e.remove();
-b.remove();
-score+=10;
-document.getElementById("score").textContent=score;
-clearInterval(t);
-enemy();
-}
+document.getElementById("joy").addEventListener("touchmove",e=>{
+ const t=e.touches[0];
+ const r=e.currentTarget.getBoundingClientRect();
+ const dx=t.clientX-(r.left+r.width/2);
+ const dy=t.clientY-(r.top+r.height/2);
+ move(dx*.08,dy*.08);
+ e.preventDefault();
 });
 
-if(b.offsetTop<0){
-b.remove();
-clearInterval(t);
-}
-},30);
-}
-
-pos();
-enemy();
-enemy();
-enemy();
+document.getElementById("fire").onclick=()=>{
+ alert("Fire system coming next!");
+};
 </script>
 
 </body>
