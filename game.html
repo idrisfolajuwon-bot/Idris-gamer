@@ -1,117 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Idris Gamer - Battle Arena</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Idris Gamer Battle</title>
 <style>
-* {
-  box-sizing: border-box;
-  touch-action: none;
-}
-
-body {
-  margin: 0;
-  background: #080810;
-  color: white;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
-}
-
-#hud {
-  height: 60px;
-  background: #151522;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-weight: bold;
-}
-
-#arena {
-  position: relative;
-  width: 100vw;
-  height: calc(100vh - 60px);
-  background: #171725;
-  overflow: hidden;
-}
-
-.player,
-.enemy {
-  position: absolute;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-}
-
-.player {
-  background: #35a7ff;
-  border: 4px solid white;
-}
-
-.enemy {
-  background: #ff3b30;
-  border: 4px solid #ffb3b3;
-}
-
-.bullet {
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  background: white;
-  border-radius: 50%;
-}
-
-#start {
-  position: absolute;
-  z-index: 20;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 16px 28px;
-  border: none;
-  border-radius: 12px;
-  background: #ff3b30;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-#controls {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 30;
-}
-
-.control {
-  width: 55px;
-  height: 55px;
-  margin: 3px;
-  border: none;
-  border-radius: 12px;
-  background: #333344;
-  color: white;
-  font-size: 22px;
-}
-
-#shoot {
-  position: fixed;
-  right: 25px;
-  bottom: 35px;
-  z-index: 30;
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  border: 3px solid white;
-  background: #ff3b30;
-  color: white;
-  font-weight: bold;
-}
+body{margin:0;background:#111;color:white;font-family:Arial;text-align:center}
+#game{height:100vh;position:relative;overflow:hidden;background:#182018}
+#player{position:absolute;width:45px;height:45px;background:#2196f3;border-radius:50%;left:50%;top:60%;transform:translate(-50%,-50%)}
+.enemy{position:absolute;width:40px;height:40px;background:#e53935;border-radius:50%}
+#start{margin:20px;padding:15px 25px;font-size:18px}
+.controls{position:fixed;bottom:20px;left:20px}
+button{padding:15px;margin:3px;font-size:20px}
+#fire{position:fixed;right:25px;bottom:30px;border-radius:50%;background:#e53935;color:white}
 </style>
 </head>
 
 <body>
+<button id="start">START BATTLE</button>
 
-<div id="hud">
-  <
+<div id="game">
+<div id="player"></div>
+</div>
+
+<div class="controls">
+<button onclick="move(0,-20)">▲</button><br>
+<button onclick="move(-20,0)">◀</button>
+<button onclick="move(0,20)">▼</button>
+<button onclick="move(20,0)">▶</button>
+</div>
+
+<button id="fire" onclick="shoot()">FIRE</button>
+
+<script>
+let player=document.getElementById("player");
+let game=document.getElementById("game");
+let started=false;
+let enemies=[];
+
+function move(x,y){
+if(!started)return;
+let l=player.offsetLeft+x;
+let t=player.offsetTop+y;
+l=Math.max(0,Math.min(game.clientWidth-45,l));
+t=Math.max(0,Math.min(game.clientHeight-45,t));
+player.style.left=l+"px";
+player.style.top=t+"px";
+}
+
+function addEnemy(){
+let e=document.createElement("div");
+e.className="enemy";
+e.style.left=Math.random()*(game.clientWidth-40)+"px";
+e.style.top=Math.random()*(game.clientHeight-150)+80+"px";
+game.appendChild(e);
+enemies.push(e);
+}
+
+function shoot(){
+if(!started)return;
+let p=player.getBoundingClientRect();
+
+enemies.forEach((e,i)=>{
+let r=e.getBoundingClientRect();
+let dx=p.left-r.left;
+let dy=p.top-r.top;
+let d=Math.sqrt(dx*dx+dy*dy);
+
+if(d<180){
+e.remove();
+enemies.splice(i,1);
+addEnemy();
+}
+});
+}
+
+document.getElementById("start").onclick=function(){
+started=true;
+this.style.display="none";
+addEnemy();
+addEnemy();
+addEnemy();
+};
+</script>
+</body>
+</html>
