@@ -11,7 +11,44 @@ html, body {
   font-family: Arial, sans-serif;
 }
 
+#game {/* Battle Arena graphics */
 #game {
+  background:
+    radial-gradient(circle at 20% 25%, #4d6b3d 0 4%, transparent 4.5%),
+    radial-gradient(circle at 75% 65%, #4d6b3d 0 5%, transparent 5.5%),
+    linear-gradient(135deg, #355a38, #263f2b);
+}
+
+#game::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 45px,
+      rgba(255,255,255,.025) 46px 48px
+    );
+  pointer-events: none;
+}
+
+.obstacle {
+  position: absolute;
+  border-radius: 12px;
+  background: #675544;
+  border: 3px solid #463a30;
+  box-shadow: 0 6px 10px rgba(0,0,0,.35);
+}
+
+.tree {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #245b2d;
+  border: 5px solid #163c1d;
+  box-shadow: 0 8px 12px rgba(0,0,0,.35);
+}
   position: relative;
   width: 100vw;
   height: 100vh;
