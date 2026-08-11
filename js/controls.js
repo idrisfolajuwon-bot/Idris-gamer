@@ -1,34 +1,10 @@
+
 const controls = {
   up: false,
   down: false,
   left: false,
   right: false
 };
-
-function blocked(x, y) {
-  const playerWidth = 48;
-  const playerHeight = 60;
-
-  const objects = document.querySelectorAll(".tree, .obstacle");
-
-  for (const object of objects) {
-    const ox = object.offsetLeft;
-    const oy = object.offsetTop;
-    const ow = object.offsetWidth;
-    const oh = object.offsetHeight;
-
-    if (
-      x < ox + ow &&
-      x + playerWidth > ox &&
-      y < oy + oh &&
-      y + playerHeight > oy
-    ) {
-      return true;
-    }
-  }
-
-  return false;
-}
 
 function setupControls() {
   const joystick = document.getElementById("joystick");
@@ -45,6 +21,7 @@ function setupControls() {
     active = false;
     knob.style.left = "35px";
     knob.style.top = "35px";
+
     controls.up = false;
     controls.down = false;
     controls.left = false;
@@ -80,21 +57,10 @@ function setupControls() {
   }, { passive: false });
 
   setInterval(function() {
-    let nextX = player.x;
-    let nextY = player.y;
-
-    if (controls.up) nextY -= player.speed;
-    if (controls.down) nextY += player.speed;
-    if (controls.left) nextX -= player.speed;
-    if (controls.right) nextX += player.speed;
-
-    if (!blocked(nextX, player.y)) {
-      player.x = nextX;
-    }
-
-    if (!blocked(player.x, nextY)) {
-      player.y = nextY;
-    }
+    if (controls.up) player.y -= player.speed;
+    if (controls.down) player.y += player.speed;
+    if (controls.left) player.x -= player.speed;
+    if (controls.right) player.x += player.speed;
 
     updatePlayer();
   }, 16);
