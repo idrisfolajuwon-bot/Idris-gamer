@@ -6,18 +6,22 @@ const controls = {
 };
 
 function blocked(x, y) {
-  const playerSize = 24;
+  const playerWidth = 48;
+  const playerHeight = 60;
 
   const objects = document.querySelectorAll(".tree, .obstacle");
 
   for (const object of objects) {
-    const r = object.getBoundingClientRect();
+    const ox = object.offsetLeft;
+    const oy = object.offsetTop;
+    const ow = object.offsetWidth;
+    const oh = object.offsetHeight;
 
     if (
-      x + playerSize > r.left &&
-      x - playerSize < r.right &&
-      y + playerSize > r.top &&
-      y - playerSize < r.bottom
+      x < ox + ow &&
+      x + playerWidth > ox &&
+      y < oy + oh &&
+      y + playerHeight > oy
     ) {
       return true;
     }
@@ -35,14 +39,16 @@ function setupControls() {
   joystick.addEventListener("touchstart", function(e) {
     active = true;
     e.preventDefault();
-  }, {passive:false});
+  }, { passive: false });
 
-  joystick.addEventListener("touchend", function(e) {
+  joystick.addEventListener("touchend", function() {
     active = false;
     knob.style.left = "35px";
     knob.style.top = "35px";
-    controls.up = controls.down =
-    controls.left = controls.right = false;
+    controls.up = false;
+    controls.down = false;
+    controls.left = false;
+    controls.right = false;
   });
 
   joystick.addEventListener("touchmove", function(e) {
@@ -71,25 +77,25 @@ function setupControls() {
     controls.down = dy > 8;
 
     e.preventDefault();
-  }, {passive:false});
+  }, { passive: false });
 
   setInterval(function() {
-    let nx = player.x;
-    let ny = player.y;
+    let nextX = player.x;
+    let nextY = player.y;
 
-    if (controls.up) ny -= player.speed;
-    if (controls.down) ny += player.speed;
-    if (controls.left) nx -= player.speed;
-    if (controls.right) nx += player.speed;
+    if (controls.up) nextY -= player.speed;
+    if (controls.down) nextY += player.speed;
+    if (controls.left) nextX -= player.speed;
+    if (controls.right) nextX += player.speed;
 
-    if (!blocked(nx, player.y)) {
-      player.x = nx;
+    if (!blocked(nextX, player.y)) {
+      player.x = nextX;
     }
 
-    if (!blocked(player.x, ny)) {
-      player.y = ny;
+    if (!blocked(player.x, nextY)) {
+      player.y = nextY;
     }
 
     updatePlayer();
   }, 16);
-      }
+}
