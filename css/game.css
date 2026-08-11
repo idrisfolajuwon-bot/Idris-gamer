@@ -60,7 +60,7 @@ html, body {
   background-size: 60px 60px;
 }
 
-#player {
+#player {z-index: 6;
   position: absolute;
   left: 50%;
   top: 50%;
