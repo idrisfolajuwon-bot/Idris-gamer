@@ -114,3 +114,14 @@ html, body {
   left: 7px;
   border-radius: 5px;
 }
+.tree {
+  z-index: 3;
+}
+
+.obstacle {
+  z-index: 4;
+}
+
+#player {
+  z-index: 10;
+}
