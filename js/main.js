@@ -24,23 +24,31 @@ fireButton.addEventListener("click", function() {
   bullet.style.top = player.y + 20 + "px";
 
   game.appendChild(bullet);
-const enemyElements = document.querySelectorAll(".enemy");
 
-enemyElements.forEach(function(enemy) {
-  const enemyBox = enemy.getBoundingClientRect();
-  const bulletBox = bullet.getBoundingClientRect();
+  const bulletMove = setInterval(function() {
+    bullet.style.top = (bullet.offsetTop - 10) + "px";
 
-  if (
-    bulletBox.left < enemyBox.right &&
-    bulletBox.right > enemyBox.left &&
-    bulletBox.top < enemyBox.bottom &&
-    bulletBox.bottom > enemyBox.top
-  ) {
-    enemy.remove();
-    bullet.remove();
-  }
-});
-  setTimeout(function() {
-    bullet.remove();
-  }, 500);
+    const enemies = document.querySelectorAll(".enemy");
+
+    enemies.forEach(function(enemy) {
+      const bulletBox = bullet.getBoundingClientRect();
+      const enemyBox = enemy.getBoundingClientRect();
+
+      if (
+        bulletBox.left < enemyBox.right &&
+        bulletBox.right > enemyBox.left &&
+        bulletBox.top < enemyBox.bottom &&
+        bulletBox.bottom > enemyBox.top
+      ) {
+        enemy.remove();
+        bullet.remove();
+        clearInterval(bulletMove);
+      }
+    });
+
+    if (bullet.offsetTop < 0) {
+      bullet.remove();
+      clearInterval(bulletMove);
+    }
+  }, 30);
 });
