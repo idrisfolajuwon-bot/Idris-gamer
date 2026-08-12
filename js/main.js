@@ -24,7 +24,22 @@ fireButton.addEventListener("click", function() {
   bullet.style.top = player.y + 20 + "px";
 
   game.appendChild(bullet);
+const enemyElements = document.querySelectorAll(".enemy");
 
+enemyElements.forEach(function(enemy) {
+  const enemyBox = enemy.getBoundingClientRect();
+  const bulletBox = bullet.getBoundingClientRect();
+
+  if (
+    bulletBox.left < enemyBox.right &&
+    bulletBox.right > enemyBox.left &&
+    bulletBox.top < enemyBox.bottom &&
+    bulletBox.bottom > enemyBox.top
+  ) {
+    enemy.remove();
+    bullet.remove();
+  }
+});
   setTimeout(function() {
     bullet.remove();
   }, 500);
