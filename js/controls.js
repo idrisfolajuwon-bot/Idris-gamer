@@ -1,5 +1,4 @@
-
-const controls = {
+window.controls = {
   up: false,
   down: false,
   left: false,
