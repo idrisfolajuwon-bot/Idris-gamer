@@ -14,3 +14,18 @@ function startGame() {
 }
 
 startGame();
+const fireButton = document.getElementById("fire-button");
+
+fireButton.addEventListener("click", function() {
+  const bullet = document.createElement("div");
+
+  bullet.className = "bullet";
+  bullet.style.left = player.x + 20 + "px";
+  bullet.style.top = player.y + 20 + "px";
+
+  game.appendChild(bullet);
+
+  setTimeout(function() {
+    bullet.remove();
+  }, 500);
+});
