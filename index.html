@@ -6,277 +6,351 @@
 <title>Idris Market</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f5f5;
+  color:#222
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  color: #222;
+header{
+  background:#087f5b;
+  color:white;
+  padding:18px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap
 }
 
-header {
-  background: #087f5b;
-  color: white;
-  padding: 18px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.logo{
+  font-size:22px;
+  font-weight:bold
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: bold;
+.header-buttons{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap
 }
 
-button {
-  border: none;
-  cursor: pointer;
+button{
+  border:0;
+  cursor:pointer
 }
 
-.sell {
-  background: white;
-  color: #087f5b;
-  padding: 10px 15px;
-  border-radius: 7px;
-  font-weight: bold;
+.account-btn{
+  background:white;
+  color:#087f5b;
+  padding:10px 14px;
+  border-radius:7px;
+  font-weight:bold
 }
 
-.hero {
-  background: #087f5b;
-  color: white;
-  text-align: center;
-  padding: 35px 15px;
+.logout-btn{
+  background:#222;
+  color:white;
+  padding:10px 14px;
+  border-radius:7px;
+  display:none
 }
 
-.hero h1 {
-  margin: 0 0 10px;
-  font-size: 32px;
+.sell{
+  background:#fff;
+  color:#087f5b;
+  padding:10px 14px;
+  border-radius:7px;
+  font-weight:bold
 }
 
-.search {
-  max-width: 600px;
-  margin: 25px auto 0;
-  display: flex;
+.hero{
+  background:#087f5b;
+  color:white;
+  text-align:center;
+  padding:35px 15px
 }
 
-.search input {
-  flex: 1;
-  padding: 14px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  border-radius: 7px 0 0 7px;
+.hero h1{
+  margin:0 0 10px;
+  font-size:32px
 }
 
-.search button {
-  padding: 0 18px;
-  background: #222;
-  color: white;
-  border-radius: 0 7px 7px 0;
+.search{
+  max-width:600px;
+  margin:25px auto 0;
+  display:flex
 }
 
-.section {
-  padding: 25px 5%;
+.search input{
+  flex:1;
+  padding:14px;
+  border:0;
+  outline:0;
+  font-size:16px;
+  border-radius:7px 0 0 7px
 }
 
-.categories {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
+.search button{
+  padding:0 18px;
+  background:#222;
+  color:white;
+  border-radius:0 7px 7px 0
 }
 
-.category {
-  background: white;
-  min-width: 100px;
-  padding: 15px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 2px 5px #ddd;
-  cursor: pointer;
+.section{
+  padding:25px 5%
 }
 
-.category-icon {
-  display: block;
-  font-size: 25px;
-  margin-bottom: 5px;
+.categories{
+  display:flex;
+  gap:10px;
+  overflow-x:auto
 }
 
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
+.category{
+  background:white;
+  min-width:100px;
+  padding:15px;
+  border-radius:8px;
+  text-align:center;
+  box-shadow:0 2px 5px #ddd;
+  cursor:pointer
 }
 
-.product {
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 7px #ddd;
-  cursor: pointer;
+.category-icon{
+  display:block;
+  font-size:25px;
+  margin-bottom:5px
 }
 
-.product img {
-  width: 100%;
-  height: 170px;
-  object-fit: cover;
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px
 }
 
-.product-info {
-  padding: 14px;
+.product{
+  background:white;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 2px 7px #ddd;
+  cursor:pointer
 }
 
-.product-name {
-  font-weight: bold;
-  margin-bottom: 8px;
+.product img{
+  width:100%;
+  height:170px;
+  object-fit:cover
 }
 
-.price {
-  color: #087f5b;
-  font-size: 19px;
-  font-weight: bold;
+.product-info{
+  padding:14px
 }
 
-.location {
-  color: #777;
-  font-size: 14px;
-  margin-top: 7px;
+.product-name{
+  font-weight:bold;
+  margin-bottom:8px
 }
 
-/* PRODUCT DETAILS */
-
-.details {
-  display: none;
-  padding: 25px 5%;
+.price{
+  color:#087f5b;
+  font-size:19px;
+  font-weight:bold
 }
 
-.back {
-  background: #222;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 7px;
-  margin-bottom: 20px;
+.location{
+  color:#777;
+  font-size:14px;
+  margin-top:7px
 }
 
-.details-card {
-  background: white;
-  max-width: 850px;
-  margin: auto;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px #ddd;
+/* ACCOUNT */
+
+.account-background{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+  z-index:50
 }
 
-.details-card img {
-  width: 100%;
-  max-height: 450px;
-  object-fit: cover;
+.account-box{
+  background:white;
+  width:100%;
+  max-width:420px;
+  padding:25px;
+  border-radius:12px
 }
 
-.details-info {
-  padding: 25px;
+.account-box h2{
+  margin-top:0
 }
 
-.details-info h1 {
-  margin-top: 0;
+.account-box input{
+  width:100%;
+  padding:13px;
+  margin:7px 0;
+  border:1px solid #ccc;
+  border-radius:7px
 }
 
-.big-price {
-  color: #087f5b;
-  font-size: 28px;
-  font-weight: bold;
-  margin: 15px 0;
+.account-submit{
+  width:100%;
+  padding:13px;
+  margin-top:8px;
+  background:#087f5b;
+  color:white;
+  border-radius:7px;
+  font-weight:bold
 }
 
-.description {
-  line-height: 1.6;
-  margin: 20px 0;
+.switch{
+  margin-top:15px;
+  text-align:center;
+  color:#087f5b;
+  cursor:pointer
 }
 
-.contact {
-  width: 100%;
-  padding: 14px;
-  background: #087f5b;
-  color: white;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: bold;
+.close{
+  float:right;
+  background:none;
+  font-size:25px
+}
+
+.account-message{
+  margin-top:12px;
+  text-align:center;
+  font-size:14px
+}
+
+/* DETAILS */
+
+.details{
+  display:none;
+  padding:25px 5%
+}
+
+.back{
+  background:#222;
+  color:white;
+  padding:10px 15px;
+  border-radius:7px;
+  margin-bottom:20px
+}
+
+.details-card{
+  background:white;
+  max-width:850px;
+  margin:auto;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 2px 10px #ddd
+}
+
+.details-card img{
+  width:100%;
+  max-height:450px;
+  object-fit:cover
+}
+
+.details-info{
+  padding:25px
+}
+
+.big-price{
+  color:#087f5b;
+  font-size:28px;
+  font-weight:bold;
+  margin:15px 0
+}
+
+.description{
+  line-height:1.6;
+  margin:20px 0
+}
+
+.contact{
+  width:100%;
+  padding:14px;
+  background:#087f5b;
+  color:white;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:bold
 }
 
 /* SELL FORM */
 
-.form-background {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.6);
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-  z-index: 20;
+.form-background{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+  z-index:20
 }
 
-.form {
-  background: white;
-  width: 100%;
-  max-width: 450px;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 25px;
-  border-radius: 10px;
-}
-
-.close {
-  float: right;
-  background: none;
-  font-size: 25px;
+.form{
+  background:white;
+  width:100%;
+  max-width:450px;
+  max-height:90vh;
+  overflow-y:auto;
+  padding:25px;
+  border-radius:10px
 }
 
 .form input,
 .form select,
-.form textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 7px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.form textarea{
+  width:100%;
+  padding:12px;
+  margin:7px 0;
+  border:1px solid #ccc;
+  border-radius:6px
 }
 
-.form textarea {
-  height: 90px;
+.form textarea{
+  height:90px
 }
 
-.publish {
-  width: 100%;
-  padding: 13px;
-  margin-top: 8px;
-  background: #087f5b;
-  color: white;
-  border-radius: 6px;
-  font-weight: bold;
+.publish{
+  width:100%;
+  padding:13px;
+  margin-top:8px;
+  background:#087f5b;
+  color:white;
+  border-radius:6px;
+  font-weight:bold
 }
 
-footer {
-  background: #222;
-  color: white;
-  text-align: center;
-  padding: 25px;
-  margin-top: 30px;
+footer{
+  background:#222;
+  color:white;
+  text-align:center;
+  padding:25px;
+  margin-top:30px
 }
 
-@media (max-width: 600px) {
-  .products {
-    grid-template-columns: repeat(2, 1fr);
+@media(max-width:600px){
+  .products{
+    grid-template-columns:repeat(2,1fr)
   }
 
-  .product img {
-    height: 130px;
+  .product img{
+    height:130px
   }
 
-  .hero h1 {
-    font-size: 27px;
+  .hero h1{
+    font-size:27px
   }
 }
 </style>
@@ -285,450 +359,805 @@ footer {
 <body>
 
 <header>
-  <div class="logo">🛒 Idris Market</div>
 
-  <button class="sell" onclick="openForm()">
-    + Sell Item
-  </button>
+<div class="logo">🛒 Idris Market</div>
+
+<div class="header-buttons">
+
+<button class="account-btn" id="accountButton">
+👤 Sign Up / Login
+</button>
+
+<button class="logout-btn" id="logoutButton">
+Logout
+</button>
+
+<button class="sell" onclick="openForm()">
++ Sell Item
+</button>
+
+</div>
+
 </header>
+
 
 <section class="hero" id="home">
 
-  <h1>Buy & Sell Anything</h1>
+<h1>Buy & Sell Anything</h1>
 
-  <p>Find great deals around you.</p>
+<p>Find great deals around you.</p>
 
-  <div class="search">
-    <input
-      id="searchInput"
-      type="text"
-      placeholder="Search phones, cars, shoes..."
-      oninput="searchProducts()"
-    >
+<div class="search">
 
-    <button onclick="searchProducts()">🔎</button>
-  </div>
+<input
+id="searchInput"
+type="text"
+placeholder="Search phones, cars, shoes..."
+>
+
+<button id="searchButton">🔎</button>
+
+</div>
 
 </section>
+
 
 <section class="section" id="homeContent">
 
-  <h2>Categories</h2>
+<h2>Categories</h2>
 
-  <div class="categories">
+<div class="categories">
 
-    <div class="category" onclick="filterCategory('Phones')">
-      <span class="category-icon">📱</span>
-      Phones
-    </div>
+<div class="category" data-category="Phones">
+<span class="category-icon">📱</span>
+Phones
+</div>
 
-    <div class="category" onclick="filterCategory('Cars')">
-      <span class="category-icon">🚗</span>
-      Cars
-    </div>
+<div class="category" data-category="Cars">
+<span class="category-icon">🚗</span>
+Cars
+</div>
 
-    <div class="category" onclick="filterCategory('Electronics')">
-      <span class="category-icon">💻</span>
-      Electronics
-    </div>
+<div class="category" data-category="Electronics">
+<span class="category-icon">💻</span>
+Electronics
+</div>
 
-    <div class="category" onclick="filterCategory('Fashion')">
-      <span class="category-icon">👕</span>
-      Fashion
-    </div>
+<div class="category" data-category="Fashion">
+<span class="category-icon">👕</span>
+Fashion
+</div>
 
-    <div class="category" onclick="filterCategory('Furniture')">
-      <span class="category-icon">🛋️</span>
-      Furniture
-    </div>
+<div class="category" data-category="Furniture">
+<span class="category-icon">🛋️</span>
+Furniture
+</div>
 
-  </div>
+</div>
 
 </section>
+
 
 <section class="section" id="productsSection">
 
-  <h2>Latest Items</h2>
+<h2>Latest Items</h2>
 
-  <div id="products" class="products"></div>
+<div id="products" class="products"></div>
 
 </section>
+
 
 <!-- PRODUCT DETAILS -->
 
 <section class="details" id="details">
 
-  <button class="back" onclick="showHome()">
-    ← Back
-  </button>
+<button class="back" id="backButton">
+← Back
+</button>
 
-  <div class="details-card">
+<div class="details-card">
 
-    <img id="detailImage" src="">
+<img id="detailImage" src="">
 
-    <div class="details-info">
+<div class="details-info">
 
-      <h1 id="detailName"></h1>
+<h1 id="detailName"></h1>
 
-      <div class="big-price" id="detailPrice"></div>
+<div class="big-price" id="detailPrice"></div>
 
-      <p id="detailLocation"></p>
+<p id="detailLocation"></p>
 
-      <p class="description" id="detailDescription"></p>
+<p class="description" id="detailDescription"></p>
 
-      <button class="contact" id="contactButton">
-        📞 Contact Seller
-      </button>
+<button class="contact" id="contactButton">
+📞 Contact Seller
+</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
+
+
+<!-- ACCOUNT -->
+
+<div class="account-background" id="accountBackground">
+
+<div class="account-box">
+
+<button class="close" id="closeAccount">×</button>
+
+<h2 id="accountTitle">Create Account</h2>
+
+<p id="accountSubtitle">
+Create an account to use Idris Market.
+</p>
+
+<input
+id="email"
+type="email"
+placeholder="Email address"
+>
+
+<input
+id="password"
+type="password"
+placeholder="Password"
+>
+
+<button class="account-submit" id="accountSubmit">
+Create Account
+</button>
+
+<div class="switch" id="switchMode">
+Already have an account? Login
+</div>
+
+<div class="account-message" id="accountMessage"></div>
+
+</div>
+
+</div>
+
 
 <!-- SELL FORM -->
 
 <div class="form-background" id="formBackground">
 
-  <div class="form">
+<div class="form">
 
-    <button class="close" onclick="closeForm()">×</button>
+<button class="close" onclick="closeForm()">×</button>
 
-    <h2>Post an Item</h2>
+<h2>Post an Item</h2>
 
-    <form id="itemForm">
+<form id="itemForm">
 
-      <input
-        id="itemName"
-        type="text"
-        placeholder="Item name"
-        required
-      >
+<input
+id="itemName"
+type="text"
+placeholder="Item name"
+required
+>
 
-      <input
-        id="itemPrice"
-        type="number"
-        placeholder="Price in ₦"
-        required
-      >
+<input
+id="itemPrice"
+type="number"
+placeholder="Price in ₦"
+required
+>
 
-      <select id="itemCategory" required>
+<select id="itemCategory" required>
 
-        <option value="">Choose category</option>
+<option value="">Choose category</option>
+<option value="Phones">Phones</option>
+<option value="Cars">Cars</option>
+<option value="Electronics">Electronics</option>
+<option value="Fashion">Fashion</option>
+<option value="Furniture">Furniture</option>
 
-        <option value="Phones">Phones</option>
-        <option value="Cars">Cars</option>
-        <option value="Electronics">Electronics</option>
-        <option value="Fashion">Fashion</option>
-        <option value="Furniture">Furniture</option>
+</select>
 
-      </select>
+<input
+id="itemLocation"
+type="text"
+placeholder="Location"
+required
+>
 
-      <input
-        id="itemLocation"
-        type="text"
-        placeholder="Location"
-        required
-      >
+<input
+id="itemPhone"
+type="tel"
+placeholder="Seller phone number"
+required
+>
 
-      <input
-        id="itemPhone"
-        type="tel"
-        placeholder="Seller phone number"
-        required
-      >
+<input
+id="itemImage"
+type="url"
+placeholder="Image URL (optional)"
+>
 
-      <input
-        id="itemImage"
-        type="url"
-        placeholder="Image URL (optional)"
-      >
+<textarea
+id="itemDescription"
+placeholder="Describe your item"
+required
+></textarea>
 
-      <textarea
-        id="itemDescription"
-        placeholder="Describe your item"
-        required
-      ></textarea>
+<button class="publish" type="submit">
+Publish Item
+</button>
 
-      <button class="publish" type="submit">
-        Publish Item
-      </button>
-
-    </form>
-
-  </div>
+</form>
 
 </div>
 
+</div>
+
+
 <footer>
 
-  <h3>🛒 Idris Market</h3>
+<h3>🛒 Idris Market</h3>
 
-  <p>Buy and sell with ease.</p>
+<p>Buy and sell with ease.</p>
 
-  <p>© 2026 Idris Market</p>
+<p>© 2026 Idris Market</p>
 
 </footer>
 
-<script>
+
+<script type="module">
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+const firebaseConfig = {
+
+  apiKey:"AIzaSyAi-KrdaIz2MYy6lfgKqyqfkaejrbhmXQE",
+
+  authDomain:"idris-market-2026.firebaseapp.com",
+
+  projectId:"idris-market-2026",
+
+  storageBucket:"idris-market-2026.firebasestorage.app",
+
+  messagingSenderId:"132967044976",
+
+  appId:"1:132967044976:web:6620888d027f58e96be1b5",
+
+  measurementId:"G-DXDLJLH747"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+
+/* SAMPLE PRODUCTS */
 
 const sampleProducts = [
 
-  {
-    id: 1,
-    name: "iPhone 12",
-    price: 450000,
-    category: "Phones",
-    location: "Lagos",
-    phone: "08000000000",
-    image: "https://images.unsplash.com/photo-1592286927505-2fd8d8f8a6e1?auto=format&fit=crop&w=800&q=80",
-    description: "Clean iPhone 12 in good condition."
-  },
+{
+id:1,
+name:"iPhone 12",
+price:450000,
+category:"Phones",
+location:"Lagos",
+phone:"08000000000",
+image:"https://images.unsplash.com/photo-1592286927505-2fd8d8f8a6e1?auto=format&fit=crop&w=800&q=80",
+description:"Clean iPhone 12 in good condition."
+},
 
-  {
-    id: 2,
-    name: "Toyota Camry",
-    price: 8500000,
-    category: "Cars",
-    location: "Lagos",
-    phone: "08000000000",
-    image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=800&q=80",
-    description: "Clean Toyota Camry available for sale."
-  },
+{
+id:2,
+name:"Toyota Camry",
+price:8500000,
+category:"Cars",
+location:"Lagos",
+phone:"08000000000",
+image:"https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=800&q=80",
+description:"Clean Toyota Camry available for sale."
+},
 
-  {
-    id: 3,
-    name: "Gaming Laptop",
-    price: 650000,
-    category: "Electronics",
-    location: "Ikeja",
-    phone: "08000000000",
-    image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80",
-    description: "Powerful gaming laptop."
-  },
+{
+id:3,
+name:"Gaming Laptop",
+price:650000,
+category:"Electronics",
+location:"Ikeja",
+phone:"08000000000",
+image:"https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80",
+description:"Powerful gaming laptop."
+},
 
-  {
-    id: 4,
-    name: "Sneakers",
-    price: 45000,
-    category: "Fashion",
-    location: "Ikorodu",
-    phone: "08000000000",
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
-    description: "Brand new sneakers."
-  }
+{
+id:4,
+name:"Sneakers",
+price:45000,
+category:"Fashion",
+location:"Ikorodu",
+phone:"08000000000",
+image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
+description:"Brand new sneakers."
+}
 
 ];
 
-let savedProducts = JSON.parse(
-  localStorage.getItem("idrisMarketProducts")
+
+let products = JSON.parse(
+localStorage.getItem("idrisMarketProducts")
+) || sampleProducts;
+
+
+/* DISPLAY PRODUCTS */
+
+function displayProducts(list){
+
+const container=document.getElementById("products");
+
+container.innerHTML="";
+
+list.forEach(function(product){
+
+const card=document.createElement("div");
+
+card.className="product";
+
+card.innerHTML=`
+
+<img
+src="${product.image || 'https://via.placeholder.com/500x400?text=No+Image'}"
+alt="${product.name}"
+>
+
+<div class="product-info">
+
+<div class="product-name">
+${product.name}
+</div>
+
+<div class="price">
+₦${Number(product.price).toLocaleString()}
+</div>
+
+<div class="location">
+📍 ${product.location}
+</div>
+
+</div>
+`;
+
+card.onclick=function(){
+openProduct(product);
+};
+
+container.appendChild(card);
+
+});
+
+}
+
+
+/* PRODUCT DETAILS */
+
+function openProduct(product){
+
+document.getElementById("home").style.display="none";
+
+document.getElementById("homeContent").style.display="none";
+
+document.getElementById("productsSection").style.display="none";
+
+document.getElementById("details").style.display="block";
+
+document.getElementById("detailImage").src=
+product.image ||
+"https://via.placeholder.com/700x500?text=No+Image";
+
+document.getElementById("detailName").textContent=
+product.name;
+
+document.getElementById("detailPrice").textContent=
+"₦"+Number(product.price).toLocaleString();
+
+document.getElementById("detailLocation").textContent=
+"📍 "+product.location;
+
+document.getElementById("detailDescription").textContent=
+product.description || "No description available.";
+
+document.getElementById("contactButton").onclick=function(){
+
+if(product.phone){
+
+window.location.href="tel:"+product.phone;
+
+}else{
+
+alert("Seller phone number is not available.");
+
+}
+
+};
+
+window.scrollTo(0,0);
+
+}
+
+
+/* BACK */
+
+document.getElementById("backButton").onclick=function(){
+
+document.getElementById("details").style.display="none";
+
+document.getElementById("home").style.display="block";
+
+document.getElementById("homeContent").style.display="block";
+
+document.getElementById("productsSection").style.display="block";
+
+};
+
+
+/* SEARCH */
+
+function searchProducts(){
+
+const text=document
+.getElementById("searchInput")
+.value
+.toLowerCase();
+
+const results=products.filter(function(product){
+
+return(
+product.name.toLowerCase().includes(text) ||
+product.category.toLowerCase().includes(text) ||
+product.location.toLowerCase().includes(text)
 );
 
-let products = savedProducts || sampleProducts;
+});
+
+displayProducts(results);
+
+}
+
+document.getElementById("searchButton")
+.addEventListener("click",searchProducts);
+
+document.getElementById("searchInput")
+.addEventListener("input",searchProducts);
 
 
-function displayProducts(list) {
+/* CATEGORY */
 
-  const container = document.getElementById("products");
+document.querySelectorAll(".category")
+.forEach(function(category){
 
-  container.innerHTML = "";
+category.addEventListener("click",function(){
 
-  list.forEach(function(product) {
+const chosen=this.dataset.category;
 
-    const card = document.createElement("div");
+displayProducts(
+products.filter(function(product){
+return product.category===chosen;
+})
+);
 
-    card.className = "product";
+});
 
-    card.innerHTML = `
+});
 
-      <img
-        src="${product.image || 'https://via.placeholder.com/500x400?text=No+Image'}"
-        alt="${product.name}"
-      >
 
-      <div class="product-info">
+/* ACCOUNT WINDOW */
 
-        <div class="product-name">
-          ${product.name}
-        </div>
+let loginMode=false;
 
-        <div class="price">
-          ₦${Number(product.price).toLocaleString()}
-        </div>
+const accountBackground=
+document.getElementById("accountBackground");
 
-        <div class="location">
-          📍 ${product.location}
-        </div>
+document.getElementById("accountButton")
+.onclick=function(){
 
-      </div>
+accountBackground.style.display="flex";
 
-    `;
+};
 
-    card.onclick = function() {
-      openProduct(product);
-    };
 
-    container.appendChild(card);
+document.getElementById("closeAccount")
+.onclick=function(){
 
-  });
+accountBackground.style.display="none";
+
+document.getElementById("accountMessage").textContent="";
+
+};
+
+
+/* SWITCH LOGIN/SIGNUP */
+
+document.getElementById("switchMode")
+.onclick=function(){
+
+loginMode=!loginMode;
+
+if(loginMode){
+
+document.getElementById("accountTitle").textContent=
+"Login";
+
+document.getElementById("accountSubtitle").textContent=
+"Login to your Idris Market account.";
+
+document.getElementById("accountSubmit").textContent=
+"Login";
+
+document.getElementById("switchMode").textContent=
+"Don't have an account? Sign Up";
+
+}else{
+
+document.getElementById("accountTitle").textContent=
+"Create Account";
+
+document.getElementById("accountSubtitle").textContent=
+"Create an account to use Idris Market.";
+
+document.getElementById("accountSubmit").textContent=
+"Create Account";
+
+document.getElementById("switchMode").textContent=
+"Already have an account? Login";
+
+}
+
+};
+
+
+/* SIGNUP / LOGIN */
+
+document.getElementById("accountSubmit")
+.onclick=async function(){
+
+const email=
+document.getElementById("email").value.trim();
+
+const password=
+document.getElementById("password").value;
+
+const message=
+document.getElementById("accountMessage");
+
+message.textContent="";
+
+if(!email || !password){
+
+message.textContent=
+"Please enter your email and password.";
+
+return;
+
+}
+
+try{
+
+if(loginMode){
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+message.textContent=
+"✅ Login successful!";
+
+}else{
+
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+message.textContent=
+"✅ Account created successfully!";
+
+}
+
+setTimeout(function(){
+
+accountBackground.style.display="none";
+
+},1000);
+
+}catch(error){
+
+console.log(error);
+
+message.textContent=
+"❌ "+friendlyError(error.code);
+
+}
+
+};
+
+
+/* FIREBASE LOGIN STATUS */
+
+onAuthStateChanged(auth,function(user){
+
+const accountButton=
+document.getElementById("accountButton");
+
+const logoutButton=
+document.getElementById("logoutButton");
+
+if(user){
+
+accountButton.textContent=
+"👤 "+user.email;
+
+logoutButton.style.display="block";
+
+}else{
+
+accountButton.textContent=
+"👤 Sign Up / Login";
+
+logoutButton.style.display="none";
+
+}
+
+});
+
+
+/* LOGOUT */
+
+document.getElementById("logoutButton")
+.onclick=async function(){
+
+try{
+
+await signOut(auth);
+
+alert("You have logged out.");
+
+}catch(error){
+
+alert("Could not log out.");
+
+}
+
+};
+
+
+/* FRIENDLY FIREBASE ERRORS */
+
+function friendlyError(code){
+
+if(code==="auth/email-already-in-use"){
+return "That email already has an account.";
+}
+
+if(code==="auth/invalid-email"){
+return "Please enter a valid email.";
+}
+
+if(code==="auth/weak-password"){
+return "Password is too weak.";
+}
+
+if(
+code==="auth/invalid-credential" ||
+code==="auth/wrong-password" ||
+code==="auth/user-not-found"
+){
+
+return "Email or password is incorrect.";
+
+}
+
+return "Something went wrong. Please try again.";
 
 }
 
 
-function openProduct(product) {
+/* SELL FORM */
 
-  document.getElementById("home").style.display = "none";
+window.openForm=function(){
 
-  document.getElementById("homeContent").style.display = "none";
+if(!auth.currentUser){
 
-  document.getElementById("productsSection").style.display = "none";
+alert("Please create an account or login before posting an item.");
 
-  document.getElementById("details").style.display = "block";
+accountBackground.style.display="flex";
 
-  document.getElementById("detailImage").src =
-    product.image ||
-    "https://via.placeholder.com/700x500?text=No+Image";
-
-  document.getElementById("detailName").textContent =
-    product.name;
-
-  document.getElementById("detailPrice").textContent =
-    "₦" + Number(product.price).toLocaleString();
-
-  document.getElementById("detailLocation").textContent =
-    "📍 " + product.location;
-
-  document.getElementById("detailDescription").textContent =
-    product.description || "No description available.";
-
-  document.getElementById("contactButton").onclick =
-    function() {
-
-      if (product.phone) {
-
-        window.location.href =
-          "tel:" + product.phone;
-
-      } else {
-
-        alert("Seller phone number is not available.");
-
-      }
-
-    };
-
-  window.scrollTo(0, 0);
+return;
 
 }
 
+document.getElementById("formBackground")
+.style.display="flex";
 
-function showHome() {
-
-  document.getElementById("details").style.display = "none";
-
-  document.getElementById("home").style.display = "block";
-
-  document.getElementById("homeContent").style.display = "block";
-
-  document.getElementById("productsSection").style.display = "block";
-
-}
+};
 
 
-function searchProducts() {
+window.closeForm=function(){
 
-  const text =
-    document.getElementById("searchInput").value.toLowerCase();
+document.getElementById("formBackground")
+.style.display="none";
 
-  const results = products.filter(function(product) {
+};
 
-    return (
-      product.name.toLowerCase().includes(text) ||
-      product.category.toLowerCase().includes(text) ||
-      product.location.toLowerCase().includes(text)
-    );
 
-  });
+document.getElementById("itemForm")
+.addEventListener("submit",function(event){
 
-  displayProducts(results);
+event.preventDefault();
+
+if(!auth.currentUser){
+
+alert("Please login first.");
+
+return;
 
 }
 
+const newProduct={
 
-function filterCategory(category) {
+id:Date.now(),
 
-  const results = products.filter(function(product) {
+name:
+document.getElementById("itemName").value,
 
-    return product.category === category;
+price:
+document.getElementById("itemPrice").value,
 
-  });
+category:
+document.getElementById("itemCategory").value,
 
-  displayProducts(results);
+location:
+document.getElementById("itemLocation").value,
 
-}
+phone:
+document.getElementById("itemPhone").value,
 
+image:
+document.getElementById("itemImage").value,
 
-function openForm() {
+description:
+document.getElementById("itemDescription").value
 
-  document.getElementById("formBackground").style.display = "flex";
+};
 
-}
+products.unshift(newProduct);
 
+localStorage.setItem(
+"idrisMarketProducts",
+JSON.stringify(products)
+);
 
-function closeForm() {
+displayProducts(products);
 
-  document.getElementById("formBackground").style.display = "none";
+document.getElementById("itemForm").reset();
 
-}
+closeForm();
 
-
-document
-.getElementById("itemForm")
-.addEventListener("submit", function(event) {
-
-  event.preventDefault();
-
-  const newProduct = {
-
-    id: Date.now(),
-
-    name:
-      document.getElementById("itemName").value,
-
-    price:
-      document.getElementById("itemPrice").value,
-
-    category:
-      document.getElementById("itemCategory").value,
-
-    location:
-      document.getElementById("itemLocation").value,
-
-    phone:
-      document.getElementById("itemPhone").value,
-
-    image:
-      document.getElementById("itemImage").value,
-
-    description:
-      document.getElementById("itemDescription").value
-
-  };
-
-  products.unshift(newProduct);
-
-  localStorage.setItem(
-    "idrisMarketProducts",
-    JSON.stringify(products)
-  );
-
-  displayProducts(products);
-
-  document.getElementById("itemForm").reset();
-
-  closeForm();
-
-  alert("✅ Item posted successfully!");
+alert("✅ Item posted successfully!");
 
 });
 
