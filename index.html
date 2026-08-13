@@ -1,267 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idris Market</title>
 
-<title>Idris Market</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
 
-body{
-  background:#f4f5f7;
-  color:#222;
-}
+    header {
+      background: #087f5b;
+      color: white;
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-header{
-  background:white;
-  padding:15px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 2px 8px rgba(0,0,0,.08);
-  position:sticky;
-  top:0;
-  z-index:100;
-}
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
 
-.logo{
-  color:#087f5b;
-  font-size:24px;
-  font-weight:bold;
-}
+    button {
+      border: none;
+      cursor: pointer;
+    }
 
-.sell-btn{
-  background:#087f5b;
-  color:white;
-  border:0;
-  padding:11px 17px;
-  border-radius:8px;
-  font-weight:bold;
-}
+    .sell {
+      background: white;
+      color: #087f5b;
+      padding: 10px 15px;
+      border-radius: 7px;
+      font-weight: bold;
+    }
 
-.hero{
-  background:linear-gradient(135deg,#087f5b,#12a878);
-  color:white;
-  text-align:center;
-  padding:45px 5%;
-}
+    .hero {
+      background: #087f5b;
+      color: white;
+      text-align: center;
+      padding: 35px 15px;
+    }
 
-.hero h1{
-  font-size:34px;
-  margin-bottom:10px;
-}
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+    }
 
-.hero p{
-  margin-bottom:25px;
-}
+    .search {
+      max-width: 600px;
+      margin: 25px auto 0;
+      display: flex;
+    }
 
-.search{
-  max-width:650px;
-  margin:auto;
-  display:flex;
-  background:white;
-  border-radius:10px;
-  overflow:hidden;
-}
+    .search input {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      border-radius: 7px 0 0 7px;
+    }
 
-.search input{
-  flex:1;
-  border:0;
-  outline:0;
-  padding:15px;
-  font-size:16px;
-}
+    .search button {
+      padding: 0 18px;
+      background: #222;
+      color: white;
+      border-radius: 0 7px 7px 0;
+    }
 
-.search button{
-  border:0;
-  background:#222;
-  color:white;
-  padding:0 20px;
-}
+    .section {
+      padding: 25px 5%;
+    }
 
-.section{
-  padding:30px 5%;
-}
+    .categories {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+    }
 
-.section h2{
-  margin-bottom:20px;
-}
+    .category {
+      background: white;
+      min-width: 100px;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 5px #ddd;
+      cursor: pointer;
+    }
 
-.categories{
-  display:flex;
-  gap:12px;
-  overflow-x:auto;
-}
+    .category-icon {
+      font-size: 25px;
+      display: block;
+      margin-bottom: 5px;
+    }
 
-.category{
-  min-width:110px;
-  background:white;
-  padding:16px 10px;
-  border-radius:10px;
-  text-align:center;
-  cursor:pointer;
-  box-shadow:0 2px 6px rgba(0,0,0,.06);
-}
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
 
-.category span{
-  display:block;
-  font-size:28px;
-  margin-bottom:7px;
-}
+    .product {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 7px #ddd;
+      cursor: pointer;
+    }
 
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:18px;
-}
+    .product img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+    }
 
-.product{
-  background:white;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 2px 8px rgba(0,0,0,.08);
-  cursor:pointer;
-}
+    .product-info {
+      padding: 14px;
+    }
 
-.product img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-}
+    .product-name {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
 
-.product-info{
-  padding:15px;
-}
+    .price {
+      color: #087f5b;
+      font-size: 19px;
+      font-weight: bold;
+    }
 
-.product-info h3{
-  margin-bottom:8px;
-}
+    .location {
+      color: #777;
+      font-size: 14px;
+      margin-top: 7px;
+    }
 
-.price{
-  color:#087f5b;
-  font-size:20px;
-  font-weight:bold;
-  margin-bottom:7px;
-}
+    .empty {
+      text-align: center;
+      padding: 30px;
+      color: #777;
+    }
 
-.location{
-  color:#777;
-  font-size:14px;
-}
+    .form-background {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,.6);
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      z-index: 10;
+    }
 
-.details{
-  display:none;
-  padding:25px 5%;
-}
+    .form {
+      background: white;
+      width: 100%;
+      max-width: 450px;
+      padding: 25px;
+      border-radius: 10px;
+    }
 
-.back{
-  border:0;
-  background:#222;
-  color:white;
-  padding:10px 15px;
-  border-radius:7px;
-  margin-bottom:20px;
-  cursor:pointer;
-}
+    .form h2 {
+      margin-top: 0;
+    }
 
-.details-box{
-  background:white;
-  border-radius:12px;
-  overflow:hidden;
-  max-width:850px;
-  margin:auto;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
-}
+    .form input,
+    .form select,
+    .form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 7px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
 
-.details-box img{
-  width:100%;
-  max-height:450px;
-  object-fit:cover;
-}
+    .form textarea {
+      height: 90px;
+    }
 
-.details-info{
-  padding:25px;
-}
+    .publish {
+      width: 100%;
+      padding: 13px;
+      margin-top: 8px;
+      background: #087f5b;
+      color: white;
+      border-radius: 6px;
+      font-weight: bold;
+    }
 
-.details-info h1{
-  margin-bottom:10px;
-}
+    .close {
+      float: right;
+      background: none;
+      font-size: 25px;
+    }
 
-.big-price{
-  color:#087f5b;
-  font-size:28px;
-  font-weight:bold;
-  margin:15px 0;
-}
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+    }
 
-.description{
-  line-height:1.6;
-  margin:20px 0;
-}
+    @media (max-width: 600px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-.contact{
-  display:block;
-  width:100%;
-  padding:14px;
-  background:#087f5b;
-  color:white;
-  text-align:center;
-  border:0;
-  border-radius:8px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-}
+      .product img {
+        height: 130px;
+      }
 
-.form-container{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.6);
-  z-index:200;
-  justify-content:center;
-  align-items:center;
-  padding:15px;
-}
+      .hero h1 {
+        font-size: 27px;
+      }
+    }
+  </style>
+</head>
 
-.form-box{
-  background:white;
-  width:100%;
-  max-width:500px;
-  max-height:90vh;
-  overflow:auto;
-  padding:25px;
-  border-radius:12px;
-}
+<body>
 
-.close{
-  float:right;
-  border:0;
-  background:none;
-  font-size:25px;
-  cursor:pointer;
-}
+  <header>
+    <div class="logo">🛒 Idris Market</div>
+    <button class="sell" onclick="openForm()">+ Sell Item</button>
+  </header>
 
-.form-box input,
-.form-box select,
-.form-box textarea{
-  width:100%;
-  padding:12px;
-  margin-bottom:12px;
-  border:1px solid #ddd;
-  border-radius:7px;
-}
+  <section class="hero">
+    <h1>Buy & Sell Anything</h1>
+    <p>Find great deals around you.</p>
 
-.form-box textarea{
-  height:100px;
-</script>
+    <div class="search">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search for phones, cars, shoes..."
+        oninput="searchProducts()"
+      >
+      <button onclick="searchProducts()">🔎</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Categories</h2>
+
+    <div class="categories">
+
+      <div class="category" onclick="filterCategory('Phones')">
+        <span class="category-icon">📱</span>
+        Phones
+      </div>
+
+      <div class="category" onclick="filterCategory('Cars')">
+        <span class="category-icon">🚗</span>
+        Cars
+      </div>
+
+      <div class="category" onclick="filterCategory('Electronics')">
+        <span class="category-icon">💻</span>
+        Electronics
+      </div>
+
+      <div class="category" onclick="filterCategory('Fashion')">
+        <span class="category-icon">👕</span>
+        Fashion
+      </div>
+
+      <div class="category" onclick="filterCategory('Furniture')">
+        <span class="category-icon">🛋️</span>
+        Furniture
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Latest Items</h2>
+
+    <div id="products" class="products"></div>
+
+    <div id="empty" class="empty">
+      No items found.
+    </div>
+  </section>
+
+  <div class="form-background" id="formBackground">
+
+    <div class="form">
+
+      <button class="close" onclick="closeForm()">×</button>
+
+      <h2>Post an Item</h2>
+
+      <form id="itemForm">
+
+        <input id="itemName" type="text" placeholder="Item name" required>
+
+        <input id="itemPrice" type="number" placeholder="Price in ₦" required>
+
+        <select id="itemCategory" required>
+          <option value="">Choose category</option>
+          <option value="Phones">Phones</option>
+          <option value="Cars">Cars</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Fashion">Fashion</option>
+          <option value="Furniture">Furniture</option>
+        </select>
+
+        <input id="itemLocation" type="text" placeholder="Location" required>
+
+        <input id="itemPhone" type="tel" placeholder="Seller phone number" required>
+
+        <input id="itemImage" type="url" placeholder="Image URL (optional)">
+
+        <textarea id="itemDescription" placeholder="Describe your item" required></textarea>
+
+        <button class="publish" type="submit">
+          Publish Item
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <h3>🛒 Idris Market</h3>
+    <p>Buy and sell with ease.</p>
+    <p>© 2026 Idris Market</p>
+  </footer>
+
+  <script>
+
+    const sampleProducts = [
+      {
+        name: "iPhone 12",
+        price: 450000,
+        category: "Phones",
+        location: "Lagos",
+        image: "https://images.unsplash.com/photo-1592286927505-2fd8d8f8a6e1?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        name: "Toyota Camry",
+        price: 8500000,
+        category: "Cars",
+        location: "Lagos",
+        image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        name: "Gaming Laptop",
+        price: 650000,
+        category: "Electronics",
+        location: "Ikeja",
+        image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        name: "Sneakers",
+        price: 45000,
+        category: "Fashion",
+        location: "Ikorodu",
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
+      }
+    ];
+
+    let products = JSON.parse(
+      localStorage.getItem("idrisMarketProducts")
+    ) || sampleProducts;
+
+    function displayProducts(list) {
+
+      const container = document.getElementById("products");
+      const empty = document.getElementById("empty");
+
+      container.innerHTML = "";
+
+      if (list.length === 0) {
+        empty.style.display = "block";
+        return;
+      }
+
+      empty.style.display = "none";
+
+      list.forEach(function(product) {
+
+        const card = document.createElement("div");
+
+        card.className = "product";
+
+        card.innerHTML = `
+          <img
+            src="${product.image || 'https://via.placeholder.com/500x400?text=No+Image'}"
+            alt="${product.name}"
+          >
+
+          <div class="product-info">
+
+            <div class="product-name">
+              ${product.name}
+            </div>
+
+            <div class="price">
+              ₦${Number(product.price).toLocaleString()}
+            </div>
+
+            <div class="location">
+              📍 ${product.location}
+            </div>
+
+          </div>
+        `;
+
+        container.appendChild(card);
+
+      });
+    }
+
+    function searchProducts() {
+
+      const text = document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+      const results = products.filter(function(product) {
+
+        return (
+          product.name.toLowerCase().includes(text) ||
+          product.category.toLowerCase().includes(text) ||
+          product.location.toLowerCase().includes(text)
+        );
+
+      });
+
+      displayProducts(results);
+    }
+
+    function filterCategory(category) {
+
+      const results = products.filter(function(product) {
+        return product.category === category;
+      });
+
+      displayProducts(results);
+    }
+
+    function openForm() {
+      document.getElementById("formBackground").style.display = "flex";
+    }
+
+    function closeForm() {
+      document.getElementById("formBackground").style.display = "none";
+    }
+
+    document
+      .getElementById("itemForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const newProduct = {
+
+          name: document.getElementById("itemName").value,
+
+          price: document.getElementById("itemPrice").value,
+
+          category: document.getElementById("itemCategory").value,
+
+          location: document.getElementById("itemLocation").value,
+
+          phone: document.getElementById("itemPhone").value,
+
+          image: document.getElementById("itemImage").value,
+
+          description: document.getElementById("itemDescription").value
+
+        };
+
+        products.unshift(newProduct);
+
+        localStorage.setItem(
+          "idrisMarketProducts",
+          JSON.stringify(products)
+        );
+
+        displayProducts(products);
+
+        document.getElementById("itemForm").reset();
+
+        closeForm();
+
+        alert("Item posted successfully!");
+
+      });
+
+    displayProducts(products);
+
+  </script>
 
 </body>
-</html>
+  </html>
