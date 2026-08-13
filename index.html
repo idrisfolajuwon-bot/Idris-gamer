@@ -649,7 +649,27 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 const db = getFirestore(app);
+async function loadProductsFromFirestore() {
+  try {
+    const snapshot = await getDocs(collection(db, "Products"));
 
+    snapshot.forEach((doc) => {
+      const product = {
+        id: doc.id,
+        ...doc.data()
+      };
+
+      if (!products.some(p => p.id === product.id)) {
+        products.unshift(product);
+      }
+    });
+
+    displayProducts(products);
+
+  } catch (error) {
+    console.error("Firestore error:", error);
+  }
+}
 /* SAMPLE PRODUCTS */
 
 const sampleProducts = [
