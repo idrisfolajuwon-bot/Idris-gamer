@@ -653,11 +653,23 @@ async function loadProductsFromFirestore() {
   try {
     const snapshot = await getDocs(collection(db, "Products"));
 
+    const firestoreProducts = [];
+
     snapshot.forEach((doc) => {
-      const product = {
+      firestoreProducts.push({
         id: doc.id,
         ...doc.data()
-      };
+      });
+    });
+
+    products = [...firestoreProducts, ...sampleProducts];
+
+    displayProducts(products);
+
+  } catch (error) {
+    console.error("Firestore error:", error);
+  }
+  }
 
       if (!products.some(p => p.id === product.id)) {
         products.unshift(product);
