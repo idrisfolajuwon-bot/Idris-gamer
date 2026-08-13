@@ -1,305 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="manifest" href="manifest.json">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="theme-color" content="#0b0b12">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-
-  <title>Idris Gamer - Free Fire Sensitivity</title>
+  <title>Idris Market</title>
 
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #080810;
-      color: white;
-      min-height: 100vh;
-      padding-bottom: 75px;
+      background: #f4f5f7;
+      color: #222;
     }
 
+    /* HEADER */
     header {
-      text-align: center;
-      padding: 28px 15px 22px;
-      background: linear-gradient(135deg, #17172b, #0d0d17);
-      border-bottom: 1px solid #29293a;
-      position: relative;
+      background: #ffffff;
+      padding: 15px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    header h1 {
-      font-size: 30px;
-      margin-bottom: 7px;
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #087f5b;
     }
 
-    header p {
-      color: #aaaabd;
-      font-size: 14px;
-    }
-
-    .app-badge {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 6px 12px;
-      border-radius: 20px;
-      background: #20202d;
-      color: #ff554c;
-      font-size: 12px;
+    .sell-btn {
+      background: #087f5b;
+      color: white;
+      border: none;
+      padding: 11px 18px;
+      border-radius: 8px;
+      cursor: pointer;
       font-weight: bold;
     }
 
+    /* HERO */
     .hero {
+      background: linear-gradient(135deg, #087f5b, #12a878);
+      padding: 45px 5%;
       text-align: center;
-      padding: 30px 18px;
+      color: white;
     }
 
-    .hero h2 {
-      font-size: 25px;
-      margin-bottom: 12px;
+    .hero h1 {
+      font-size: 34px;
+      margin-bottom: 10px;
     }
 
     .hero p {
-      color: #bcbccc;
-      line-height: 1.6;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 15px 25px;
-      background: #ff3b30;
-      color: white;
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: bold;
-      border: none;
-      font-size: 15px;
-      cursor: pointer;
-      box-shadow: 0 8px 25px rgba(255, 59, 48, 0.18);
-    }
-
-    .button:active {
-      transform: scale(0.97);
-    }
-
-    .install-btn {
-      background: #20202d;
-      color: white;
-      margin-left: 5px;
-      box-shadow: none;
-    }
-
-    #sensitivity {
-      padding: 20px 15px;
-      max-width: 950px;
-      margin: auto;
-    }
-
-    #sensitivity h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 25px;
-    }
-
-    .search-box {
-      margin-bottom: 18px;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 15px;
-      border-radius: 12px;
-      border: 1px solid #30303e;
-      background: #15151f;
-      color: white;
-      outline: none;
-      font-size: 15px;
-    }
-
-    .search-box input:focus {
-      border-color: #ff3b30;
-    }
-
-    .phone-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
       margin-bottom: 25px;
     }
 
-    .phone-button {
-      padding: 15px 9px;
-      border: 1px solid #292936;
-      border-radius: 12px;
-      background: #171722;
+    .search-box {
+      max-width: 650px;
+      margin: auto;
+      display: flex;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .search-box button {
+      background: #222;
       color: white;
+      border: none;
+      padding: 0 20px;
       cursor: pointer;
-      font-weight: bold;
-      min-height: 55px;
+    }
+
+    /* CATEGORIES */
+    .section {
+      padding: 30px 5%;
+    }
+
+    .section h2 {
+      margin-bottom: 20px;
+    }
+
+    .categories {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    .category {
+      min-width: 120px;
+      background: white;
+      padding: 18px 10px;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    .category:hover {
+      transform: translateY(-2px);
+    }
+
+    .category span {
+      display: block;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    /* PRODUCTS */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       transition: 0.2s;
     }
 
-    .phone-button:active {
-      transform: scale(0.96);
+    .product:hover {
+      transform: translateY(-3px);
     }
 
-    .phone-button.active {
-      background: #ff3b30;
-      border-color: #ff3b30;
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #ddd;
     }
 
-    .settings {
-      background: linear-gradient(145deg, #171722, #11111a);
-      border: 1px solid #292936;
-      border-radius: 17px;
-      padding: 20px;
-      margin-top: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    .product-info {
+      padding: 15px;
     }
 
-    .settings h3 {
-      font-size: 23px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .setting-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 13px 5px;
-      border-bottom: 1px solid #292936;
-    }
-
-    .setting-row:last-child {
-      border-bottom: none;
-    }
-
-    .value {
-      font-weight: bold;
-      background: #ff3b30;
-      padding: 5px 10px;
-      border-radius: 8px;
-    }
-
-    .weapons {
-      margin-top: 25px;
-    }
-
-    .weapons h4 {
-      margin-bottom: 12px;
-      font-size: 19px;
-    }
-
-    .weapon {
-      background: #20202d;
-      padding: 12px;
-      border-radius: 10px;
+    .product-info h3 {
       margin-bottom: 8px;
-      color: #d8d8e3;
+    }
+
+    .price {
+      color: #087f5b;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .location {
+      color: #777;
       font-size: 14px;
+      margin-bottom: 12px;
     }
 
-    .copy-btn {
+    .contact-btn {
       width: 100%;
-      margin-top: 18px;
-      padding: 14px;
+      padding: 10px;
       border: none;
-      border-radius: 11px;
-      background: #2a2a3a;
+      background: #087f5b;
       color: white;
-      font-weight: bold;
+      border-radius: 7px;
       cursor: pointer;
-      font-size: 15px;
     }
 
-    .copy-btn:active {
-      transform: scale(0.98);
-    }
-
-    .favorite-btn {
+    .delete-btn {
       width: 100%;
-      margin-top: 9px;
-      padding: 14px;
-      border: none;
-      border-radius: 11px;
-      background: #2a2a3a;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 15px;
-    }
-
-    .note {
-      text-align: center;
-      color: #888898;
-      font-size: 12px;
-      margin-top: 18px;
-      line-height: 1.5;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 15px;
-      color: #777787;
-      font-size: 13px;
-    }
-
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 62px;
-      background: #11111a;
-      border-top: 1px solid #292936;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .nav-btn {
-      background: none;
-      border: none;
-      color: #9999aa;
-      font-size: 12px;
-      font-weight: bold;
-      cursor: pointer;
       padding: 8px;
+      border: none;
+      background: #e74c3c;
+      color: white;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-top: 7px;
     }
 
-    .nav-btn.active {
-      color: #ff3b30;
+    /* POST FORM */
+    .form-container {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
     }
 
+    .form-box {
+      background: white;
+      width: 100%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    .form-box h2 {
+      margin-bottom: 20px;
+    }
+
+    .form-box input,
+    .form-box select,
+    .form-box textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #ddd;
+      border-radius: 7px;
+      outline: none;
+    }
+
+    .form-box textarea {
+      height: 100px;
+      resize: none;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 13px;
+      background: #087f5b;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .close-btn {
+      float: right;
+      border: none;
+      background: none;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    /* EMPTY */
     .empty {
       text-align: center;
-      padding: 25px;
-      color: #9999aa;
+      padding: 40px;
+      color: #777;
       display: none;
     }
 
-    @media (min-width: 650px) {
-      .phone-grid {
-        grid-template-columns: repeat(4, 1fr);
+    /* FOOTER */
+    footer {
+      margin-top: 40px;
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 27px;
       }
 
-      header h1 {
-        font-size: 38px;
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .product img {
+        height: 140px;
+      }
+
+      .product-info {
+        padding: 10px;
+      }
+
+      .price {
+        font-size: 17px;
+      }
+
+      .product-info h3 {
+        font-size: 15px;
+      }
+
+      .header {
+        padding: 12px;
       }
     }
   </style>
@@ -307,489 +308,491 @@
 
 <body>
 
+  <!-- HEADER -->
   <header>
-    <h1>🎮 IDRIS GAMER</h1>
-    <p>Free Fire Sensitivity Center</p>
-    <span class="app-badge">APP VERSION 1.0</span>
+    <div class="logo">🛒 Idris Market</div>
+
+    <button class="sell-btn" onclick="openForm()">
+      + Sell Item
+    </button>
   </header>
 
+
+  <!-- HERO -->
   <section class="hero">
 
-    <h2>🔥 Get Your Best Sensitivity</h2>
+    <h1>Buy & Sell Anything</h1>
 
-    <p>
-      Choose your phone and get recommended Free Fire
-      sensitivity settings for headshot practice.
-    </p>
-
-    <a class="button" href="#sensitivity">
-      🎯 GET SENSITIVITY
-      <a class="button" href="game.html">
-  🎯 PLAY SHOOTING GAME
-      </a>
-    </a>
-
-    <button class="button install-btn" id="installButton" onclick="installApp()" style="display:none;">
-      📲 INSTALL APP
-    </button>
-
-  </section>
-
-  <section id="sensitivity">
-
-    <h2>📱 Choose Your Phone</h2>
+    <p>Find great deals from sellers around you.</p>
 
     <div class="search-box">
       <input
         type="text"
         id="searchInput"
-        placeholder="🔎 Search your phone..."
-        oninput="searchPhones()"
+        placeholder="Search for phones, cars, shoes..."
+        onkeyup="searchProducts()"
       >
+
+      <button onclick="searchProducts()">🔎</button>
     </div>
 
-    <div class="phone-grid" id="phoneGrid">
+  </section>
 
-      <button class="phone-button" data-name="Tecno Pop 10C" onclick="showSettings('pop10c', this)">
-        Tecno Pop 10C
-      </button>
 
-      <button class="phone-button" data-name="Tecno Spark" onclick="showSettings('spark', this)">
-        Tecno Spark
-      </button>
+  <!-- CATEGORIES -->
+  <section class="section">
 
-      <button class="phone-button" data-name="Infinix Hot" onclick="showSettings('hot', this)">
-        Infinix Hot
-      </button>
+    <h2>Categories</h2>
 
-      <button class="phone-button" data-name="Infinix Note" onclick="showSettings('note', this)">
-        Infinix Note
-      </button>
+    <div class="categories">
 
-      <button class="phone-button" data-name="Samsung Galaxy" onclick="showSettings('samsung', this)">
-        Samsung Galaxy
-      </button>
+      <div class="category" onclick="filterCategory('Phones')">
+        <span>📱</span>
+        Phones
+      </div>
 
-      <button class="phone-button" data-name="iPhone 11" onclick="showSettings('iphone11', this)">
-        iPhone 11
-      </button>
+      <div class="category" onclick="filterCategory('Cars')">
+        <span>🚗</span>
+        Cars
+      </div>
 
-      <button class="phone-button" data-name="iPhone 12" onclick="showSettings('iphone12', this)">
-        iPhone 12
-      </button>
+      <div class="category" onclick="filterCategory('Electronics')">
+        <span>💻</span>
+        Electronics
+      </div>
 
-      <button class="phone-button" data-name="iPhone 13" onclick="showSettings('iphone13', this)">
-        iPhone 13
-      </button>
+      <div class="category" onclick="filterCategory('Fashion')">
+        <span>👕</span>
+        Fashion
+      </div>
 
-    </div>
+      <div class="category" onclick="filterCategory('Furniture')">
+        <span>🛋️</span>
+        Furniture
+      </div>
 
-    <div id="emptySearch" class="empty">
-      ❌ No phone found.
-    </div>
-
-    <div id="settingsBox" class="settings">
-
-      <h3>📱 Select a phone above</h3>
-
-      <p class="note">
-        Tap a phone to see its recommended Free Fire sensitivity.
-      </p>
+      <div class="category" onclick="filterCategory('Others')">
+        <span>📦</span>
+        Others
+      </div>
 
     </div>
 
   </section>
 
+
+  <!-- PRODUCTS -->
+  <section class="section">
+
+    <h2>Latest Items</h2>
+
+    <div id="products" class="products"></div>
+
+    <div id="empty" class="empty">
+      <h3>No items found 😕</h3>
+      <p>Try another search.</p>
+    </div>
+
+  </section>
+
+
+  <!-- POST ITEM FORM -->
+  <div class="form-container" id="formContainer">
+
+    <div class="form-box">
+
+      <button class="close-btn" onclick="closeForm()">×</button>
+
+      <h2>Post an Item</h2>
+
+      <form id="itemForm">
+
+        <input
+          type="text"
+          id="itemName"
+          placeholder="Item name"
+          required
+        >
+
+        <input
+          type="number"
+          id="itemPrice"
+          placeholder="Price in ₦"
+          required
+        >
+
+        <select id="itemCategory" required>
+
+          <option value="">Select category</option>
+
+          <option value="Phones">Phones</option>
+
+          <option value="Cars">Cars</option>
+
+          <option value="Electronics">Electronics</option>
+
+          <option value="Fashion">Fashion</option>
+
+          <option value="Furniture">Furniture</option>
+
+          <option value="Others">Others</option>
+
+        </select>
+
+        <input
+          type="text"
+          id="itemLocation"
+          placeholder="Location e.g. Lagos"
+          required
+        >
+
+        <input
+          type="text"
+          id="sellerPhone"
+          placeholder="Your phone number"
+          required
+        >
+
+        <input
+          type="url"
+          id="itemImage"
+          placeholder="Image URL (optional)"
+        >
+
+        <textarea
+          id="itemDescription"
+          placeholder="Describe your item..."
+          required
+        ></textarea>
+
+        <button class="submit-btn" type="submit">
+          Publish Item
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- FOOTER -->
   <footer>
-    © 2026 Idris Gamer • Free Fire Sensitivity
+
+    <h3>🛒 Idris Market</h3>
+
+    <p>Buy and sell with ease.</p>
+
+    <br>
+
+    <p>© 2026 Idris Market</p>
+
   </footer>
 
-  <nav class="bottom-nav">
 
-    <button class="nav-btn active" onclick="goHome()">
-      🏠<br>Home
-    </button>
+<script>
 
-    <button class="nav-btn" onclick="goSensitivity()">
-      🎯<br>Sensitivity
-    </button>
+  /* SAMPLE PRODUCTS */
 
-    <button class="nav-btn" onclick="showFavorites()">
-      ⭐<br>Favorites
-    </button>
+  let products = JSON.parse(localStorage.getItem("idrisMarketProducts")) || [
 
-  </nav>
+    {
+      id: 1,
+      name: "iPhone 12",
+      price: 450000,
+      category: "Phones",
+      location: "Lagos",
+      phone: "08000000000",
+      image: "https://images.unsplash.com/photo-1592286927505-2fd8d8f8a6e1?auto=format&fit=crop&w=800&q=80",
+      description: "Clean iPhone 12 in good condition."
+    },
 
-  <script>
+    {
+      id: 2,
+      name: "Toyota Camry",
+      price: 8500000,
+      category: "Cars",
+      location: "Lagos",
+      phone: "08000000000",
+      image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=800&q=80",
+      description: "Clean Toyota Camry available for sale."
+    },
 
-    const sensitivity = {
+    {
+      id: 3,
+      name: "Gaming Laptop",
+      price: 650000,
+      category: "Electronics",
+      location: "Ikeja",
+      phone: "08000000000",
+      image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80",
+      description: "Powerful gaming laptop."
+    },
 
-      pop10c: {
-        name: "Tecno Pop 10C",
-        general: 190,
-        redDot: 185,
-        scope2x: 175,
-        scope4x: 165,
-        sniper: 100,
-        freeLook: 180
-      },
+    {
+      id: 4,
+      name: "Sneakers",
+      price: 45000,
+      category: "Fashion",
+      location: "Ikorodu",
+      phone: "08000000000",
+      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
+      description: "Brand new sneakers."
+    }
 
-      spark: {
-        name: "Tecno Spark",
-        general: 185,
-        redDot: 180,
-        scope2x: 170,
-        scope4x: 160,
-        sniper: 100,
-        freeLook: 175
-      },
-
-      hot: {
-        name: "Infinix Hot",
-        general: 190,
-        redDot: 185,
-        scope2x: 175,
-        scope4x: 165,
-        sniper: 100,
-        freeLook: 180
-      },
-
-      note: {
-        name: "Infinix Note",
-        general: 185,
-        redDot: 180,
-        scope2x: 170,
-        scope4x: 160,
-        sniper: 100,
-        freeLook: 175
-      },
-
-      samsung: {
-        name: "Samsung Galaxy",
-        general: 180,
-        redDot: 175,
-        scope2x: 165,
-        scope4x: 155,
-        sniper: 95,
-        freeLook: 170
-      },
-
-      iphone11: {
-        name: "iPhone 11",
-        general: 175,
-        redDot: 170,
-        scope2x: 160,
-        scope4x: 150,
-        sniper: 95,
-        freeLook: 165
-      },
-
-      iphone12: {
-        name: "iPhone 12",
-        general: 175,
-        redDot: 170,
-        scope2x: 160,
-        scope4x: 150,
-        sniper: 95,
-        freeLook: 165
-      },
-
-      iphone13: {
-        name: "iPhone 13",
-        general: 170,
-        redDot: 165,
-        scope2x: 155,
-        scope4x: 145,
-        sniper: 90,
-        freeLook: 160
-      }
-
-    };
+  ];
 
 
-    let selectedPhone = null;
+  /* DISPLAY PRODUCTS */
+
+  function displayProducts(list = products) {
+
+    const container = document.getElementById("products");
+
+    const empty = document.getElementById("empty");
+
+    container.innerHTML = "";
+
+    if (list.length === 0) {
+
+      empty.style.display = "block";
+
+      return;
+
+    }
+
+    empty.style.display = "none";
 
 
-    function showSettings(phone, button) {
+    list.forEach(product => {
 
-      const s = sensitivity[phone];
+      const card = document.createElement("div");
 
-      selectedPhone = phone;
+      card.className = "product";
 
-      document.querySelectorAll(".phone-button").forEach(btn => {
-        btn.classList.remove("active");
-      });
 
-      if (button) {
-        button.classList.add("active");
-      }
+      card.innerHTML = `
 
-      const favorite =
-        JSON.parse(localStorage.getItem("favoritePhones") || "[]");
+        <img
+          src="${product.image || 'https://via.placeholder.com/500x400?text=No+Image'}"
+          onerror="this.src='https://via.placeholder.com/500x400?text=No+Image'"
+        >
 
-      const isFavorite = favorite.includes(phone);
+        <div class="product-info">
 
-      const box = document.getElementById("settingsBox");
+          <h3>${product.name}</h3>
 
-      box.innerHTML = `
-
-        <h3>🎯 ${s.name}</h3>
-
-        <div class="setting-row">
-          <span>General</span>
-          <span class="value">${s.general}</span>
-        </div>
-
-        <div class="setting-row">
-          <span>Red Dot</span>
-          <span class="value">${s.redDot}</span>
-        </div>
-
-        <div class="setting-row">
-          <span>2× Scope</span>
-          <span class="value">${s.scope2x}</span>
-        </div>
-
-        <div class="setting-row">
-          <span>4× Scope</span>
-          <span class="value">${s.scope4x}</span>
-        </div>
-
-        <div class="setting-row">
-          <span>Sniper Scope</span>
-          <span class="value">${s.sniper}</span>
-        </div>
-
-        <div class="setting-row">
-          <span>Free Look</span>
-          <span class="value">${s.freeLook}</span>
-        </div>
-
-        <div class="weapons">
-
-          <h4>🔫 Weapon Focus</h4>
-
-          <div class="weapon">
-            🔥 MP40 — close-range headshot practice
+          <div class="price">
+            ₦${Number(product.price).toLocaleString()}
           </div>
 
-          <div class="weapon">
-            💥 M1014 — close-range drag/headshot practice
+          <div class="location">
+            📍 ${product.location}
           </div>
 
-          <div class="weapon">
-            🎯 Desert Eagle — one-tap practice
-          </div>
+          <p style="font-size:14px;margin-bottom:12px;">
+            ${product.description}
+          </p>
 
-          <div class="weapon">
-            ⚡ General aim — use short controlled movements
-          </div>
+          <button
+            class="contact-btn"
+            onclick="contactSeller('${product.phone}')"
+          >
+            📞 Contact Seller
+          </button>
+
+          ${
+            product.userCreated
+            ?
+            `<button
+              class="delete-btn"
+              onclick="deleteProduct(${product.id})"
+            >
+              🗑️ Delete
+            </button>`
+            :
+            ""
+          }
 
         </div>
-
-        <button class="copy-btn" onclick="copySettings()">
-          📋 COPY SENSITIVITY
-        </button>
-
-        <button class="favorite-btn" onclick="toggleFavorite()">
-          ${isFavorite ? "⭐ REMOVE FROM FAVORITES" : "☆ ADD TO FAVORITES"}
-        </button>
-
-        <p class="note">
-          These are recommended starting settings.
-          Adjust them slightly to match your controls and play style.
-        </p>
 
       `;
 
-      box.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+      container.appendChild(card);
 
-    }
+    });
 
-
-    function copySettings() {
-
-      if (!selectedPhone) return;
-
-      const s = sensitivity[selectedPhone];
-
-      const text =
-`🎮 IDRIS GAMER
-
-📱 ${s.name}
-
-🎯 General: ${s.general}
-🔴 Red Dot: ${s.redDot}
-🔭 2× Scope: ${s.scope2x}
-🔭 4× Scope: ${s.scope4x}
-🎯 Sniper Scope: ${s.sniper}
-👀 Free Look: ${s.freeLook}`;
-
-      navigator.clipboard.writeText(text).then(() => {
-
-        alert("✅ Sensitivity copied!");
-
-      }).catch(() => {
-
-        alert("Please copy the settings manually.");
-
-      });
-
-    }
+  }
 
 
-    function toggleFavorite() {
+  /* SEARCH */
 
-      if (!selectedPhone) return;
+  function searchProducts() {
 
-      let favorites =
-        JSON.parse(localStorage.getItem("favoritePhones") || "[]");
-
-      if (favorites.includes(selectedPhone)) {
-
-        favorites = favorites.filter(x => x !== selectedPhone);
-
-      } else {
-
-        favorites.push(selectedPhone);
-
-      }
-
-      localStorage.setItem(
-        "favoritePhones",
-        JSON.stringify(favorites)
-      );
-
-      showSettings(selectedPhone);
-
-    }
+    const search =
+      document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
 
 
-    function showFavorites() {
+    const filtered = products.filter(product =>
 
-      const favorites =
-        JSON.parse(localStorage.getItem("favoritePhones") || "[]");
+      product.name.toLowerCase().includes(search) ||
 
-      if (favorites.length === 0) {
+      product.category.toLowerCase().includes(search) ||
 
-        alert("⭐ You have no favorite phones yet.");
+      product.location.toLowerCase().includes(search)
 
-        return;
-
-      }
-
-      const names = favorites
-        .map(phone => sensitivity[phone].name)
-        .join("\n");
-
-      alert("⭐ Your Favorite Phones:\n\n" + names);
-
-    }
+    );
 
 
-    function searchPhones() {
+    displayProducts(filtered);
 
-      const search =
-        document.getElementById("searchInput")
-        .value
-        .toLowerCase();
-
-      const buttons =
-        document.querySelectorAll(".phone-button");
-
-      let found = false;
-
-      buttons.forEach(button => {
-
-        const name =
-          button.dataset.name.toLowerCase();
-
-        if (name.includes(search)) {
-
-          button.style.display = "block";
-          found = true;
-
-        } else {
-
-          button.style.display = "none";
-
-        }
-
-      });
-
-      document.getElementById("emptySearch").style.display =
-        found ? "none" : "block";
-
-    }
+  }
 
 
-    function goHome() {
+  /* CATEGORY FILTER */
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+  function filterCategory(category) {
 
-    }
+    const filtered = products.filter(product =>
 
+      product.category === category
 
-    function goSensitivity() {
+    );
 
-      document.getElementById("sensitivity")
-        .scrollIntoView({
-          behavior: "smooth"
-        });
+    displayProducts(filtered);
 
-    }
+  }
 
 
-    let deferredPrompt;
+  /* OPEN FORM */
 
-    window.addEventListener("beforeinstallprompt", (event) => {
+  function openForm() {
+
+    document
+      .getElementById("formContainer")
+      .style.display = "flex";
+
+  }
+
+
+  /* CLOSE FORM */
+
+  function closeForm() {
+
+    document
+      .getElementById("formContainer")
+      .style.display = "none";
+
+  }
+
+
+  /* CONTACT SELLER */
+
+  function contactSeller(phone) {
+
+    window.location.href = "tel:" + phone;
+
+  }
+
+
+  /* DELETE PRODUCT */
+
+  function deleteProduct(id) {
+
+    if (!confirm("Delete this item?")) return;
+
+
+    products = products.filter(product =>
+
+      product.id !== id
+
+    );
+
+
+    localStorage.setItem(
+      "idrisMarketProducts",
+      JSON.stringify(products)
+    );
+
+
+    displayProducts();
+
+  }
+
+
+  /* POST ITEM */
+
+  document
+    .getElementById("itemForm")
+    .addEventListener("submit", function(event) {
 
       event.preventDefault();
 
-      deferredPrompt = event;
 
-      document.getElementById("installButton").style.display =
-        "inline-block";
+      const newProduct = {
+
+        id: Date.now(),
+
+        name:
+          document.getElementById("itemName").value,
+
+        price:
+          document.getElementById("itemPrice").value,
+
+        category:
+          document.getElementById("itemCategory").value,
+
+        location:
+          document.getElementById("itemLocation").value,
+
+        phone:
+          document.getElementById("sellerPhone").value,
+
+        image:
+          document.getElementById("itemImage").value,
+
+        description:
+          document.getElementById("itemDescription").value,
+
+        userCreated: true
+
+      };
+
+
+      products.unshift(newProduct);
+
+
+      localStorage.setItem(
+        "idrisMarketProducts",
+        JSON.stringify(products)
+      );
+
+
+      displayProducts();
+
+
+      document
+        .getElementById("itemForm")
+        .reset();
+
+
+      closeForm();
+
+
+      alert("✅ Your item has been posted!");
 
     });
 
 
-    async function installApp() {
+  /* START WEBSITE */
 
-      if (!deferredPrompt) {
+  displayProducts();
 
-        alert(
-          "Your browser may already support installing this website from its menu."
-        );
-
-        return;
-
-      }
-
-      deferredPrompt.prompt();
-
-      await deferredPrompt.userChoice;
-
-      deferredPrompt = null;
-
-      document.getElementById("installButton").style.display =
-        "none";
-
-    }
-
-  </script>
-
-</body><script>
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("./sw.js");
-    });
-  }
 </script>
-</html>
+
+</body>
+          </html>
