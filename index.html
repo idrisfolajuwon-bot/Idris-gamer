@@ -1110,7 +1110,7 @@ document.getElementById("formBackground")
 
 
 document.getElementById("itemForm")
-.addEventListener("submit",function(event){
+.addEventListener("submit",async function(event){
 
 event.preventDefault();
 
@@ -1149,12 +1149,24 @@ document.getElementById("itemDescription").value
 
 };
 
-products.unshift(newProduct);
+try {
 
-localStorage.setItem(
-"idrisMarketProducts",
-JSON.stringify(products)
-);
+  await addDoc(collection(db, "Products"), newProduct);
+
+  products.unshift(newProduct);
+
+  localStorage.setItem(
+    "idrisMarketProducts",
+    JSON.stringify(products)
+  );
+
+} catch (error) {
+
+  console.error(error);
+  alert("❌ Could not save item to Firestore.");
+  return;
+
+  }
 
 displayProducts(products);
 
