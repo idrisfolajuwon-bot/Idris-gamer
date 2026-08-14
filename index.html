@@ -671,6 +671,11 @@ async function loadProductsFromFirestore() {
   }
   }
 
+  } catch (error) {
+    console.error("Firestore error:", error);
+  }
+  }
+
       if (!products.some(p => p.id === product.id)) {
         products.unshift(product);
       }
