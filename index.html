@@ -667,7 +667,9 @@ async function loadProductsFromFirestore() {
     displayProducts(products);
 
   } catch (error) {
-    console.error("Firestore error:", error);
+  console.error("Firestore error:", error);
+  alert("Firestore error: " + error.message);
+  }
   }
   }
 
