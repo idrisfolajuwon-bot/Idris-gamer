@@ -1038,7 +1038,42 @@ document.getElementById("accountButton");
 
 const logoutButton=
 document.getElementById("logoutButton");
+document.getElementById("myListingsButton").onclick = async function() {
 
+  if (!auth.currentUser) {
+    alert("Please login first.");
+    return;
+  }
+
+  try {
+    const snapshot = await getDocs(collection(db, "Products"));
+
+    const myProducts = [];
+
+    snapshot.forEach((doc) => {
+      const product = {
+        id: doc.id,
+        ...doc.data()
+      };
+
+      if (product.sellerId === auth.currentUser.uid) {
+        myProducts.push(product);
+      }
+    });
+
+    displayProducts(myProducts);
+
+    document.getElementById("home").style.display = "none";
+    document.getElementById("homeContent").style.display = "none";
+
+    alert("You have " + myProducts.length + " listing(s).");
+
+  } catch (error) {
+    console.error(error);
+    alert("Could not load your listings.");
+  }
+
+};
 if(user){
 
 accountButton.textContent=
@@ -1152,7 +1187,10 @@ return;
 
 const newProduct={
 
-id:Date.now(),
+const newProduct = {
+  id: Date.now(),
+  sellerId: auth.currentUser.uid,
+  name:
 
 name:
 document.getElementById("itemName").value,
