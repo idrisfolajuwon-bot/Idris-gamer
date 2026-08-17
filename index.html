@@ -26,10 +26,7 @@ header{
   flex-wrap:wrap
 }
 
-.logo{
-  font-size:22px;
-  font-weight:bold
-}
+.logo{font-size:22px;font-weight:bold}
 
 .header-buttons{
   display:flex;
@@ -42,7 +39,7 @@ button{
   cursor:pointer
 }
 
-.account-btn{
+.account-btn,.sell{
   background:white;
   color:#087f5b;
   padding:10px 14px;
@@ -56,14 +53,6 @@ button{
   padding:10px 14px;
   border-radius:7px;
   display:none
-}
-
-.sell{
-  background:#fff;
-  color:#087f5b;
-  padding:10px 14px;
-  border-radius:7px;
-  font-weight:bold
 }
 
 .hero{
@@ -100,9 +89,7 @@ button{
   border-radius:0 7px 7px 0
 }
 
-.section{
-  padding:25px 5%
-}
+.section{padding:25px 5%}
 
 .categories{
   display:flex;
@@ -146,9 +133,7 @@ button{
   object-fit:cover
 }
 
-.product-info{
-  padding:14px
-}
+.product-info{padding:14px}
 
 .product-name{
   font-weight:bold;
@@ -169,7 +154,8 @@ button{
 
 /* ACCOUNT */
 
-.account-background{
+.account-background,
+.form-background{
   display:none;
   position:fixed;
   inset:0;
@@ -186,10 +172,6 @@ button{
   max-width:420px;
   padding:25px;
   border-radius:12px
-}
-
-.account-box h2{
-  margin-top:0
 }
 
 .account-box input{
@@ -259,9 +241,7 @@ button{
   object-fit:cover
 }
 
-.details-info{
-  padding:25px
-}
+.details-info{padding:25px}
 
 .big-price{
   color:#087f5b;
@@ -287,17 +267,6 @@ button{
 
 /* SELL FORM */
 
-.form-background{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.6);
-  align-items:center;
-  justify-content:center;
-  padding:15px;
-  z-index:20
-}
-
 .form{
   background:white;
   width:100%;
@@ -318,9 +287,7 @@ button{
   border-radius:6px
 }
 
-.form textarea{
-  height:90px
-}
+.form textarea{height:90px}
 
 .publish{
   width:100%;
@@ -345,13 +312,9 @@ footer{
     grid-template-columns:repeat(2,1fr)
   }
 
-  .product img{
-    height:130px
-  }
+  .product img{height:130px}
 
-  .hero h1{
-    font-size:27px
-  }
+  .hero h1{font-size:27px}
 }
 </style>
 </head>
@@ -367,6 +330,7 @@ footer{
 <button class="account-btn" id="accountButton">
 👤 Sign Up / Login
 </button>
+
 <button class="logout-btn" id="logoutButton">
 Logout
 </button>
@@ -374,16 +338,12 @@ Logout
 <button class="account-btn" id="myListingsButton">
 📦 My Listings
 </button>
-<button class="logout-btn" id="logoutButton">
-Logout
-</button>
 
 <button class="sell" onclick="openForm()">
 + Sell Item
 </button>
 
 </div>
-
 </header>
 
 
@@ -404,7 +364,6 @@ placeholder="Search phones, cars, shoes..."
 <button id="searchButton">🔎</button>
 
 </div>
-
 </section>
 
 
@@ -440,7 +399,6 @@ Furniture
 </div>
 
 </div>
-
 </section>
 
 
@@ -452,8 +410,6 @@ Furniture
 
 </section>
 
-
-<!-- PRODUCT DETAILS -->
 
 <section class="details" id="details">
 
@@ -480,9 +436,7 @@ Furniture
 </button>
 
 </div>
-
 </div>
-
 </section>
 
 
@@ -523,7 +477,6 @@ Already have an account? Login
 <div class="account-message" id="accountMessage"></div>
 
 </div>
-
 </div>
 
 
@@ -595,9 +548,7 @@ Publish Item
 </button>
 
 </form>
-
 </div>
-
 </div>
 
 
@@ -625,6 +576,7 @@ import {
   signOut,
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
 import {
   getFirestore,
   collection,
@@ -632,21 +584,22 @@ import {
   getDocs
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
+
 const firebaseConfig = {
 
-  apiKey:"AIzaSyAi-KrdaIz2MYy6lfgKqyqfkaejrbhmXQE",
+apiKey:"AIzaSyAi-KrdaIz2MYy6lfgKqyqfkaejrbhmXQE",
 
-  authDomain:"idris-market-2026.firebaseapp.com",
+authDomain:"idris-market-2026.firebaseapp.com",
 
-  projectId:"idris-market-2026",
+projectId:"idris-market-2026",
 
-  storageBucket:"idris-market-2026.firebasestorage.app",
+storageBucket:"idris-market-2026.firebasestorage.app",
 
-  messagingSenderId:"132967044976",
+messagingSenderId:"132967044976",
 
-  appId:"1:132967044976:web:6620888d027f58e96be1b5",
+appId:"1:132967044976:web:6620888d027f58e96be1b5",
 
-  measurementId:"G-DXDLJLH747"
+measurementId:"G-DXDLJLH747"
 
 };
 
@@ -656,30 +609,9 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-async function loadProductsFromFirestore() {
-  try {
-    const snapshot = await getDocs(collection(db, "Products"));
-
-    const firestoreProducts = [];
-
-    snapshot.forEach((doc) => {
-      firestoreProducts.push({
-        id: doc.id,
-        ...doc.data()
-      });
-    });
-
-    products = [...firestoreProducts, ...sampleProducts];
-
-    displayProducts(products);
-
-  } catch (error) {
-    console.error("Firestore error:", error);
-    alert("Firestore error: " + error.message);
-  }
-}
 
 /* SAMPLE PRODUCTS */
+
 const sampleProducts = [
 
 {
@@ -729,9 +661,7 @@ description:"Brand new sneakers."
 ];
 
 
-let products = JSON.parse(
-localStorage.getItem("idrisMarketProducts")
-) || sampleProducts;
+let products = [...sampleProducts];
 
 
 /* DISPLAY PRODUCTS */
@@ -766,7 +696,7 @@ ${product.name}
 </div>
 
 <div class="location">
-📍 ${product.location}
+📍 ${product.location || "Location not provided"}
 </div>
 
 </div>
@@ -779,6 +709,46 @@ openProduct(product);
 container.appendChild(card);
 
 });
+
+}
+
+
+/* LOAD FIRESTORE PRODUCTS */
+
+async function loadProductsFromFirestore(){
+
+try{
+
+const snapshot =
+await getDocs(collection(db,"Products"));
+
+const firestoreProducts=[];
+
+snapshot.forEach(function(doc){
+
+firestoreProducts.push({
+
+id:doc.id,
+...doc.data()
+
+});
+
+});
+
+products=[
+...firestoreProducts,
+...sampleProducts
+];
+
+displayProducts(products);
+
+}catch(error){
+
+console.error("Firestore error:",error);
+
+alert("Firestore error: "+error.message);
+
+}
 
 }
 
@@ -806,7 +776,7 @@ document.getElementById("detailPrice").textContent=
 "₦"+Number(product.price).toLocaleString();
 
 document.getElementById("detailLocation").textContent=
-"📍 "+product.location;
+"📍 "+(product.location || "Location not provided");
 
 document.getElementById("detailDescription").textContent=
 product.description || "No description available.";
@@ -849,17 +819,21 @@ document.getElementById("productsSection").style.display="block";
 
 function searchProducts(){
 
-const text=document
-.getElementById("searchInput")
+const text=
+document.getElementById("searchInput")
 .value
 .toLowerCase();
 
 const results=products.filter(function(product){
 
 return(
-product.name.toLowerCase().includes(text) ||
-product.category.toLowerCase().includes(text) ||
-product.location.toLowerCase().includes(text)
+
+(product.name || "").toLowerCase().includes(text) ||
+
+(product.category || "").toLowerCase().includes(text) ||
+
+(product.location || "").toLowerCase().includes(text)
+
 );
 
 });
@@ -885,9 +859,13 @@ category.addEventListener("click",function(){
 const chosen=this.dataset.category;
 
 displayProducts(
+
 products.filter(function(product){
+
 return product.category===chosen;
+
 })
+
 );
 
 });
@@ -895,12 +873,13 @@ return product.category===chosen;
 });
 
 
-/* ACCOUNT WINDOW */
+/* ACCOUNT */
 
 let loginMode=false;
 
 const accountBackground=
 document.getElementById("accountBackground");
+
 
 document.getElementById("accountButton")
 .onclick=function(){
@@ -920,8 +899,6 @@ document.getElementById("accountMessage").textContent="";
 };
 
 
-/* SWITCH LOGIN/SIGNUP */
-
 document.getElementById("switchMode")
 .onclick=function(){
 
@@ -929,14 +906,12 @@ loginMode=!loginMode;
 
 if(loginMode){
 
-document.getElementById("accountTitle").textContent=
-"Login";
+document.getElementById("accountTitle").textContent="Login";
 
 document.getElementById("accountSubtitle").textContent=
 "Login to your Idris Market account.";
 
-document.getElementById("accountSubmit").textContent=
-"Login";
+document.getElementById("accountSubmit").textContent="Login";
 
 document.getElementById("switchMode").textContent=
 "Don't have an account? Sign Up";
@@ -960,7 +935,7 @@ document.getElementById("switchMode").textContent=
 };
 
 
-/* SIGNUP / LOGIN */
+/* SIGN UP / LOGIN */
 
 document.getElementById("accountSubmit")
 .onclick=async function(){
@@ -995,8 +970,7 @@ email,
 password
 );
 
-message.textContent=
-"✅ Login successful!";
+message.textContent="✅ Login successful!";
 
 }else{
 
@@ -1029,7 +1003,7 @@ message.textContent=
 };
 
 
-/* FIREBASE LOGIN STATUS */
+/* AUTH STATUS */
 
 onAuthStateChanged(auth,function(user){
 
@@ -1038,42 +1012,7 @@ document.getElementById("accountButton");
 
 const logoutButton=
 document.getElementById("logoutButton");
-document.getElementById("myListingsButton").onclick = async function() {
 
-  if (!auth.currentUser) {
-    alert("Please login first.");
-    return;
-  }
-
-  try {
-    const snapshot = await getDocs(collection(db, "Products"));
-
-    const myProducts = [];
-
-    snapshot.forEach((doc) => {
-      const product = {
-        id: doc.id,
-        ...doc.data()
-      };
-
-      if (product.sellerId === auth.currentUser.uid) {
-        myProducts.push(product);
-      }
-    });
-
-    displayProducts(myProducts);
-
-    document.getElementById("home").style.display = "none";
-    document.getElementById("homeContent").style.display = "none";
-
-    alert("You have " + myProducts.length + " listing(s).");
-
-  } catch (error) {
-    console.error(error);
-    alert("Could not load your listings.");
-  }
-
-};
 if(user){
 
 accountButton.textContent=
@@ -1113,35 +1052,91 @@ alert("Could not log out.");
 };
 
 
-/* FRIENDLY FIREBASE ERRORS */
+/* FRIENDLY ERRORS */
 
 function friendlyError(code){
 
-if(code==="auth/email-already-in-use"){
+if(code==="auth/email-already-in-use")
 return "That email already has an account.";
-}
 
-if(code==="auth/invalid-email"){
+if(code==="auth/invalid-email")
 return "Please enter a valid email.";
-}
 
-if(code==="auth/weak-password"){
+if(code==="auth/weak-password")
 return "Password is too weak.";
-}
 
 if(
 code==="auth/invalid-credential" ||
 code==="auth/wrong-password" ||
 code==="auth/user-not-found"
-){
-
+)
 return "Email or password is incorrect.";
-
-}
 
 return "Something went wrong. Please try again.";
 
 }
+
+
+/* MY LISTINGS */
+
+document.getElementById("myListingsButton")
+.onclick=async function(){
+
+if(!auth.currentUser){
+
+alert("Please login first.");
+
+accountBackground.style.display="flex";
+
+return;
+
+}
+
+try{
+
+const snapshot=
+await getDocs(collection(db,"Products"));
+
+const myProducts=[];
+
+snapshot.forEach(function(doc){
+
+const product={
+
+id:doc.id,
+...doc.data()
+
+};
+
+if(product.sellerId===auth.currentUser.uid){
+
+myProducts.push(product);
+
+}
+
+});
+
+displayProducts(myProducts);
+
+document.getElementById("home").style.display="none";
+
+document.getElementById("homeContent").style.display="none";
+
+document.getElementById("productsSection").style.display="block";
+
+alert(
+"You have "+myProducts.length+" listing(s)."
+);
+
+}catch(error){
+
+console.error(error);
+
+alert("Could not load your listings.");
+
+}
+
+};
 
 
 /* SELL FORM */
@@ -1150,7 +1145,9 @@ window.openForm=function(){
 
 if(!auth.currentUser){
 
-alert("Please create an account or login before posting an item.");
+alert(
+"Please create an account or login before posting an item."
+);
 
 accountBackground.style.display="flex";
 
@@ -1172,6 +1169,8 @@ document.getElementById("formBackground")
 };
 
 
+/* POST PRODUCT */
+
 document.getElementById("itemForm")
 .addEventListener("submit",async function(event){
 
@@ -1187,10 +1186,9 @@ return;
 
 const newProduct={
 
-const newProduct = {
-  id: Date.now(),
-  sellerId: auth.currentUser.uid,
-  name:
+id:Date.now(),
+
+sellerId:auth.currentUser.uid,
 
 name:
 document.getElementById("itemName").value,
@@ -1215,24 +1213,15 @@ document.getElementById("itemDescription").value
 
 };
 
-try {
 
-  await addDoc(collection(db, "Products"), newProduct);
+try{
 
-  products.unshift(newProduct);
+await addDoc(
+collection(db,"Products"),
+newProduct
+);
 
-  localStorage.setItem(
-    "idrisMarketProducts",
-    JSON.stringify(products)
-  );
-
-} catch (error) {
-
-  console.error(error);
-  alert("❌ Could not save item to Firestore.");
-  return;
-
-  }
+products.unshift(newProduct);
 
 displayProducts(products);
 
@@ -1242,11 +1231,26 @@ closeForm();
 
 alert("✅ Item posted successfully!");
 
+}catch(error){
+
+console.error(error);
+
+alert(
+"❌ Could not save item to Firestore: "+
+error.message
+);
+
+}
+
 });
 
 
+/* START */
+
 displayProducts(products);
+
 loadProductsFromFirestore();
+
 </script>
 
 </body>
