@@ -27,7 +27,7 @@ header{
 }
 
 .logo{
-  font-size:24px;
+  font-size:23px;
   font-weight:bold;
 }
 
@@ -72,10 +72,6 @@ button{
   font-size:34px;
 }
 
-.hero p{
-  font-size:18px;
-}
-
 .search{
   max-width:600px;
   margin:25px auto 0;
@@ -100,10 +96,6 @@ button{
 
 .section{
   padding:25px 5%;
-}
-
-.section h2{
-  font-size:28px;
 }
 
 .categories{
@@ -171,8 +163,6 @@ button{
   margin-top:7px;
 }
 
-/* DETAILS */
-
 .details{
   display:none;
   padding:25px 5%;
@@ -226,8 +216,6 @@ button{
   font-size:16px;
   font-weight:bold;
 }
-
-/* MODALS */
 
 .account-background,
 .form-background{
@@ -311,6 +299,11 @@ button{
   display:none;
 }
 
+.publish:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
 footer{
   background:#222;
   color:white;
@@ -320,7 +313,6 @@ footer{
 }
 
 @media(max-width:600px){
-
   .products{
     grid-template-columns:repeat(2,1fr);
   }
@@ -331,10 +323,6 @@ footer{
 
   .hero h1{
     font-size:27px;
-  }
-
-  .logo{
-    font-size:21px;
   }
 }
 </style>
@@ -433,8 +421,6 @@ Furniture
 
 </section>
 
-
-<!-- PRODUCT DETAILS -->
 
 <section class="details" id="details">
 
@@ -559,9 +545,7 @@ placeholder="Seller phone number"
 required
 >
 
-<label>
-Choose product image
-</label>
+<label>Choose product image</label>
 
 <input
 id="itemImage"
@@ -581,7 +565,11 @@ placeholder="Describe your item"
 required
 ></textarea>
 
-<button class="publish" id="publishButton" type="submit">
+<button
+class="publish"
+id="publishButton"
+type="submit"
+>
 📤 Publish Item
 </button>
 
@@ -607,73 +595,73 @@ required
 
 <script type="module">
 
-/* ================================
+/* =========================
    FIREBASE
-================================ */
+========================= */
 
 import {
-  initializeApp
+initializeApp
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+signOut,
+onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs
+getFirestore,
+collection,
+addDoc,
+getDocs
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
 const firebaseConfig = {
 
-  apiKey:"AIzaSyAi-KrdaIz2MYy6lfgKqyqfkaejrbhmXQE",
+apiKey:"AIzaSyAi-KrdaIz2MYy6lfgKqyqfkaejrbhmXQE",
 
-  authDomain:"idris-market-2026.firebaseapp.com",
+authDomain:"idris-market-2026.firebaseapp.com",
 
-  projectId:"idris-market-2026",
+projectId:"idris-market-2026",
 
-  storageBucket:"idris-market-2026.firebasestorage.app",
+storageBucket:"idris-market-2026.firebasestorage.app",
 
-  messagingSenderId:"132967044976",
+messagingSenderId:"132967044976",
 
-  appId:"1:132967044976:web:6620888d027f58e96be1b",
+appId:"1:132967044976:web:6620888d027f58e96be1b",
 
-  measurementId:"G-DXDLJLH747"
+measurementId:"G-DXDLJLH747"
 
 };
 
 
-const app = initializeApp(firebaseConfig);
+const app=initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+const auth=getAuth(app);
 
-const db = getFirestore(app);
+const db=getFirestore(app);
 
 
-/* ================================
+/* =========================
    CLOUDINARY
-================================ */
+========================= */
 
-const CLOUDINARY_CLOUD_NAME = "kgdwsbo1";
+const CLOUDINARY_CLOUD_NAME="kgdwsbo1";
 
-const CLOUDINARY_UPLOAD_PRESET = "Idris market";
+const CLOUDINARY_UPLOAD_PRESET="Idris market";
 
-const CLOUDINARY_UPLOAD_URL =
+const CLOUDINARY_UPLOAD_URL=
 `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
 
 
-/* ================================
+/* =========================
    SAMPLE PRODUCTS
-================================ */
+========================= */
 
-const sampleProducts = [
+const sampleProducts=[
 
 {
 id:"sample1",
@@ -722,21 +710,20 @@ description:"Brand new sneakers."
 ];
 
 
-let products = [...sampleProducts];
+let products=[...sampleProducts];
 
 
-/* ================================
+/* =========================
    DISPLAY PRODUCTS
-================================ */
+========================= */
 
 function displayProducts(list){
 
-const container =
-document.getElementById("products");
+const container=document.getElementById("products");
 
 container.innerHTML="";
 
-if(list.length===0){
+if(!list.length){
 
 container.innerHTML=`
 <p style="grid-column:1/-1;text-align:center;">
@@ -758,21 +745,21 @@ card.innerHTML=`
 
 <img
 src="${product.image || "https://via.placeholder.com/500x400?text=No+Image"}"
-alt="${product.name}"
+alt="${product.name || "Product"}"
 >
 
 <div class="product-info">
 
 <div class="product-name">
-${product.name}
+${product.name || "Unnamed item"}
 </div>
 
 <div class="price">
-₦${Number(product.price).toLocaleString()}
+₦${Number(product.price || 0).toLocaleString()}
 </div>
 
 <div class="location">
-📍 ${product.location}
+📍 ${product.location || "Location not provided"}
 </div>
 
 </div>
@@ -791,15 +778,15 @@ container.appendChild(card);
 }
 
 
-/* ================================
-   LOAD FIRESTORE PRODUCTS
-================================ */
+/* =========================
+   LOAD FIRESTORE
+========================= */
 
 async function loadProductsFromFirestore(){
 
 try{
 
-const snapshot =
+const snapshot=
 await getDocs(collection(db,"Products"));
 
 const firestoreProducts=[];
@@ -816,7 +803,6 @@ id:doc.id,
 
 });
 
-
 products=[
 ...firestoreProducts,
 ...sampleProducts
@@ -825,14 +811,14 @@ products=[
 displayProducts(products);
 
 console.log(
-"Firestore products loaded:",
+"Loaded Firestore products:",
 firestoreProducts.length
 );
 
 }catch(error){
 
 console.error(
-"Firestore loading error:",
+"Firestore error:",
 error
 );
 
@@ -843,9 +829,9 @@ displayProducts(products);
 }
 
 
-/* ================================
+/* =========================
    PRODUCT DETAILS
-================================ */
+========================= */
 
 function openProduct(product){
 
@@ -857,28 +843,22 @@ document.getElementById("productsSection").style.display="none";
 
 document.getElementById("details").style.display="block";
 
-
-document.getElementById("detailImage").src =
+document.getElementById("detailImage").src=
 product.image ||
 "https://via.placeholder.com/700x500?text=No+Image";
 
-
-document.getElementById("detailName").textContent =
+document.getElementById("detailName").textContent=
 product.name;
 
+document.getElementById("detailPrice").textContent=
+"₦"+Number(product.price || 0).toLocaleString();
 
-document.getElementById("detailPrice").textContent =
-"₦"+Number(product.price).toLocaleString();
+document.getElementById("detailLocation").textContent=
+"📍 "+(product.location || "");
 
-
-document.getElementById("detailLocation").textContent =
-"📍 "+product.location;
-
-
-document.getElementById("detailDescription").textContent =
+document.getElementById("detailDescription").textContent=
 product.description ||
 "No description available.";
-
 
 document.getElementById("contactButton").onclick=function(){
 
@@ -899,12 +879,11 @@ window.scrollTo(0,0);
 }
 
 
-/* ================================
-   BACK BUTTON
-================================ */
+/* =========================
+   BACK
+========================= */
 
-document.getElementById("backButton")
-.onclick=function(){
+document.getElementById("backButton").onclick=function(){
 
 document.getElementById("details").style.display="none";
 
@@ -917,37 +896,35 @@ document.getElementById("productsSection").style.display="block";
 };
 
 
-/* ================================
+/* =========================
    SEARCH
-================================ */
+========================= */
 
 function searchProducts(){
 
-const text =
+const text=
 document.getElementById("searchInput")
 .value
 .toLowerCase()
 .trim();
 
-
-const results =
-products.filter(function(product){
+const results=products.filter(function(product){
 
 return(
 
-String(product.name || "")
+String(product.name||"")
 .toLowerCase()
 .includes(text)
 
 ||
 
-String(product.category || "")
+String(product.category||"")
 .toLowerCase()
 .includes(text)
 
 ||
 
-String(product.location || "")
+String(product.location||"")
 .toLowerCase()
 .includes(text)
 
@@ -955,39 +932,27 @@ String(product.location || "")
 
 });
 
-
 displayProducts(results);
 
 }
 
-
 document.getElementById("searchButton")
-.addEventListener(
-"click",
-searchProducts
-);
-
+.addEventListener("click",searchProducts);
 
 document.getElementById("searchInput")
-.addEventListener(
-"input",
-searchProducts
-);
+.addEventListener("input",searchProducts);
 
 
-/* ================================
+/* =========================
    CATEGORIES
-================================ */
+========================= */
 
 document.querySelectorAll(".category")
 .forEach(function(category){
 
-category.addEventListener(
-"click",
-function(){
+category.addEventListener("click",function(){
 
-const chosen =
-this.dataset.category;
+const chosen=this.dataset.category;
 
 displayProducts(
 products.filter(function(product){
@@ -1002,18 +967,14 @@ return product.category===chosen;
 });
 
 
-/* ================================
+/* =========================
    ACCOUNT
-================================ */
+========================= */
 
 let loginMode=false;
 
-
-const accountBackground =
-document.getElementById(
-"accountBackground"
-);
-
+const accountBackground=
+document.getElementById("accountBackground");
 
 document.getElementById("accountButton")
 .onclick=function(){
@@ -1022,74 +983,48 @@ accountBackground.style.display="flex";
 
 };
 
-
 document.getElementById("closeAccount")
 .onclick=function(){
 
 accountBackground.style.display="none";
 
-document.getElementById(
-"accountMessage"
-).textContent="";
+document.getElementById("accountMessage").textContent="";
 
 };
 
 
-/* SWITCH LOGIN / SIGNUP */
+/* SWITCH LOGIN */
 
 document.getElementById("switchMode")
 .onclick=function(){
 
 loginMode=!loginMode;
 
-
 if(loginMode){
 
-document.getElementById(
-"accountTitle"
-).textContent="Login";
+document.getElementById("accountTitle").textContent="Login";
 
-
-document.getElementById(
-"accountSubtitle"
-).textContent=
+document.getElementById("accountSubtitle").textContent=
 "Login to your Idris Market account.";
 
+document.getElementById("accountSubmit").textContent=
+"Login";
 
-document.getElementById(
-"accountSubmit"
-).textContent="Login";
-
-
-document.getElementById(
-"switchMode"
-).textContent=
+document.getElementById("switchMode").textContent=
 "Don't have an account? Sign Up";
-
 
 }else{
 
-document.getElementById(
-"accountTitle"
-).textContent=
+document.getElementById("accountTitle").textContent=
 "Create Account";
 
-
-document.getElementById(
-"accountSubtitle"
-).textContent=
+document.getElementById("accountSubtitle").textContent=
 "Create an account to use Idris Market.";
 
-
-document.getElementById(
-"accountSubmit"
-).textContent=
+document.getElementById("accountSubmit").textContent=
 "Create Account";
 
-
-document.getElementById(
-"switchMode"
-).textContent=
+document.getElementById("switchMode").textContent=
 "Already have an account? Login";
 
 }
@@ -1097,32 +1032,25 @@ document.getElementById(
 };
 
 
-/* ================================
-   SIGNUP / LOGIN
-================================ */
+/* =========================
+   LOGIN / SIGNUP
+========================= */
 
 document.getElementById("accountSubmit")
 .onclick=async function(){
 
-const email =
-document.getElementById("email")
-.value
-.trim();
+const email=
+document.getElementById("email").value.trim();
 
+const password=
+document.getElementById("password").value;
 
-const password =
-document.getElementById("password")
-.value;
-
-
-const message =
+const message=
 document.getElementById("accountMessage");
-
 
 message.textContent="";
 
-
-if(!email || !password){
+if(!email||!password){
 
 message.textContent=
 "Please enter your email and password.";
@@ -1130,7 +1058,6 @@ message.textContent=
 return;
 
 }
-
 
 try{
 
@@ -1158,13 +1085,11 @@ message.textContent=
 
 }
 
-
 setTimeout(function(){
 
 accountBackground.style.display="none";
 
 },1000);
-
 
 }catch(error){
 
@@ -1178,49 +1103,40 @@ message.textContent=
 };
 
 
-/* ================================
+/* =========================
    AUTH STATE
-================================ */
+========================= */
 
-onAuthStateChanged(
-auth,
-function(user){
+onAuthStateChanged(auth,function(user){
 
-const accountButton =
-document.getElementById(
-"accountButton"
-);
+const accountButton=
+document.getElementById("accountButton");
 
-const logoutButton =
-document.getElementById(
-"logoutButton"
-);
-
+const logoutButton=
+document.getElementById("logoutButton");
 
 if(user){
 
-accountButton.textContent =
+accountButton.textContent=
 "👤 "+user.email;
 
-logoutButton.style.display =
-"block";
+logoutButton.style.display="block";
 
 }else{
 
-accountButton.textContent =
+accountButton.textContent=
 "👤 Sign Up / Login";
 
-logoutButton.style.display =
-"none";
+logoutButton.style.display="none";
 
 }
 
 });
 
 
-/* ================================
+/* =========================
    LOGOUT
-================================ */
+========================= */
 
 document.getElementById("logoutButton")
 .onclick=async function(){
@@ -1240,54 +1156,39 @@ alert("Could not log out.");
 };
 
 
-/* ================================
-   FRIENDLY ERRORS
-================================ */
+/* =========================
+   FIREBASE ERRORS
+========================= */
 
 function friendlyError(code){
 
-if(code==="auth/email-already-in-use"){
-
+if(code==="auth/email-already-in-use")
 return "That email already has an account.";
 
-}
-
-if(code==="auth/invalid-email"){
-
+if(code==="auth/invalid-email")
 return "Please enter a valid email.";
 
-}
-
-if(code==="auth/weak-password"){
-
+if(code==="auth/weak-password")
 return "Password is too weak.";
 
-}
-
 if(
-code==="auth/invalid-credential" ||
-code==="auth/wrong-password" ||
+code==="auth/invalid-credential"||
+code==="auth/wrong-password"||
 code==="auth/user-not-found"
-){
-
+)
 return "Email or password is incorrect.";
-
-}
 
 return "Something went wrong. Please try again.";
 
 }
 
 
-/* ================================
+/* =========================
    SELL FORM
-================================ */
+========================= */
 
-const formBackground =
-document.getElementById(
-"formBackground"
-);
-
+const formBackground=
+document.getElementById("formBackground");
 
 document.getElementById("sellButton")
 .onclick=function(){
@@ -1308,7 +1209,6 @@ formBackground.style.display="flex";
 
 };
 
-
 document.getElementById("closeForm")
 .onclick=function(){
 
@@ -1317,22 +1217,17 @@ formBackground.style.display="none";
 };
 
 
-/* ================================
+/* =========================
    IMAGE PREVIEW
-================================ */
+========================= */
 
 document.getElementById("itemImage")
-.addEventListener(
-"change",
-function(){
+.addEventListener("change",function(){
 
 const file=this.files[0];
 
-const preview =
-document.getElementById(
-"imagePreview"
-);
-
+const preview=
+document.getElementById("imagePreview");
 
 if(!file){
 
@@ -1344,7 +1239,6 @@ return;
 
 }
 
-
 if(!file.type.startsWith("image/")){
 
 alert("Please choose an image file.");
@@ -1355,8 +1249,7 @@ return;
 
 }
 
-
-preview.src =
+preview.src=
 URL.createObjectURL(file);
 
 preview.style.display="block";
@@ -1364,26 +1257,22 @@ preview.style.display="block";
 });
 
 
-/* ================================
-   CLOUDINARY IMAGE UPLOAD
-================================ */
+/* =========================
+   CLOUDINARY UPLOAD
+========================= */
 
 async function uploadImageToCloudinary(file){
 
-const formData = new FormData();
+const formData=new FormData();
 
-formData.append(
-"file",
-file
-);
+formData.append("file",file);
 
 formData.append(
 "upload_preset",
 CLOUDINARY_UPLOAD_PRESET
 );
 
-
-const response =
+const response=
 await fetch(
 CLOUDINARY_UPLOAD_URL,
 {
@@ -1392,25 +1281,18 @@ body:formData
 }
 );
 
+const data=await response.json();
 
-const data =
-await response.json();
-
+console.log("Cloudinary response:",data);
 
 if(!response.ok){
 
-console.error(
-"Cloudinary response:",
-data
-);
-
 throw new Error(
 data.error?.message ||
-"Cloudinary image upload failed."
+"Cloudinary upload failed."
 );
 
 }
-
 
 if(!data.secure_url){
 
@@ -1420,26 +1302,63 @@ throw new Error(
 
 }
 
-
 return data.secure_url;
 
 }
 
 
-/* ================================
+/* =========================
    POST ITEM
-================================ */
+========================= */
 
 document.getElementById("itemForm")
-.addEventListener(
-"submit",
-async function(event){
+.addEventListener("submit",async function(event){
 
 event.preventDefault();
-
 
 if(!auth.currentUser){
 
 alert("Please login first.");
 
-ret
+return;
+
+}
+
+const publishButton=
+document.getElementById("publishButton");
+
+const saveMessage=
+document.getElementById("saveMessage");
+
+const file=
+document.getElementById("itemImage").files[0];
+
+publishButton.disabled=true;
+
+publishButton.textContent="⏳ Saving...";
+
+saveMessage.textContent="";
+
+try{
+
+/* UPLOAD IMAGE IF SELECTED */
+
+let imageUrl="";
+
+if(file){
+
+saveMessage.textContent=
+"📷 Uploading image...";
+
+imageUrl=
+await uploadImageToCloudinary(file);
+
+}
+
+
+/* CREATE PRODUCT */
+
+const newProduct={
+
+name:
+document.getEle
