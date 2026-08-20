@@ -27,7 +27,7 @@ header{
 }
 
 .logo{
-  font-size:22px;
+  font-size:24px;
   font-weight:bold;
 }
 
@@ -44,19 +44,19 @@ button{
 
 .account-btn,
 .sell,
-.listings-btn{
+.my-listings{
   background:white;
   color:#087f5b;
-  padding:10px 14px;
-  border-radius:7px;
+  padding:11px 14px;
+  border-radius:8px;
   font-weight:bold;
 }
 
 .logout-btn{
   background:#222;
   color:white;
-  padding:10px 14px;
-  border-radius:7px;
+  padding:11px 14px;
+  border-radius:8px;
   display:none;
 }
 
@@ -64,12 +64,16 @@ button{
   background:#087f5b;
   color:white;
   text-align:center;
-  padding:35px 15px;
+  padding:40px 15px;
 }
 
 .hero h1{
   margin:0 0 10px;
-  font-size:32px;
+  font-size:34px;
+}
+
+.hero p{
+  font-size:18px;
 }
 
 .search{
@@ -80,44 +84,49 @@ button{
 
 .search input{
   flex:1;
-  padding:14px;
+  padding:15px;
   border:0;
   outline:0;
   font-size:16px;
-  border-radius:7px 0 0 7px;
+  border-radius:8px 0 0 8px;
 }
 
 .search button{
-  padding:0 18px;
+  padding:0 20px;
   background:#222;
   color:white;
-  border-radius:0 7px 7px 0;
+  border-radius:0 8px 8px 0;
 }
 
 .section{
   padding:25px 5%;
 }
 
+.section h2{
+  font-size:28px;
+}
+
 .categories{
   display:flex;
-  gap:10px;
+  gap:12px;
   overflow-x:auto;
+  padding-bottom:8px;
 }
 
 .category{
   background:white;
-  min-width:110px;
-  padding:15px;
-  border-radius:8px;
+  min-width:120px;
+  padding:18px 12px;
+  border-radius:10px;
   text-align:center;
-  box-shadow:0 2px 5px #ddd;
+  box-shadow:0 2px 7px #ddd;
   cursor:pointer;
 }
 
 .category-icon{
   display:block;
-  font-size:25px;
-  margin-bottom:5px;
+  font-size:30px;
+  margin-bottom:7px;
 }
 
 .products{
@@ -136,7 +145,7 @@ button{
 
 .product img{
   width:100%;
-  height:170px;
+  height:180px;
   object-fit:cover;
   display:block;
 }
@@ -160,105 +169,6 @@ button{
   color:#777;
   font-size:14px;
   margin-top:7px;
-}
-
-.empty{
-  background:white;
-  padding:25px;
-  border-radius:10px;
-  text-align:center;
-  color:#777;
-}
-
-/* ACCOUNT */
-
-.account-background,
-.form-background{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  align-items:center;
-  justify-content:center;
-  padding:15px;
-  z-index:100;
-}
-
-.account-box,
-.form{
-  background:white;
-  width:100%;
-  max-width:450px;
-  padding:25px;
-  border-radius:12px;
-  max-height:90vh;
-  overflow-y:auto;
-}
-
-.account-box h2,
-.form h2{
-  margin-top:0;
-}
-
-.account-box input,
-.form input,
-.form select,
-.form textarea{
-  width:100%;
-  padding:13px;
-  margin:7px 0;
-  border:1px solid #ccc;
-  border-radius:7px;
-}
-
-.form textarea{
-  height:90px;
-  resize:vertical;
-}
-
-.account-submit,
-.publish{
-  width:100%;
-  padding:13px;
-  margin-top:8px;
-  background:#087f5b;
-  color:white;
-  border-radius:7px;
-  font-weight:bold;
-}
-
-.switch{
-  margin-top:15px;
-  text-align:center;
-  color:#087f5b;
-  cursor:pointer;
-}
-
-.close{
-  float:right;
-  background:none;
-  font-size:25px;
-}
-
-.account-message{
-  margin-top:12px;
-  text-align:center;
-  font-size:14px;
-}
-
-.file-help{
-  font-size:13px;
-  color:#666;
-  margin-top:4px;
-}
-
-.image-preview{
-  width:100%;
-  max-height:220px;
-  object-fit:cover;
-  border-radius:8px;
-  margin-top:8px;
-  display:none;
 }
 
 /* DETAILS */
@@ -317,16 +227,88 @@ button{
   font-weight:bold;
 }
 
-/* STATUS */
+/* MODALS */
 
-.status{
+.account-background,
+.form-background{
   display:none;
-  text-align:center;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  align-items:center;
+  justify-content:center;
   padding:15px;
-  margin:15px 5%;
+  z-index:100;
+}
+
+.account-box,
+.form{
+  background:white;
+  width:100%;
+  max-width:450px;
+  padding:25px;
+  border-radius:12px;
+}
+
+.form{
+  max-height:90vh;
+  overflow-y:auto;
+}
+
+.account-box input,
+.form input,
+.form select,
+.form textarea{
+  width:100%;
+  padding:13px;
+  margin:7px 0;
+  border:1px solid #ccc;
+  border-radius:7px;
+}
+
+.form textarea{
+  height:90px;
+  resize:vertical;
+}
+
+.close{
+  float:right;
+  background:none;
+  font-size:26px;
+}
+
+.account-submit,
+.publish{
+  width:100%;
+  padding:14px;
+  margin-top:8px;
+  background:#087f5b;
+  color:white;
+  border-radius:7px;
+  font-weight:bold;
+}
+
+.switch{
+  margin-top:15px;
+  text-align:center;
+  color:#087f5b;
+  cursor:pointer;
+}
+
+.account-message,
+.save-message{
+  margin-top:12px;
+  text-align:center;
+  font-size:14px;
+}
+
+.image-preview{
+  width:100%;
+  max-height:220px;
+  object-fit:cover;
   border-radius:8px;
-  background:#fff3cd;
-  color:#664d03;
+  margin-top:8px;
+  display:none;
 }
 
 footer{
@@ -338,6 +320,7 @@ footer{
 }
 
 @media(max-width:600px){
+
   .products{
     grid-template-columns:repeat(2,1fr);
   }
@@ -351,7 +334,7 @@ footer{
   }
 
   .logo{
-    width:100%;
+    font-size:21px;
   }
 }
 </style>
@@ -369,12 +352,12 @@ footer{
 👤 Sign Up / Login
 </button>
 
-<button class="logout-btn" id="logoutButton">
-Logout
+<button class="my-listings" id="myListingsButton">
+📦 My Listings
 </button>
 
-<button class="listings-btn" id="myListingsButton">
-📦 My Listings
+<button class="logout-btn" id="logoutButton">
+Logout
 </button>
 
 <button class="sell" id="sellButton">
@@ -382,11 +365,7 @@ Logout
 </button>
 
 </div>
-
 </header>
-
-
-<div id="status" class="status"></div>
 
 
 <section class="hero" id="home">
@@ -448,7 +427,7 @@ Furniture
 
 <section class="section" id="productsSection">
 
-<h2 id="productsTitle">Latest Items</h2>
+<h2>Latest Items</h2>
 
 <div id="products" class="products"></div>
 
@@ -465,7 +444,7 @@ Furniture
 
 <div class="details-card">
 
-<img id="detailImage" src="" alt="Product image">
+<img id="detailImage" src="" alt="Product">
 
 <div class="details-info">
 
@@ -537,7 +516,7 @@ Already have an account? Login
 
 <button class="close" id="closeForm">×</button>
 
-<h2>Post an Item</h2>
+<h2>📦 Post an Item</h2>
 
 <form id="itemForm">
 
@@ -551,7 +530,6 @@ required
 <input
 id="itemPrice"
 type="number"
-min="0"
 placeholder="Price in ₦"
 required
 >
@@ -582,7 +560,7 @@ required
 >
 
 <label>
-<strong>Product photo</strong>
+Choose product image
 </label>
 
 <input
@@ -591,11 +569,11 @@ type="file"
 accept="image/*"
 >
 
-<div class="file-help">
-Choose a photo from your phone. The photo will be uploaded automatically.
-</div>
-
-<img id="imagePreview" class="image-preview" alt="Preview">
+<img
+id="imagePreview"
+class="image-preview"
+alt="Image preview"
+>
 
 <textarea
 id="itemDescription"
@@ -606,6 +584,8 @@ required
 <button class="publish" id="publishButton" type="submit">
 📤 Publish Item
 </button>
+
+<div class="save-message" id="saveMessage"></div>
 
 </form>
 
@@ -647,9 +627,7 @@ import {
   getFirestore,
   collection,
   addDoc,
-  getDocs,
-  query,
-  where
+  getDocs
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
@@ -665,7 +643,7 @@ const firebaseConfig = {
 
   messagingSenderId:"132967044976",
 
-  appId:"1:132967044976:web:6620888d027f58e96be1b5",
+  appId:"1:132967044976:web:6620888d027f58e96be1b",
 
   measurementId:"G-DXDLJLH747"
 
@@ -686,6 +664,9 @@ const db = getFirestore(app);
 const CLOUDINARY_CLOUD_NAME = "kgdwsbo1";
 
 const CLOUDINARY_UPLOAD_PRESET = "Idris market";
+
+const CLOUDINARY_UPLOAD_URL =
+`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
 
 
 /* ================================
@@ -745,38 +726,67 @@ let products = [...sampleProducts];
 
 
 /* ================================
-   ELEMENTS
+   DISPLAY PRODUCTS
 ================================ */
 
-const productsContainer =
+function displayProducts(list){
+
+const container =
 document.getElementById("products");
 
-const statusBox =
-document.getElementById("status");
+container.innerHTML="";
 
-const accountBackground =
-document.getElementById("accountBackground");
+if(list.length===0){
 
-const formBackground =
-document.getElementById("formBackground");
+container.innerHTML=`
+<p style="grid-column:1/-1;text-align:center;">
+No products found.
+</p>
+`;
 
-
-/* ================================
-   STATUS
-================================ */
-
-function showStatus(message){
-
-statusBox.textContent = message;
-
-statusBox.style.display = "block";
+return;
 
 }
 
+list.forEach(function(product){
 
-function hideStatus(){
+const card=document.createElement("div");
 
-statusBox.style.display = "none";
+card.className="product";
+
+card.innerHTML=`
+
+<img
+src="${product.image || "https://via.placeholder.com/500x400?text=No+Image"}"
+alt="${product.name}"
+>
+
+<div class="product-info">
+
+<div class="product-name">
+${product.name}
+</div>
+
+<div class="price">
+₦${Number(product.price).toLocaleString()}
+</div>
+
+<div class="location">
+📍 ${product.location}
+</div>
+
+</div>
+`;
+
+card.onclick=function(){
+
+openProduct(product);
+
+};
+
+container.appendChild(card);
+
+});
 
 }
 
@@ -792,7 +802,7 @@ try{
 const snapshot =
 await getDocs(collection(db,"Products"));
 
-const firestoreProducts = [];
+const firestoreProducts=[];
 
 snapshot.forEach(function(doc){
 
@@ -806,96 +816,29 @@ id:doc.id,
 
 });
 
-products = [
+
+products=[
 ...firestoreProducts,
 ...sampleProducts
 ];
 
 displayProducts(products);
 
-}catch(error){
-
-console.error("Firestore error:",error);
-
-showStatus(
-"Could not load products from Firestore."
+console.log(
+"Firestore products loaded:",
+firestoreProducts.length
 );
 
-}
+}catch(error){
+
+console.error(
+"Firestore loading error:",
+error
+);
+
+displayProducts(products);
 
 }
-
-
-/* ================================
-   DISPLAY PRODUCTS
-================================ */
-
-function displayProducts(list){
-
-productsContainer.innerHTML = "";
-
-if(list.length === 0){
-
-productsContainer.innerHTML = `
-<div class="empty">
-No products found.
-</div>
-`;
-
-return;
-
-}
-
-
-list.forEach(function(product){
-
-const card =
-document.createElement("div");
-
-card.className = "product";
-
-const image =
-product.image ||
-"https://via.placeholder.com/500x400?text=No+Image";
-
-
-card.innerHTML = `
-
-<img
-src="${image}"
-alt="${product.name || "Product"}"
-onerror="this.src='https://via.placeholder.com/500x400?text=No+Image'"
->
-
-<div class="product-info">
-
-<div class="product-name">
-${product.name || "Unnamed item"}
-</div>
-
-<div class="price">
-₦${Number(product.price || 0).toLocaleString()}
-</div>
-
-<div class="location">
-📍 ${product.location || "Location not provided"}
-</div>
-
-</div>
-
-`;
-
-
-card.onclick = function(){
-
-openProduct(product);
-
-};
-
-
-productsContainer.appendChild(card);
-
-});
 
 }
 
@@ -906,17 +849,13 @@ productsContainer.appendChild(card);
 
 function openProduct(product){
 
-document.getElementById("home").style.display =
-"none";
+document.getElementById("home").style.display="none";
 
-document.getElementById("homeContent").style.display =
-"none";
+document.getElementById("homeContent").style.display="none";
 
-document.getElementById("productsSection").style.display =
-"none";
+document.getElementById("productsSection").style.display="none";
 
-document.getElementById("details").style.display =
-"block";
+document.getElementById("details").style.display="block";
 
 
 document.getElementById("detailImage").src =
@@ -925,17 +864,15 @@ product.image ||
 
 
 document.getElementById("detailName").textContent =
-product.name || "Unnamed item";
+product.name;
 
 
 document.getElementById("detailPrice").textContent =
-"₦" +
-Number(product.price || 0).toLocaleString();
+"₦"+Number(product.price).toLocaleString();
 
 
 document.getElementById("detailLocation").textContent =
-"📍 " +
-(product.location || "Location not provided");
+"📍 "+product.location;
 
 
 document.getElementById("detailDescription").textContent =
@@ -943,24 +880,19 @@ product.description ||
 "No description available.";
 
 
-document.getElementById("contactButton").onclick =
-function(){
+document.getElementById("contactButton").onclick=function(){
 
 if(product.phone){
 
-window.location.href =
-"tel:" + product.phone;
+window.location.href="tel:"+product.phone;
 
 }else{
 
-alert(
-"Seller phone number is not available."
-);
+alert("Seller phone number is not available.");
 
 }
 
 };
-
 
 window.scrollTo(0,0);
 
@@ -972,19 +904,15 @@ window.scrollTo(0,0);
 ================================ */
 
 document.getElementById("backButton")
-.onclick = function(){
+.onclick=function(){
 
-document.getElementById("details").style.display =
-"none";
+document.getElementById("details").style.display="none";
 
-document.getElementById("home").style.display =
-"block";
+document.getElementById("home").style.display="block";
 
-document.getElementById("homeContent").style.display =
-"block";
+document.getElementById("homeContent").style.display="block";
 
-document.getElementById("productsSection").style.display =
-"block";
+document.getElementById("productsSection").style.display="block";
 
 };
 
@@ -1005,7 +933,7 @@ document.getElementById("searchInput")
 const results =
 products.filter(function(product){
 
-return (
+return(
 
 String(product.name || "")
 .toLowerCase()
@@ -1061,27 +989,12 @@ function(){
 const chosen =
 this.dataset.category;
 
-
-const results =
+displayProducts(
 products.filter(function(product){
 
-return product.category === chosen;
+return product.category===chosen;
 
-});
-
-
-displayProducts(results);
-
-
-document.getElementById("productsTitle")
-.textContent =
-chosen + " Items";
-
-
-window.scrollTo(
-0,
-document.getElementById("productsSection")
-.offsetTop
+})
 );
 
 });
@@ -1090,77 +1003,93 @@ document.getElementById("productsSection")
 
 
 /* ================================
-   ACCOUNT WINDOW
+   ACCOUNT
 ================================ */
 
-let loginMode = false;
+let loginMode=false;
+
+
+const accountBackground =
+document.getElementById(
+"accountBackground"
+);
 
 
 document.getElementById("accountButton")
-.onclick = function(){
+.onclick=function(){
 
-accountBackground.style.display =
-"flex";
+accountBackground.style.display="flex";
 
 };
 
 
 document.getElementById("closeAccount")
-.onclick = function(){
+.onclick=function(){
 
-accountBackground.style.display =
-"none";
+accountBackground.style.display="none";
 
-document.getElementById("accountMessage")
-.textContent = "";
+document.getElementById(
+"accountMessage"
+).textContent="";
 
 };
 
 
-/* ================================
-   LOGIN / SIGNUP SWITCH
-================================ */
+/* SWITCH LOGIN / SIGNUP */
 
 document.getElementById("switchMode")
-.onclick = function(){
+.onclick=function(){
 
-loginMode = !loginMode;
+loginMode=!loginMode;
 
 
 if(loginMode){
 
-document.getElementById("accountTitle")
-.textContent =
-"Login";
+document.getElementById(
+"accountTitle"
+).textContent="Login";
 
-document.getElementById("accountSubtitle")
-.textContent =
+
+document.getElementById(
+"accountSubtitle"
+).textContent=
 "Login to your Idris Market account.";
 
-document.getElementById("accountSubmit")
-.textContent =
-"Login";
 
-document.getElementById("switchMode")
-.textContent =
+document.getElementById(
+"accountSubmit"
+).textContent="Login";
+
+
+document.getElementById(
+"switchMode"
+).textContent=
 "Don't have an account? Sign Up";
+
 
 }else{
 
-document.getElementById("accountTitle")
-.textContent =
+document.getElementById(
+"accountTitle"
+).textContent=
 "Create Account";
 
-document.getElementById("accountSubtitle")
-.textContent =
+
+document.getElementById(
+"accountSubtitle"
+).textContent=
 "Create an account to use Idris Market.";
 
-document.getElementById("accountSubmit")
-.textContent =
+
+document.getElementById(
+"accountSubmit"
+).textContent=
 "Create Account";
 
-document.getElementById("switchMode")
-.textContent =
+
+document.getElementById(
+"switchMode"
+).textContent=
 "Already have an account? Login";
 
 }
@@ -1173,7 +1102,7 @@ document.getElementById("switchMode")
 ================================ */
 
 document.getElementById("accountSubmit")
-.onclick = async function(){
+.onclick=async function(){
 
 const email =
 document.getElementById("email")
@@ -1190,12 +1119,12 @@ const message =
 document.getElementById("accountMessage");
 
 
-message.textContent = "";
+message.textContent="";
 
 
 if(!email || !password){
 
-message.textContent =
+message.textContent=
 "Please enter your email and password.";
 
 return;
@@ -1213,7 +1142,7 @@ email,
 password
 );
 
-message.textContent =
+message.textContent=
 "✅ Login successful!";
 
 }else{
@@ -1224,7 +1153,7 @@ email,
 password
 );
 
-message.textContent =
+message.textContent=
 "✅ Account created successfully!";
 
 }
@@ -1232,8 +1161,7 @@ message.textContent =
 
 setTimeout(function(){
 
-accountBackground.style.display =
-"none";
+accountBackground.style.display="none";
 
 },1000);
 
@@ -1242,9 +1170,8 @@ accountBackground.style.display =
 
 console.error(error);
 
-message.textContent =
-"❌ " +
-friendlyError(error.code);
+message.textContent=
+"❌ "+friendlyError(error.code);
 
 }
 
@@ -1252,7 +1179,7 @@ friendlyError(error.code);
 
 
 /* ================================
-   AUTH STATUS
+   AUTH STATE
 ================================ */
 
 onAuthStateChanged(
@@ -1260,16 +1187,20 @@ auth,
 function(user){
 
 const accountButton =
-document.getElementById("accountButton");
+document.getElementById(
+"accountButton"
+);
 
 const logoutButton =
-document.getElementById("logoutButton");
+document.getElementById(
+"logoutButton"
+);
 
 
 if(user){
 
 accountButton.textContent =
-"👤 " + user.email;
+"👤 "+user.email;
 
 logoutButton.style.display =
 "block";
@@ -1284,8 +1215,7 @@ logoutButton.style.display =
 
 }
 
-}
-);
+});
 
 
 /* ================================
@@ -1293,7 +1223,7 @@ logoutButton.style.display =
 ================================ */
 
 document.getElementById("logoutButton")
-.onclick = async function(){
+.onclick=async function(){
 
 try{
 
@@ -1316,22 +1246,28 @@ alert("Could not log out.");
 
 function friendlyError(code){
 
-if(code === "auth/email-already-in-use"){
+if(code==="auth/email-already-in-use"){
+
 return "That email already has an account.";
+
 }
 
-if(code === "auth/invalid-email"){
+if(code==="auth/invalid-email"){
+
 return "Please enter a valid email.";
+
 }
 
-if(code === "auth/weak-password"){
+if(code==="auth/weak-password"){
+
 return "Password is too weak.";
+
 }
 
 if(
-code === "auth/invalid-credential" ||
-code === "auth/wrong-password" ||
-code === "auth/user-not-found"
+code==="auth/invalid-credential" ||
+code==="auth/wrong-password" ||
+code==="auth/user-not-found"
 ){
 
 return "Email or password is incorrect.";
@@ -1344,11 +1280,17 @@ return "Something went wrong. Please try again.";
 
 
 /* ================================
-   OPEN SELL FORM
+   SELL FORM
 ================================ */
 
+const formBackground =
+document.getElementById(
+"formBackground"
+);
+
+
 document.getElementById("sellButton")
-.onclick = function(){
+.onclick=function(){
 
 if(!auth.currentUser){
 
@@ -1356,25 +1298,21 @@ alert(
 "Please create an account or login before posting an item."
 );
 
-accountBackground.style.display =
-"flex";
+accountBackground.style.display="flex";
 
 return;
 
 }
 
-
-formBackground.style.display =
-"flex";
+formBackground.style.display="flex";
 
 };
 
 
 document.getElementById("closeForm")
-.onclick = function(){
+.onclick=function(){
 
-formBackground.style.display =
-"none";
+formBackground.style.display="none";
 
 };
 
@@ -1388,7 +1326,120 @@ document.getElementById("itemImage")
 "change",
 function(){
 
-const file = this.files[0];
+const file=this.files[0];
 
 const preview =
-document.getElementById("imagePrev
+document.getElementById(
+"imagePreview"
+);
+
+
+if(!file){
+
+preview.style.display="none";
+
+preview.src="";
+
+return;
+
+}
+
+
+if(!file.type.startsWith("image/")){
+
+alert("Please choose an image file.");
+
+this.value="";
+
+return;
+
+}
+
+
+preview.src =
+URL.createObjectURL(file);
+
+preview.style.display="block";
+
+});
+
+
+/* ================================
+   CLOUDINARY IMAGE UPLOAD
+================================ */
+
+async function uploadImageToCloudinary(file){
+
+const formData = new FormData();
+
+formData.append(
+"file",
+file
+);
+
+formData.append(
+"upload_preset",
+CLOUDINARY_UPLOAD_PRESET
+);
+
+
+const response =
+await fetch(
+CLOUDINARY_UPLOAD_URL,
+{
+method:"POST",
+body:formData
+}
+);
+
+
+const data =
+await response.json();
+
+
+if(!response.ok){
+
+console.error(
+"Cloudinary response:",
+data
+);
+
+throw new Error(
+data.error?.message ||
+"Cloudinary image upload failed."
+);
+
+}
+
+
+if(!data.secure_url){
+
+throw new Error(
+"Cloudinary did not return an image URL."
+);
+
+}
+
+
+return data.secure_url;
+
+}
+
+
+/* ================================
+   POST ITEM
+================================ */
+
+document.getElementById("itemForm")
+.addEventListener(
+"submit",
+async function(event){
+
+event.preventDefault();
+
+
+if(!auth.currentUser){
+
+alert("Please login first.");
+
+ret
