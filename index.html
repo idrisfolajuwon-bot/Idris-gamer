@@ -7,321 +7,52 @@
 
 <style>
 *{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f5f5f5;
-  color:#222;
-}
-
-header{
-  background:#087f5b;
-  color:white;
-  padding:18px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.logo{
-  font-size:23px;
-  font-weight:bold;
-}
-
-.header-buttons{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-button{
-  border:0;
-  cursor:pointer;
-}
-
-.account-btn,
-.sell,
-.my-listings{
-  background:white;
-  color:#087f5b;
-  padding:11px 14px;
-  border-radius:8px;
-  font-weight:bold;
-}
-
-.logout-btn{
-  background:#222;
-  color:white;
-  padding:11px 14px;
-  border-radius:8px;
-  display:none;
-}
-
-.hero{
-  background:#087f5b;
-  color:white;
-  text-align:center;
-  padding:40px 15px;
-}
-
-.hero h1{
-  margin:0 0 10px;
-  font-size:34px;
-}
-
-.hero p{
-  font-size:18px;
-}
-
-.search{
-  max-width:600px;
-  margin:25px auto 0;
-  display:flex;
-}
-
-.search input{
-  flex:1;
-  padding:15px;
-  border:0;
-  outline:0;
-  font-size:16px;
-  border-radius:8px 0 0 8px;
-}
-
-.search button{
-  padding:0 20px;
-  background:#222;
-  color:white;
-  border-radius:0 8px 8px 0;
-}
-
-.section{
-  padding:25px 5%;
-}
-
-.categories{
-  display:flex;
-  gap:12px;
-  overflow-x:auto;
-  padding-bottom:8px;
-}
-
-.category{
-  background:white;
-  min-width:115px;
-  padding:17px 12px;
-  border-radius:10px;
-  text-align:center;
-  box-shadow:0 2px 7px #ddd;
-  cursor:pointer;
-}
-
-.category-icon{
-  display:block;
-  font-size:30px;
-  margin-bottom:7px;
-}
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:15px;
-}
-
-.product{
-  background:white;
-  border-radius:10px;
-  overflow:hidden;
-  box-shadow:0 2px 7px #ddd;
-  cursor:pointer;
-}
-
-.product img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  display:block;
-}
-
-.product-info{
-  padding:14px;
-}
-
-.product-name{
-  font-weight:bold;
-  margin-bottom:8px;
-}
-
-.price{
-  color:#087f5b;
-  font-size:19px;
-  font-weight:bold;
-}
-
-.location{
-  color:#777;
-  font-size:14px;
-  margin-top:7px;
-}
-
-.details{
-  display:none;
-  padding:25px 5%;
-}
-
-.back{
-  background:#222;
-  color:white;
-  padding:10px 15px;
-  border-radius:7px;
-  margin-bottom:20px;
-}
-
-.details-card{
-  background:white;
-  max-width:850px;
-  margin:auto;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 2px 10px #ddd;
-}
-
-.details-card img{
-  width:100%;
-  max-height:450px;
-  object-fit:cover;
-}
-
-.details-info{
-  padding:25px;
-}
-
-.big-price{
-  color:#087f5b;
-  font-size:28px;
-  font-weight:bold;
-  margin:15px 0;
-}
-
-.description{
-  line-height:1.6;
-}
-
-.contact{
-  width:100%;
-  padding:14px;
-  background:#087f5b;
-  color:white;
-  border-radius:8px;
-  font-size:16px;
-  font-weight:bold;
-}
-
-.account-background,
-.form-background{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  align-items:center;
-  justify-content:center;
-  padding:15px;
-  z-index:100;
-}
-
-.account-box,
-.form{
-  background:white;
-  width:100%;
-  max-width:450px;
-  padding:25px;
-  border-radius:12px;
-}
-
-.form{
-  max-height:90vh;
-  overflow-y:auto;
-}
-
-.account-box input,
-.form input,
-.form select,
-.form textarea{
-  width:100%;
-  padding:13px;
-  margin:7px 0;
-  border:1px solid #ccc;
-  border-radius:7px;
-}
-
-.form textarea{
-  height:90px;
-  resize:vertical;
-}
-
-.close{
-  float:right;
-  background:none;
-  font-size:26px;
-}
-
-.account-submit,
-.publish{
-  width:100%;
-  padding:14px;
-  margin-top:8px;
-  background:#087f5b;
-  color:white;
-  border-radius:7px;
-  font-weight:bold;
-}
-
-.switch{
-  margin-top:15px;
-  text-align:center;
-  color:#087f5b;
-  cursor:pointer;
-}
-
-.account-message,
-.save-message{
-  margin-top:12px;
-  text-align:center;
-  font-size:14px;
-}
-
-.image-preview{
-  width:100%;
-  max-height:220px;
-  object-fit:cover;
-  border-radius:8px;
-  margin-top:8px;
-  display:none;
-}
-
-footer{
-  background:#222;
-  color:white;
-  text-align:center;
-  padding:25px;
-  margin-top:30px;
-}
-
+body{margin:0;font-family:Arial,sans-serif;background:#f5f5f5;color:#222}
+header{background:#087f5b;color:white;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.logo{font-size:23px;font-weight:bold}
+.header-buttons{display:flex;gap:8px;flex-wrap:wrap}
+button{border:0;cursor:pointer}
+.account-btn,.sell,.my-listings{background:white;color:#087f5b;padding:11px 14px;border-radius:8px;font-weight:bold}
+.logout-btn{background:#222;color:white;padding:11px 14px;border-radius:8px;display:none}
+.hero{background:#087f5b;color:white;text-align:center;padding:40px 15px}
+.hero h1{margin:0 0 10px;font-size:34px}
+.search{max-width:600px;margin:25px auto 0;display:flex}
+.search input{flex:1;padding:15px;border:0;outline:0;font-size:16px;border-radius:8px 0 0 8px}
+.search button{padding:0 20px;background:#222;color:white;border-radius:0 8px 8px 0}
+.section{padding:25px 5%}
+.categories{display:flex;gap:12px;overflow-x:auto}
+.category{background:white;min-width:115px;padding:17px 12px;border-radius:10px;text-align:center;box-shadow:0 2px 7px #ddd;cursor:pointer}
+.category-icon{display:block;font-size:30px;margin-bottom:7px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+.product{background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 7px #ddd;cursor:pointer}
+.product img{width:100%;height:180px;object-fit:cover;display:block}
+.product-info{padding:14px}
+.product-name{font-weight:bold;margin-bottom:8px}
+.price{color:#087f5b;font-size:19px;font-weight:bold}
+.location{color:#777;font-size:14px;margin-top:7px}
+.details{display:none;padding:25px 5%}
+.back{background:#222;color:white;padding:10px 15px;border-radius:7px;margin-bottom:20px}
+.details-card{background:white;max-width:850px;margin:auto;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px #ddd}
+.details-card img{width:100%;max-height:450px;object-fit:cover}
+.details-info{padding:25px}
+.big-price{color:#087f5b;font-size:28px;font-weight:bold;margin:15px 0}
+.description{line-height:1.6}
+.contact{width:100%;padding:14px;background:#087f5b;color:white;border-radius:8px;font-size:16px;font-weight:bold}
+.account-background,.form-background{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);align-items:center;justify-content:center;padding:15px;z-index:100}
+.account-box,.form{background:white;width:100%;max-width:450px;padding:25px;border-radius:12px}
+.form{max-height:90vh;overflow-y:auto}
+.account-box input,.form input,.form select,.form textarea{width:100%;padding:13px;margin:7px 0;border:1px solid #ccc;border-radius:7px}
+.form textarea{height:90px;resize:vertical}
+.close{float:right;background:none;font-size:26px}
+.account-submit,.publish{width:100%;padding:14px;margin-top:8px;background:#087f5b;color:white;border-radius:7px;font-weight:bold}
+.switch{margin-top:15px;text-align:center;color:#087f5b;cursor:pointer}
+.account-message,.save-message{text-align:center;font-size:14px;margin-top:12px}
+.image-preview{width:100%;max-height:220px;object-fit:cover;border-radius:8px;margin-top:8px;display:none}
+footer{background:#222;color:white;text-align:center;padding:25px;margin-top:30px}
 @media(max-width:600px){
-  .products{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .product img{
-    height:130px;
-  }
-
-  .hero h1{
-    font-size:27px;
-  }
+.products{grid-template-columns:repeat(2,1fr)}
+.product img{height:130px}
+.hero h1{font-size:27px}
 }
 </style>
 </head>
@@ -329,167 +60,81 @@ footer{
 <body>
 
 <header>
-
 <div class="logo">🛒 Idris Market</div>
 
 <div class="header-buttons">
-
-<button class="account-btn" id="accountButton">
-👤 Sign Up / Login
-</button>
-
-<button class="my-listings" id="myListingsButton">
-📦 My Listings
-</button>
-
-<button class="logout-btn" id="logoutButton">
-Logout
-</button>
-
-<button class="sell" id="sellButton">
-+ Sell Item
-</button>
-
+<button class="account-btn" id="accountButton">👤 Sign Up / Login</button>
+<button class="my-listings" id="myListingsButton">📦 My Listings</button>
+<button class="logout-btn" id="logoutButton">Logout</button>
+<button class="sell" id="sellButton">+ Sell Item</button>
 </div>
 </header>
 
 <section class="hero" id="home">
-
 <h1>Buy & Sell Anything</h1>
-
 <p>Find great deals around you.</p>
 
 <div class="search">
-
-<input
-id="searchInput"
-type="text"
-placeholder="Search phones, cars, shoes..."
->
-
+<input id="searchInput" type="text" placeholder="Search phones, cars, shoes...">
 <button id="searchButton">🔎</button>
-
 </div>
-
 </section>
 
 <section class="section" id="homeContent">
-
 <h2>Categories</h2>
 
 <div class="categories">
-
-<div class="category" data-category="Phones">
-<span class="category-icon">📱</span>
-Phones
+<div class="category" data-category="Phones"><span class="category-icon">📱</span>Phones</div>
+<div class="category" data-category="Cars"><span class="category-icon">🚗</span>Cars</div>
+<div class="category" data-category="Electronics"><span class="category-icon">💻</span>Electronics</div>
+<div class="category" data-category="Fashion"><span class="category-icon">👕</span>Fashion</div>
+<div class="category" data-category="Furniture"><span class="category-icon">🛋️</span>Furniture</div>
 </div>
-
-<div class="category" data-category="Cars">
-<span class="category-icon">🚗</span>
-Cars
-</div>
-
-<div class="category" data-category="Electronics">
-<span class="category-icon">💻</span>
-Electronics
-</div>
-
-<div class="category" data-category="Fashion">
-<span class="category-icon">👕</span>
-Fashion
-</div>
-
-<div class="category" data-category="Furniture">
-<span class="category-icon">🛋️</span>
-Furniture
-</div>
-
-</div>
-
 </section>
 
 <section class="section" id="productsSection">
-
 <h2>Latest Items</h2>
-
 <div id="products" class="products"></div>
-
 </section>
 
 <section class="details" id="details">
-
-<button class="back" id="backButton">
-← Back
-</button>
+<button class="back" id="backButton">← Back</button>
 
 <div class="details-card">
-
 <img id="detailImage" src="" alt="Product">
 
 <div class="details-info">
-
 <h1 id="detailName"></h1>
-
 <div class="big-price" id="detailPrice"></div>
-
 <p id="detailLocation"></p>
-
 <p class="description" id="detailDescription"></p>
-
-<button class="contact" id="contactButton">
-📞 Contact Seller
-</button>
-
+<button class="contact" id="contactButton">📞 Contact Seller</button>
 </div>
-
 </div>
-
 </section>
 
-<!-- ACCOUNT -->
-
 <div class="account-background" id="accountBackground">
-
 <div class="account-box">
 
 <button class="close" id="closeAccount">×</button>
 
 <h2 id="accountTitle">Create Account</h2>
+<p id="accountSubtitle">Create an account to use Idris Market.</p>
 
-<p id="accountSubtitle">
-Create an account to use Idris Market.
-</p>
+<input id="email" type="email" placeholder="Email address">
+<input id="password" type="password" placeholder="Password">
 
-<input
-id="email"
-type="email"
-placeholder="Email address"
->
-
-<input
-id="password"
-type="password"
-placeholder="Password"
->
-
-<button class="account-submit" id="accountSubmit">
-Create Account
-</button>
+<button class="account-submit" id="accountSubmit">Create Account</button>
 
 <div class="switch" id="switchMode">
 Already have an account? Login
 </div>
 
 <div class="account-message" id="accountMessage"></div>
-
 </div>
-
 </div>
-
-<!-- SELL FORM -->
 
 <div class="form-background" id="formBackground">
-
 <div class="form">
 
 <button class="close" id="closeForm">×</button>
@@ -498,170 +143,100 @@ Already have an account? Login
 
 <form id="itemForm">
 
-<input
-id="itemName"
-type="text"
-placeholder="Item name"
-required
->
+<input id="itemName" type="text" placeholder="Item name" required>
 
-<input
-id="itemPrice"
-type="number"
-placeholder="Price in ₦"
-required
->
+<input id="itemPrice" type="number" placeholder="Price in ₦" required>
 
 <select id="itemCategory" required>
-
 <option value="">Choose category</option>
 <option value="Phones">Phones</option>
 <option value="Cars">Cars</option>
 <option value="Electronics">Electronics</option>
 <option value="Fashion">Fashion</option>
 <option value="Furniture">Furniture</option>
-
 </select>
 
-<input
-id="itemLocation"
-type="text"
-placeholder="Location"
-required
->
+<input id="itemLocation" type="text" placeholder="Location" required>
 
-<input
-id="itemPhone"
-type="tel"
-placeholder="Seller phone number"
-required
->
+<input id="itemPhone" type="tel" placeholder="Seller phone number" required>
 
-<label>
-Choose product image
-</label>
+<label>Choose product image</label>
 
-<input
-id="itemImage"
-type="file"
-accept="image/*"
->
+<input id="itemImage" type="file" accept="image/*">
 
-<img
-id="imagePreview"
-class="image-preview"
-alt="Image preview"
->
+<img id="imagePreview" class="image-preview" alt="Preview">
 
-<textarea
-id="itemDescription"
-placeholder="Describe your item"
-required
-></textarea>
+<textarea id="itemDescription" placeholder="Describe your item" required></textarea>
 
-<button
-class="publish"
-id="publishButton"
-type="submit"
->
+<button class="publish" id="publishButton" type="submit">
 📤 Publish Item
 </button>
 
-<div
-class="save-message"
-id="saveMessage"
-></div>
+<div class="save-message" id="saveMessage"></div>
 
 </form>
-
 </div>
-
 </div>
 
 <footer>
-
 <h3>🛒 Idris Market</h3>
-
 <p>Buy and sell with ease.</p>
-
 <p>© 2026 Idris Market</p>
-
 </footer>
 
 <script type="module">
 
-/* =========================
-   FIREBASE
-========================= */
-
 import {
-  initializeApp
+initializeApp
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+signOut,
+onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  query,
-  where
+getFirestore,
+collection,
+addDoc,
+getDocs,
+query,
+where
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
-const firebaseConfig = {
-
-  apiKey:"AIzaSyAi-KrdaIz2MYy6lfgKqyqfkaejrbhmXQE",
-
-  authDomain:"idris-market-2026.firebaseapp.com",
-
-  projectId:"idris-market-2026",
-
-  storageBucket:"idris-market-2026.firebasestorage.app",
-
-  messagingSenderId:"132967044976",
-
-  appId:"1:132967044976:web:6620888d027f58e96be1b",
-
-  measurementId:"G-DXDLJLH747"
-
+const firebaseConfig={
+apiKey:"AIzaSyAi-KrdaIz2MYy6lfgKqyqfkaejrbhmXQE",
+authDomain:"idris-market-2026.firebaseapp.com",
+projectId:"idris-market-2026",
+storageBucket:"idris-market-2026.firebasestorage.app",
+messagingSenderId:"132967044976",
+appId:"1:132967044976:web:6620888d027f58e96be1b",
+measurementId:"G-DXDLJLH747"
 };
 
-
-const app = initializeApp(firebaseConfig);
-
-const auth = getAuth(app);
-
-const db = getFirestore(app);
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
 
 
-/* =========================
-   CLOUDINARY
-========================= */
+/* CLOUDINARY */
 
-const CLOUDINARY_CLOUD_NAME = "kgdwsbo1";
+const CLOUDINARY_CLOUD_NAME="kgdwsbo1";
+const CLOUDINARY_UPLOAD_PRESET="Idris market";
 
-const CLOUDINARY_UPLOAD_PRESET = "Idris market";
-
-const CLOUDINARY_UPLOAD_URL =
-"https://api.cloudinary.com/v1_1/" +
-CLOUDINARY_CLOUD_NAME +
+const CLOUDINARY_UPLOAD_URL=
+"https://api.cloudinary.com/v1_1/"+
+CLOUDINARY_CLOUD_NAME+
 "/image/upload";
 
 
-/* =========================
-   SAMPLE PRODUCTS
-========================= */
+/* SAMPLE PRODUCTS */
 
-const sampleProducts = [
-
+const sampleProducts=[
 {
 id:"sample1",
 name:"iPhone 12",
@@ -672,7 +247,6 @@ phone:"08000000000",
 image:"https://images.unsplash.com/photo-1592286927505-2fd8d8f8a6e1?auto=format&fit=crop&w=800&q=80",
 description:"Clean iPhone 12 in good condition."
 },
-
 {
 id:"sample2",
 name:"Toyota Camry",
@@ -683,7 +257,6 @@ phone:"08000000000",
 image:"https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=800&q=80",
 description:"Clean Toyota Camry available for sale."
 },
-
 {
 id:"sample3",
 name:"Gaming Laptop",
@@ -694,7 +267,6 @@ phone:"08000000000",
 image:"https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80",
 description:"Powerful gaming laptop."
 },
-
 {
 id:"sample4",
 name:"Sneakers",
@@ -705,71 +277,39 @@ phone:"08000000000",
 image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
 description:"Brand new sneakers."
 }
-
 ];
 
+let products=[...sampleProducts];
 
-let products = [...sampleProducts];
 
-
-/* =========================
-   DISPLAY PRODUCTS
-========================= */
+/* DISPLAY */
 
 function displayProducts(list){
 
-const container =
-document.getElementById("products");
-
+const container=document.getElementById("products");
 container.innerHTML="";
 
-if(list.length === 0){
-
-container.innerHTML = `
-<p style="grid-column:1/-1;text-align:center;">
-No products found.
-</p>
-`;
-
+if(list.length===0){
+container.innerHTML=
+`<p style="grid-column:1/-1;text-align:center">No products found.</p>`;
 return;
 }
 
-list.forEach(function(product){
+list.forEach(product=>{
 
-const card =
-document.createElement("div");
-
+const card=document.createElement("div");
 card.className="product";
 
-card.innerHTML = `
-
-<img
-src="${product.image || "https://via.placeholder.com/500x400?text=No+Image"}"
-alt="${product.name}"
->
-
+card.innerHTML=`
+<img src="${product.image || "https://via.placeholder.com/500x400?text=No+Image"}" alt="${product.name}">
 <div class="product-info">
-
-<div class="product-name">
-${product.name}
-</div>
-
-<div class="price">
-₦${Number(product.price).toLocaleString()}
-</div>
-
-<div class="location">
-📍 ${product.location || "Location not provided"}
-</div>
-
+<div class="product-name">${product.name}</div>
+<div class="price">₦${Number(product.price).toLocaleString()}</div>
+<div class="location">📍 ${product.location || "Location not provided"}</div>
 </div>
 `;
 
-card.onclick=function(){
-
-openProduct(product);
-
-};
+card.onclick=()=>openProduct(product);
 
 container.appendChild(card);
 
@@ -778,55 +318,30 @@ container.appendChild(card);
 }
 
 
-/* =========================
-   LOAD PRODUCTS
-========================= */
+/* LOAD FIRESTORE */
 
-async function loadProductsFromFirestore(){
+async function loadProducts(){
 
 try{
 
-const snapshot =
-await getDocs(collection(db,"Products"));
+const snapshot=await getDocs(collection(db,"Products"));
 
-const firestoreProducts=[];
+const realProducts=[];
 
-snapshot.forEach(function(doc){
-
-firestoreProducts.push({
-
+snapshot.forEach(doc=>{
+realProducts.push({
 id:doc.id,
-
 ...doc.data()
-
+});
 });
 
-});
-
-
-/*
-Put real Firestore products first,
-then sample products.
-*/
-
-products=[
-...firestoreProducts,
-...sampleProducts
-];
+products=[...realProducts,...sampleProducts];
 
 displayProducts(products);
-
-console.log(
-"Products loaded:",
-firestoreProducts.length
-);
 
 }catch(error){
 
-console.error(
-"Firestore loading error:",
-error
-);
+console.error("Firestore error:",error);
 
 displayProducts(products);
 
@@ -835,542 +350,293 @@ displayProducts(products);
 }
 
 
-/* =========================
-   PRODUCT DETAILS
-========================= */
+/* DETAILS */
 
 function openProduct(product){
 
 document.getElementById("home").style.display="none";
-
 document.getElementById("homeContent").style.display="none";
-
 document.getElementById("productsSection").style.display="none";
-
 document.getElementById("details").style.display="block";
 
-
-document.getElementById("detailImage").src =
+document.getElementById("detailImage").src=
 product.image ||
 "https://via.placeholder.com/700x500?text=No+Image";
 
+document.getElementById("detailName").textContent=product.name;
 
-document.getElementById("detailName").textContent =
-product.name;
-
-
-document.getElementById("detailPrice").textContent =
+document.getElementById("detailPrice").textContent=
 "₦"+Number(product.price).toLocaleString();
 
-
-document.getElementById("detailLocation").textContent =
+document.getElementById("detailLocation").textContent=
 "📍 "+(product.location || "Location not provided");
 
+document.getElementById("detailDescription").textContent=
+product.description || "No description available.";
 
-document.getElementById("detailDescription").textContent =
-product.description ||
-"No description available.";
-
-
-document.getElementById("contactButton").onclick=function(){
-
+document.getElementById("contactButton").onclick=()=>{
 if(product.phone){
-
 window.location.href="tel:"+product.phone;
-
 }else{
-
 alert("Seller phone number is not available.");
-
 }
-
 };
 
 window.scrollTo(0,0);
-
 }
 
 
-/* =========================
-   BACK
-========================= */
+/* BACK */
 
-document.getElementById("backButton")
-.onclick=function(){
+document.getElementById("backButton").onclick=()=>{
 
 document.getElementById("details").style.display="none";
-
 document.getElementById("home").style.display="block";
-
 document.getElementById("homeContent").style.display="block";
-
 document.getElementById("productsSection").style.display="block";
 
 };
 
 
-/* =========================
-   SEARCH
-========================= */
+/* SEARCH */
 
 function searchProducts(){
 
-const text =
-document.getElementById("searchInput")
-.value
-.toLowerCase()
-.trim();
+const text=
+document.getElementById("searchInput").value.toLowerCase().trim();
 
-
-const results =
-products.filter(function(product){
-
-return(
-
-String(product.name || "")
-.toLowerCase()
-.includes(text)
-
-||
-
-String(product.category || "")
-.toLowerCase()
-.includes(text)
-
-||
-
-String(product.location || "")
-.toLowerCase()
-.includes(text)
-
+displayProducts(
+products.filter(product=>
+String(product.name||"").toLowerCase().includes(text) ||
+String(product.category||"").toLowerCase().includes(text) ||
+String(product.location||"").toLowerCase().includes(text)
+)
 );
-
-});
-
-
-displayProducts(results);
 
 }
 
-
-document.getElementById("searchButton")
-.addEventListener(
-"click",
-searchProducts
-);
+document.getElementById("searchButton").onclick=searchProducts;
+document.getElementById("searchInput").oninput=searchProducts;
 
 
-document.getElementById("searchInput")
-.addEventListener(
-"input",
-searchProducts
-);
+/* CATEGORIES */
 
+document.querySelectorAll(".category").forEach(category=>{
 
-/* =========================
-   CATEGORIES
-========================= */
+category.onclick=()=>{
 
-document.querySelectorAll(".category")
-.forEach(function(category){
-
-category.addEventListener(
-"click",
-function(){
-
-const chosen =
-this.dataset.category;
+const chosen=category.dataset.category;
 
 displayProducts(
-products.filter(function(product){
-
-return product.category === chosen;
-
-})
+products.filter(product=>product.category===chosen)
 );
 
-});
+};
 
 });
 
 
-/* =========================
-   ACCOUNT
-========================= */
+/* ACCOUNT */
 
 let loginMode=false;
 
-const accountBackground =
-document.getElementById(
-"accountBackground"
-);
+const accountBackground=
+document.getElementById("accountBackground");
 
-
-document.getElementById("accountButton")
-.onclick=function(){
-
+document.getElementById("accountButton").onclick=()=>{
 accountBackground.style.display="flex";
-
 };
 
-
-document.getElementById("closeAccount")
-.onclick=function(){
-
+document.getElementById("closeAccount").onclick=()=>{
 accountBackground.style.display="none";
-
-document.getElementById(
-"accountMessage"
-).textContent="";
-
+document.getElementById("accountMessage").textContent="";
 };
 
 
-/* =========================
-   LOGIN / SIGNUP SWITCH
-========================= */
+/* SWITCH */
 
-document.getElementById("switchMode")
-.onclick=function(){
+document.getElementById("switchMode").onclick=()=>{
 
 loginMode=!loginMode;
 
+document.getElementById("accountTitle").textContent=
+loginMode?"Login":"Create Account";
 
-if(loginMode){
-
-document.getElementById(
-"accountTitle"
-).textContent="Login";
-
-document.getElementById(
-"accountSubtitle"
-).textContent=
-"Login to your Idris Market account.";
-
-document.getElementById(
-"accountSubmit"
-).textContent="Login";
-
-document.getElementById(
-"switchMode"
-).textContent=
-"Don't have an account? Sign Up";
-
-}else{
-
-document.getElementById(
-"accountTitle"
-).textContent=
-"Create Account";
-
-document.getElementById(
-"accountSubtitle"
-).textContent=
+document.getElementById("accountSubtitle").textContent=
+loginMode?
+"Login to your Idris Market account.":
 "Create an account to use Idris Market.";
 
-document.getElementById(
-"accountSubmit"
-).textContent=
-"Create Account";
+document.getElementById("accountSubmit").textContent=
+loginMode?"Login":"Create Account";
 
-document.getElementById(
-"switchMode"
-).textContent=
+document.getElementById("switchMode").textContent=
+loginMode?
+"Don't have an account? Sign Up":
 "Already have an account? Login";
-
-}
 
 };
 
 
-/* =========================
-   SIGNUP / LOGIN
-========================= */
+/* LOGIN / SIGNUP */
 
-document.getElementById("accountSubmit")
-.onclick=async function(){
+document.getElementById("accountSubmit").onclick=async()=>{
 
-const email =
-document.getElementById("email")
-.value
-.trim();
-
-const password =
-document.getElementById("password")
-.value;
-
-const message =
-document.getElementById("accountMessage");
-
+const email=document.getElementById("email").value.trim();
+const password=document.getElementById("password").value;
+const message=document.getElementById("accountMessage");
 
 message.textContent="";
 
-
-if(!email || !password){
-
-message.textContent=
-"Please enter your email and password.";
-
+if(!email||!password){
+message.textContent="Please enter your email and password.";
 return;
-
 }
-
 
 try{
 
 if(loginMode){
-
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-message.textContent=
-"✅ Login successful!";
-
+await signInWithEmailAndPassword(auth,email,password);
+message.textContent="✅ Login successful!";
 }else{
-
-await createUserWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-message.textContent=
-"✅ Account created successfully!";
-
+await createUserWithEmailAndPassword(auth,email,password);
+message.textContent="✅ Account created successfully!";
 }
 
-
-setTimeout(function(){
-
+setTimeout(()=>{
 accountBackground.style.display="none";
-
 },1000);
-
 
 }catch(error){
 
 console.error(error);
-
-message.textContent=
-"❌ "+friendlyError(error.code);
+message.textContent="❌ "+friendlyError(error.code);
 
 }
 
 };
 
 
-/* =========================
-   AUTH STATE
-========================= */
+/* AUTH */
 
-onAuthStateChanged(
-auth,
-function(user){
+onAuthStateChanged(auth,user=>{
 
-const accountButton =
-document.getElementById(
-"accountButton"
-);
-
-const logoutButton =
-document.getElementById(
-"logoutButton"
-);
-
+const accountButton=document.getElementById("accountButton");
+const logoutButton=document.getElementById("logoutButton");
 
 if(user){
 
-accountButton.textContent =
-"👤 "+user.email;
-
-logoutButton.style.display =
-"block";
+accountButton.textContent="👤 "+user.email;
+logoutButton.style.display="block";
 
 }else{
 
-accountButton.textContent =
-"👤 Sign Up / Login";
-
-logoutButton.style.display =
-"none";
+accountButton.textContent="👤 Sign Up / Login";
+logoutButton.style.display="none";
 
 }
 
 });
 
 
-/* =========================
-   LOGOUT
-========================= */
+/* LOGOUT */
 
-document.getElementById("logoutButton")
-.onclick=async function(){
+document.getElementById("logoutButton").onclick=async()=>{
 
 try{
-
 await signOut(auth);
-
 alert("You have logged out.");
-
 }catch(error){
-
 alert("Could not log out.");
-
 }
 
 };
 
 
-/* =========================
-   FIREBASE ERRORS
-========================= */
+/* ERRORS */
 
 function friendlyError(code){
 
-if(code==="auth/email-already-in-use"){
-
+if(code==="auth/email-already-in-use")
 return "That email already has an account.";
 
-}
-
-if(code==="auth/invalid-email"){
-
+if(code==="auth/invalid-email")
 return "Please enter a valid email.";
 
-}
-
-if(code==="auth/weak-password"){
-
+if(code==="auth/weak-password")
 return "Password is too weak.";
 
-}
-
 if(
-code==="auth/invalid-credential" ||
-code==="auth/wrong-password" ||
+code==="auth/invalid-credential"||
+code==="auth/wrong-password"||
 code==="auth/user-not-found"
-){
-
+)
 return "Email or password is incorrect.";
-
-}
 
 return "Something went wrong. Please try again.";
 
 }
 
 
-/* =========================
-   SELL BUTTON
-========================= */
+/* SELL BUTTON */
 
-const formBackground =
-document.getElementById(
-"formBackground"
-);
+const formBackground=
+document.getElementById("formBackground");
 
-
-document.getElementById("sellButton")
-.onclick=function(){
+document.getElementById("sellButton").onclick=()=>{
 
 if(!auth.currentUser){
 
-alert(
-"Please create an account or login before posting an item."
-);
+alert("Please create an account or login before posting an item.");
 
 accountBackground.style.display="flex";
 
 return;
-
 }
 
 formBackground.style.display="flex";
 
 };
 
-
-document.getElementById("closeForm")
-.onclick=function(){
-
+document.getElementById("closeForm").onclick=()=>{
 formBackground.style.display="none";
+};
+
+
+/* IMAGE PREVIEW */
+
+document.getElementById("itemImage").onchange=function(){
+
+const file=this.files[0];
+const preview=document.getElementById("imagePreview");
+
+if(!file){
+preview.style.display="none";
+return;
+}
+
+if(!file.type.startsWith("image/")){
+alert("Please choose an image file.");
+this.value="";
+return;
+}
+
+preview.src=URL.createObjectURL(file);
+preview.style.display="block";
 
 };
 
 
-/* =========================
-   IMAGE PREVIEW
-========================= */
+/* CLOUDINARY */
 
-document.getElementById("itemImage")
-.addEventListener(
-"change",
-function(){
+async function uploadImage(file){
 
-const file=this.files[0];
+const formData=new FormData();
 
-const preview =
-document.getElementById(
-"imagePreview"
-);
+formData.append("file",file);
+formData.append("upload_preset",CLOUDINARY_UPLOAD_PRESET);
 
-
-if(!file){
-
-preview.style.display="none";
-
-preview.src="";
-
-return;
-
-}
-
-
-if(!file.type.startsWith("image/")){
-
-alert("Please choose an image file.");
-
-this.value="";
-
-return;
-
-}
-
-
-preview.src =
-URL.createObjectURL(file);
-
-preview.style.display="block";
-
-});
-
-
-/* =========================
-   CLOUDINARY UPLOAD
-========================= */
-
-async function uploadImageToCloudinary(file){
-
-const formData =
-new FormData();
-
-
-formData.append(
-"file",
-file
-);
-
-formData.append(
-"upload_preset",
-CLOUDINARY_UPLOAD_PRESET
-);
-
-
-const response =
-await fetch(
+const response=await fetch(
 CLOUDINARY_UPLOAD_URL,
 {
 method:"POST",
@@ -1378,76 +644,170 @@ body:formData
 }
 );
 
-
-const data =
-await response.json();
-
+const data=await response.json();
 
 if(!response.ok){
-
-console.error(
-"Cloudinary error:",
-data
-);
-
 throw new Error(
-data.error?.message ||
-"Image upload failed."
+data.error?.message||"Image upload failed."
 );
-
 }
-
 
 if(!data.secure_url){
-
-throw new Error(
-"Cloudinary did not return an image URL."
-);
-
+throw new Error("Cloudinary did not return an image URL.");
 }
-
 
 return data.secure_url;
 
 }
 
 
-/* =========================
-   POST ITEM
-========================= */
+/* POST ITEM */
 
-document.getElementById("itemForm")
-.addEventListener(
-"submit",
-async function(event){
+document.getElementById("itemForm").onsubmit=async event=>{
 
 event.preventDefault();
 
+if(!auth.currentUser){
+alert("Please login first.");
+return;
+}
+
+const saveMessage=
+document.getElementById("saveMessage");
+
+const publishButton=
+document.getElementById("publishButton");
+
+const imageFile=
+document.getElementById("itemImage").files[0];
+
+saveMessage.textContent="⏳ Saving...";
+publishButton.disabled=true;
+publishButton.textContent="⏳ Posting...";
+
+try{
+
+let imageUrl="";
+
+if(imageFile){
+
+saveMessage.textContent="⏳ Uploading image...";
+
+imageUrl=await uploadImage(imageFile);
+
+}
+
+saveMessage.textContent="⏳ Saving product...";
+
+const newProduct={
+sellerId:auth.currentUser.uid,
+sellerEmail:auth.currentUser.email,
+name:document.getElementById("itemName").value.trim(),
+price:Number(document.getElementById("itemPrice").value),
+category:document.getElementById("itemCategory").value,
+location:document.getElementById("itemLocation").value.trim(),
+phone:document.getElementById("itemPhone").value.trim(),
+image:imageUrl,
+description:document.getElementById("itemDescription").value.trim(),
+createdAt:new Date().toISOString()
+};
+
+const docRef=await addDoc(
+collection(db,"Products"),
+newProduct
+);
+
+newProduct.id=docRef.id;
+
+products.unshift(newProduct);
+
+displayProducts(products);
+
+document.getElementById("itemForm").reset();
+
+document.getElementById("imagePreview").style.display="none";
+
+saveMessage.textContent="";
+
+formBackground.style.display="none";
+
+alert("✅ Item posted successfully!");
+
+}catch(error){
+
+console.error("POST ERROR:",error);
+
+saveMessage.textContent=
+"❌ "+error.message;
+
+alert("❌ Could not post item:\n"+error.message);
+
+}finally{
+
+publishButton.disabled=false;
+publishButton.textContent="📤 Publish Item";
+
+}
+
+};
+
+
+/* MY LISTINGS */
+
+document.getElementById("myListingsButton").onclick=async()=>{
 
 if(!auth.currentUser){
 
 alert("Please login first.");
-
+accountBackground.style.display="flex";
 return;
 
 }
 
+try{
 
-const saveMessage =
-document.getElementById(
-"saveMessage"
+const q=query(
+collection(db,"Products"),
+where("sellerId","==",auth.currentUser.uid)
 );
 
-const publishButton =
-document.getElementById(
-"publishButton"
-);
+const snapshot=await getDocs(q);
 
-const imageFile =
-document.getElementById(
-"itemImage"
-).files[0];
+const myProducts=[];
+
+snapshot.forEach(doc=>{
+myProducts.push({
+id:doc.id,
+...doc.data()
+});
+});
+
+displayProducts(myProducts);
+
+document.getElementById("home").style.display="none";
+document.getElementById("homeContent").style.display="none";
+document.getElementById("productsSection").style.display="block";
+
+window.scrollTo(0,0);
+
+alert("You have "+myProducts.length+" listing(s).");
+
+}catch(error){
+
+console.error(error);
+alert("Could not load your listings:\n"+error.message);
+
+}
+
+};
 
 
-saveMessage.textContent =
-"⏳ Saving..
+/* START */
+
+displayProducts(products);
+loadProducts();
+
+</script>
+
+</body>
+</html>
